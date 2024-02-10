@@ -1,6 +1,7 @@
 package com.example.twin6scriptsquadfoyer.DAO.Repository;
 
-import com.example.twin6scriptsquadfoyer.DAO.Entities.Reservation;
+
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

@@ -1,6 +1,12 @@
 package com.example.twin6scriptsquadfoyer.DAO.Service;
 
-import com.example.twin6scriptsquadfoyer.DAO.Entities.Chambre;
+
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Bloc;
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Chambre;
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Reservation;
+import com.example.twin6scriptsquadfoyer.DAO.Repository.BlocRepository;
+import com.example.twin6scriptsquadfoyer.DAO.Repository.ChambreRepository;
+import com.example.twin6scriptsquadfoyer.DAO.Repository.ReservationRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

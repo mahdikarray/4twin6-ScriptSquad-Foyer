@@ -1,6 +1,8 @@
-package tn.esprit.spring.DAO.Services.Foyer;
+package com.example.twin6scriptsquadfoyer.DAO.Service.Foyer;
 
-import tn.esprit.spring.DAO.Entities.Foyer;
+
+
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Foyer;
 
 import java.util.List;
 

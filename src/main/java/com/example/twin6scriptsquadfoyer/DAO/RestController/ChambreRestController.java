@@ -1,12 +1,14 @@
 package com.example.twin6scriptsquadfoyer.DAO.RestController;
 
-import com.example.twin6scriptsquadfoyer.DAO.Entities.Chambre;
-import com.example.twin6scriptsquadfoyer.DAO.Repositories.ChambreRepository;
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Bloc;
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Chambre;
+import com.example.twin6scriptsquadfoyer.DAO.Repository.ChambreRepository;
+import com.example.twin6scriptsquadfoyer.DAO.Service.IChambreService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.*;
 
 
@@ -50,7 +52,7 @@ public class ChambreRestController {
 
 
         @PutMapping("/update/{id}")
-        @PreAuthorize("hasRole('ADMIN')")
+       // @PreAuthorize("hasRole('ADMIN')")
 
         public ResponseEntity<?> updateChambre(@PathVariable("id") Long idChambre, @RequestBody Chambre updatedChambre) {
             Chambre existingChambre = iChambreService.getChambreById(idChambre);
@@ -70,7 +72,7 @@ public class ChambreRestController {
             return new ResponseEntity<>(modifiedChambre, HttpStatus.OK);
         }
             @DeleteMapping("/delete/{id}")
-            @PreAuthorize("hasRole('ADMIN')")
+           // @PreAuthorize("hasRole('ADMIN')")
             void deleteChambre(@PathVariable("id") Long id){
                 iChambreService.deleteById(id);
             }
@@ -80,20 +82,20 @@ public class ChambreRestController {
 
 
             @GetMapping("/{id}")
-            @PreAuthorize("hasRole('ADMIN')")
+          //  @PreAuthorize("hasRole('ADMIN')")
             Chambre findById(@PathVariable("id") Long id){
                 return iChambreService.findById(id);
             }
 
             @GetMapping("selectByNumSQL")
-            @PreAuthorize("hasRole('ADMIN')")
+          //  @PreAuthorize("hasRole('ADMIN')")
 
             List<Chambre> selectByNumSQL(long num){
                 return chambreRepository.selectByNumSQL(num);
             }
 
             @GetMapping("/findByNumeroChambre/{numeroChambre}")
-            @PreAuthorize("hasRole('ADMIN')")
+          //  @PreAuthorize("hasRole('ADMIN')")
 
             public ResponseEntity<Chambre> findByNumeroChambre(@PathVariable long numeroChambre) {
                 Chambre chambre = iChambreService.findByNumeroChambre(numeroChambre);
@@ -103,7 +105,7 @@ public class ChambreRestController {
                 return new ResponseEntity<>(chambre, HttpStatus.OK);
             }
             @GetMapping("/{chambreId}/occupee")
-            @PreAuthorize("hasRole('ADMIN')")
+           // @PreAuthorize("hasRole('ADMIN')")
 
             public ResponseEntity<Boolean> isChambreOccupee(@PathVariable("chambreId") long chambreId) {
                 boolean isOccupee = iChambreService.isChambreOccupee(chambreId);
@@ -113,14 +115,14 @@ public class ChambreRestController {
 
 
             @GetMapping("/bloc/{idChambre}")
-            @PreAuthorize("hasRole('ADMIN')")
+           // @PreAuthorize("hasRole('ADMIN')")
 
             public ResponseEntity<Bloc> getBlocByChambre(@PathVariable long idChambre) {
                 Bloc bloc = iChambreService.getBlocByChambre(idChambre);
                 return new ResponseEntity<>(bloc, HttpStatus.OK);
             }
             @GetMapping("/checkNumeroChambreUnique/{numeroChambre}")
-            @PreAuthorize("hasRole('ADMIN')")
+           // @PreAuthorize("hasRole('ADMIN')")
 
             public ResponseEntity<Boolean> checkNumeroChambreUnique(@PathVariable long numeroChambre) {
                 boolean isUnique = iChambreService.isNumeroChambreUnique(numeroChambre);

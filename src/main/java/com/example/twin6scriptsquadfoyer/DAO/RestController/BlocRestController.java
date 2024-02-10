@@ -1,8 +1,8 @@
-package com.example.project.controllers;
+package com.example.twin6scriptsquadfoyer.DAO.RestController;
 
 
-import com.example.project.models.Bloc;
-import com.example.project.services.IBlocService;
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Bloc;
+import com.example.twin6scriptsquadfoyer.DAO.Service.IBlocService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

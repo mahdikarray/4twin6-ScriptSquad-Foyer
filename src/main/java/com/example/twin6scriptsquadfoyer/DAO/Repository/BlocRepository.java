@@ -1,6 +1,7 @@
-package com.example.project;
+package com.example.twin6scriptsquadfoyer.DAO.Repository;
 
-import com.example.project.models.Bloc;
+
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Bloc;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

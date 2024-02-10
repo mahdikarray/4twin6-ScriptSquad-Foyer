@@ -1,10 +1,11 @@
-package com.example.project.models;
+package com.example.twin6scriptsquadfoyer.DAO.Entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,7 +26,7 @@ public class Bloc implements Serializable {
     @Column(name="capaciteBloc")
     private int capaciteBloc ;
     @OneToMany(mappedBy = "bloc" , cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
-    private Set<Chamber> chambers = new HashSet<>();
+    private Set<Chambre> chambers = new HashSet<>();
     @ManyToOne
     @JoinColumn(name = "foyer_id")
     @JsonIgnore

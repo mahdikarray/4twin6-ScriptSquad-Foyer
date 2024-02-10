@@ -1,7 +1,8 @@
-package com.example.project.services;
+package com.example.twin6scriptsquadfoyer.DAO.Service;
 
-import com.example.project.BlocRepository;
-import com.example.project.models.Bloc;
+
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Bloc;
+import com.example.twin6scriptsquadfoyer.DAO.Repository.BlocRepository;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;

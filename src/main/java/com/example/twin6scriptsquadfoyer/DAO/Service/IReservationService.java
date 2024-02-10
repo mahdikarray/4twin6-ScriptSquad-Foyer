@@ -2,7 +2,8 @@ package com.example.twin6scriptsquadfoyer.DAO.Service;
 
 
 
-import com.example.twin6scriptsquadfoyer.DAO.Entities.Reservation;
+
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Reservation;
 
 import java.util.List;
 

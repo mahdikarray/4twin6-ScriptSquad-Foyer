@@ -1,9 +1,8 @@
-package tn.esprit.spring.DAO.Repositories;
+package com.example.twin6scriptsquadfoyer.DAO.Repository;
 
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Foyer;
 import org.springframework.data.jpa.repository.JpaRepository;
-import tn.esprit.spring.DAO.Entities.Bloc;
-import tn.esprit.spring.DAO.Entities.Foyer;
-import tn.esprit.spring.DAO.Entities.Universite;
+
 
 import java.util.List;
 

@@ -24,6 +24,6 @@ public class Universite {
 
 @OneToOne(cascade = CascadeType.ALL)
 @JsonIgnore
- private tn.esprit.spring.DAO.Entities.Foyer foyer;
+ private Foyer foyer;
 
 }

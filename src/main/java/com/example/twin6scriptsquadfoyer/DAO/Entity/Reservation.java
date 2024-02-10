@@ -42,9 +42,9 @@ public class Reservation {
     @Column(name = "paymentMethod")
     private PaymentMethods paymentMethod;*/
 
-    @ManyToMany(cascade = CascadeType.ALL)
+  /*  @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Etudiant> etudiants = new HashSet<>();
+    private Set<Etudiant> etudiants = new HashSet<>();*/
     @Column(name = "dateDebut")
     private LocalDate dateDebut;
 

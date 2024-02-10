@@ -1,6 +1,8 @@
-package com.example.project.services;
+package com.example.twin6scriptsquadfoyer.DAO.Service;
 
-import com.example.project.models.Bloc;
+
+
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Bloc;
 
 import java.util.List;
 

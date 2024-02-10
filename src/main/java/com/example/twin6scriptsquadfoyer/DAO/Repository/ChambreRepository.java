@@ -1,7 +1,8 @@
 package com.example.twin6scriptsquadfoyer.DAO.Repository;
 
-import com.example.twin6scriptsquadfoyer.DAO.Entities.Chambre;
-import com.example.twin6scriptsquadfoyer.DAO.Entities.TypeChambre;
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Bloc;
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Chambre;
+import com.example.twin6scriptsquadfoyer.DAO.Entity.TypeChambre;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

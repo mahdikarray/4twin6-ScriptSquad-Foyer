@@ -1,6 +1,9 @@
 package com.example.twin6scriptsquadfoyer.DAO.Service;
 
-import com.example.twin6scriptsquadfoyer.DAO.Entities.Reservation;
+
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Reservation;
+import com.example.twin6scriptsquadfoyer.DAO.Repository.ChambreRepository;
+import com.example.twin6scriptsquadfoyer.DAO.Repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +16,9 @@ public class ReservationService implements IReservationService{
     private ReservationRepository reservationRepository;
     @Autowired
     private ChambreRepository chambreRepository;
-    @Autowired
+   /* @Autowired
     private EtudiantRepository etudiantRepository;
-
+*/
 
     @Override
     public Reservation addReservation(Reservation r) {

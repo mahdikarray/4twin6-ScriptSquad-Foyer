@@ -1,9 +1,10 @@
-package tn.esprit.spring.DAO.Services.Foyer;
+package com.example.twin6scriptsquadfoyer.DAO.Service.Foyer;
 
+import com.example.twin6scriptsquadfoyer.DAO.Entity.Foyer;
+import com.example.twin6scriptsquadfoyer.DAO.Repository.FoyerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.esprit.spring.DAO.Entities.Foyer;
-import tn.esprit.spring.DAO.Repositories.FoyerRepository;
+
 
 import java.util.List;
 
