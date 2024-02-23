@@ -19,14 +19,6 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
-stage("build & SonarQube analysis") {
-            agent any
-            steps {
-              withSonarQubeEnv('http://192.168.33.10:9000') {
-                sh 'mvn clean package sonar:sonar'
-              }
-            }
-          }
     }
 
     post {
