@@ -37,7 +37,7 @@ public class ChambreRestController {
         return chambreRepository.findByBloc_NomBloc(nomBloc);
     }
     @PostMapping("/add")
-    public ResponseEntity<?> addChambre(@RequestBody Chambre chambre) {
+    public ResponseEntity addChambre(@RequestBody Chambre chambre) {
         long numeroChambre = chambre.getNumeroChambre();
 
         // Check for uniqueness, excluding the current chambre being updated
@@ -54,7 +54,7 @@ public class ChambreRestController {
         @PutMapping("/update/{id}")
        // @PreAuthorize("hasRole('ADMIN')")
 
-        public ResponseEntity<?> updateChambre(@PathVariable("id") Long idChambre, @RequestBody Chambre updatedChambre) {
+        public ResponseEntity updateChambre(@PathVariable("id") Long idChambre, @RequestBody Chambre updatedChambre) {
             Chambre existingChambre = iChambreService.getChambreById(idChambre);
 
             if (existingChambre == null) {

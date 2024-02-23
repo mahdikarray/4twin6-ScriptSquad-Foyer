@@ -19,6 +19,11 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
+        stage('MVN SONARQUBE'){
+        steps{
+        sh 'sonar qube'
+        }
+        }
     }
 
     post {
