@@ -19,11 +19,13 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
-        stage('MVN SONARQUBE'){
-        steps{
-        sh 'sonar qube'
-        }
-        }
+        stage('SonarQube Analysis') {
+                    steps {
+                        withCredentials([usernamePassword(credentialsId: 'sonarqube-credentials', usernameVariable: 'admin', passwordVariable: '201JMT4720')]) {
+                            sh "mvn sonar:sonar -Dsonar.login=${admin} -Dsonar.password=${201JMT4720}"
+                        }
+                    }
+                }
     }
 
     post {
