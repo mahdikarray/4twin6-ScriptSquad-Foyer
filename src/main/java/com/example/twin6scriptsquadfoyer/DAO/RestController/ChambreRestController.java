@@ -52,7 +52,7 @@ public class ChambreRestController {
 
 
         @PutMapping("/update/{id}")
-
+       // @PreAuthorize("hasRole('ADMIN')")
 
         public ResponseEntity updateChambre(@PathVariable("id") Long idChambre, @RequestBody Chambre updatedChambre) {
             Chambre existingChambre = iChambreService.getChambreById(idChambre);

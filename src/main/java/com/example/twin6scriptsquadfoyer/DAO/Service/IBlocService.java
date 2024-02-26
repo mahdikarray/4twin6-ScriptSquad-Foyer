@@ -31,7 +31,7 @@ public interface IBlocService {
     List<Bloc> findAllByOrderByNomBlocAsc();
     List<Bloc> findByNomBlocOrCapaciteBloc(String nomBloc, int capaciteBloc);
     Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc);
-
+    /*  void listeChambresParBloc();*/
 
 
 }
