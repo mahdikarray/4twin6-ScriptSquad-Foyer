@@ -71,7 +71,7 @@ public class ReservationRestController {
     Reservation addReseravationavecChamber(@PathVariable("numChambre") long numChambre ,  @PathVariable("cin") long cin){
         return iReservationService.ajouterReservationEtAssignerAChambreEtAEtudiant(numChambre, cin);
     }
-
+/*
     @PutMapping("/{id}/accept")
     public ResponseEntity<?> acceptReservation (@PathVariable String id){
         reservationService.acceptReservation(id);
@@ -83,7 +83,7 @@ public class ReservationRestController {
         reservationService.refuseReservation(id);
         return ResponseEntity.ok().build();
     }
-
+*/
   /*  @PostMapping("/addreservation")
     Reservation addReservationWithPayment(@RequestBody Reservation r, @RequestParam PaymentMethods paymentMethod) {
         return iReservationService.addReservationWithPayment(r, paymentMethod);
