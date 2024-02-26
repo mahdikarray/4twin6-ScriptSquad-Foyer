@@ -35,9 +35,6 @@ public class ReservationRestController {
     @Autowired
     private ChambreService chambreService;
 
-   /* @Autowired
-    private EtudiantService etudiantService;
-*/
     @GetMapping("/findAll")
     List<Reservation> findAll(){
         return  iReservationService.findAll();
@@ -73,21 +70,18 @@ public class ReservationRestController {
     }
 
     @PutMapping("/{id}/accept")
-    public ResponseEntity<?> acceptReservation (@PathVariable String id){
+    public ResponseEntity acceptReservation (@PathVariable String id){
         reservationService.acceptReservation(id);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{id}/refuse")
-    public ResponseEntity<?> refuseReservation (@PathVariable String id){
+    public ResponseEntity  refuseReservation (@PathVariable String id){
         reservationService.refuseReservation(id);
         return ResponseEntity.ok().build();
     }
 
-  /*  @PostMapping("/addreservation")
-    Reservation addReservationWithPayment(@RequestBody Reservation r, @RequestParam PaymentMethods paymentMethod) {
-        return iReservationService.addReservationWithPayment(r, paymentMethod);
-    }*/
+
 
     //retreive data from service chambre to get All rooms directlly using stream method
     @GetMapping("/roomNumbers")
@@ -96,12 +90,6 @@ public class ReservationRestController {
         return new ResponseEntity<>(roomNumbers, HttpStatus.OK);
     }
 
-    //retreive data from service chambre to get All Cins directlly using query
-    /*@GetMapping("/cins")
-    public ResponseEntity<List<Long>> getAllStudentCINs() {
-        List<Long> cins = etudiantService.findAllCINs();
-        return new ResponseEntity<>(cins, HttpStatus.OK);
-    }*/
 
 
 

@@ -16,9 +16,7 @@ public class ReservationService implements IReservationService{
     private ReservationRepository reservationRepository;
     @Autowired
     private ChambreRepository chambreRepository;
-   /* @Autowired
-    private EtudiantRepository etudiantRepository;
-*/
+
 
     @Override
     public Reservation addReservation(Reservation r) {
@@ -57,12 +55,12 @@ public class ReservationService implements IReservationService{
 
     @Override
     public void acceptReservation(String idReservation) {
-
+//empty
     }
 
     @Override
     public void refuseReservation(String idReservation) {
-
+//empty
     }
 
 

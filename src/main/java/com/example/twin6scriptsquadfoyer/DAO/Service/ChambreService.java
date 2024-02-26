@@ -33,11 +33,9 @@ public class ChambreService implements IChambreService {
     }
     @Override
     public Chambre addChambre(Chambre c) {
-        // Ensure that the associated Bloc is saved
+
         Bloc bloc = c.getBloc();
         if (bloc != null && bloc.getIdBloc() == 0) {
-            // Bloc is transient, save it first
-        //    bloc = blocRepository.save(bloc);
             c.setBloc(bloc);
         }
 

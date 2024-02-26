@@ -46,9 +46,6 @@ public class BlocService implements IBlocService {
 
     @Override
     public Bloc findById(long id) {
-        // return blocRepository.findById(id).get();
-        //ou bien
-        //ou bien
         return blocRepository.findById(id).orElse(Bloc.builder().idBloc(0).nomBloc("pas de bloc").build());
 
 
@@ -110,20 +107,5 @@ public class BlocService implements IBlocService {
     public Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc) {
         return null;
     }
-
-
-/*
-        @Scheduled(fixedRate = 60000)
-        @Override
-        public void listeChambresParBloc() {
-                List<Bloc> listbloc = blocRepository.findAll();
-                for (Bloc b : listbloc) {
-                        List<Chambre> ch = b.getChambres();
-                        for (Chambre c : ch) {
-                                log.info(c.toString());
-                        }
-                }
-
-        }*/
 
 }
