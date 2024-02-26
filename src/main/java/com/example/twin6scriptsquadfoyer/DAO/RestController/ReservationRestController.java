@@ -73,13 +73,13 @@ public class ReservationRestController {
     }
 
     @PutMapping("/{id}/accept")
-    public ResponseEntity acceptReservation (@PathVariable String id){
+    public ResponseEntity<?> acceptReservation (@PathVariable String id){
         reservationService.acceptReservation(id);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{id}/refuse")
-    public ResponseEntity refuseReservation (@PathVariable String id){
+    public ResponseEntity<?> refuseReservation (@PathVariable String id){
         reservationService.refuseReservation(id);
         return ResponseEntity.ok().build();
     }
