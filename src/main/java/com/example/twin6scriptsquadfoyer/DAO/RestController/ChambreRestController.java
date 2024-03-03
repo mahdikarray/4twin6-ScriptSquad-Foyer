@@ -71,11 +71,7 @@ public class ChambreRestController {
             Chambre modifiedChambre = iChambreService.editChambre(idChambre, updatedChambre);
             return new ResponseEntity<>(modifiedChambre, HttpStatus.OK);
         }
-            @DeleteMapping("/delete/{id}")
-           // @PreAuthorize("hasRole('ADMIN')")
-            void deleteChambre(@PathVariable("id") Long id){
-                iChambreService.deleteById(id);
-            }
+
 
 
 
@@ -103,14 +99,6 @@ public class ChambreRestController {
                     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
                 }
                 return new ResponseEntity<>(chambre, HttpStatus.OK);
-            }
-            @GetMapping("/{chambreId}/occupee")
-           // @PreAuthorize("hasRole('ADMIN')")
-
-            public ResponseEntity<Boolean> isChambreOccupee(@PathVariable("chambreId") long chambreId) {
-                boolean isOccupee = iChambreService.isChambreOccupee(chambreId);
-                return ResponseEntity.ok(isOccupee);
-
             }
 
 

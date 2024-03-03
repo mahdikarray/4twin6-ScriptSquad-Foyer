@@ -3,10 +3,8 @@ package com.example.twin6scriptsquadfoyer.DAO.Service;
 
 import com.example.twin6scriptsquadfoyer.DAO.Entity.Bloc;
 import com.example.twin6scriptsquadfoyer.DAO.Entity.Chambre;
-import com.example.twin6scriptsquadfoyer.DAO.Entity.Reservation;
 import com.example.twin6scriptsquadfoyer.DAO.Repository.BlocRepository;
 import com.example.twin6scriptsquadfoyer.DAO.Repository.ChambreRepository;
-import com.example.twin6scriptsquadfoyer.DAO.Repository.ReservationRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +20,6 @@ public class ChambreService implements IChambreService {
     @Autowired
     private ChambreRepository chambreRepository;
     private BlocRepository blocRepository;
-    private ReservationRepository reservationRepository;
     @Autowired
     public ChambreService(BlocRepository blocRepository) {
         this.blocRepository = blocRepository;
@@ -64,7 +61,6 @@ public class ChambreService implements IChambreService {
             toUpdateChambre.setNumeroChambre(c.getNumeroChambre());
             toUpdateChambre.setTypeChambre(c.getTypeChambre());
             toUpdateChambre.setBloc(c.getBloc());
-            toUpdateChambre.setReservations(c.getReservations());
             return chambreRepository.save(toUpdateChambre);
         }
         return null;
@@ -80,22 +76,6 @@ public class ChambreService implements IChambreService {
         return chambreRepository.findById(id).get();
     }
 
-    @Override
-    public void deleteById(long id) {
-        Chambre chambre = chambreRepository.findById(id).orElse(null);
-
-        if (chambre != null) {
-            // Remove the association with reservations
-            for (Reservation reservation : chambre.getReservations()) {
-                reservation.setChambre(null);
-            }
-            // Clear the reservations collection in Chambre
-            chambre.getReservations().clear();
-
-            // Now you can safely delete the Chambre
-            chambreRepository.deleteById(id);
-        }
-    }
 
 
     public void delete(Chambre c) {
@@ -104,28 +84,6 @@ public class ChambreService implements IChambreService {
 
     // ChambreRestController.java
 
-    @Override
-    public boolean isChambreOccupeeALaDate(long chambreId, LocalDate date) {
-        Optional<Chambre> optionalChambre = chambreRepository.findById(chambreId);
-
-        if (optionalChambre.isPresent()) {
-            Chambre chambre = optionalChambre.get();
-            return chambre.isOccupeeALaDate(date);
-        }
-
-        return false;
-    }
-    @Override
-    public boolean isChambreOccupee(long chambreId) {
-        Optional<Chambre> optionalChambre = chambreRepository.findById(chambreId);
-
-        if (optionalChambre.isPresent()) {
-            Chambre chambre = optionalChambre.get();
-            return chambre.isOccupee();
-        }
-
-        return false;
-    }
     public Bloc getBlocByChambre(long idChambre) {
         Chambre chambre = chambreRepository.findById(idChambre)
                 .orElseThrow(() -> new EntityNotFoundException("Chambre not found"));

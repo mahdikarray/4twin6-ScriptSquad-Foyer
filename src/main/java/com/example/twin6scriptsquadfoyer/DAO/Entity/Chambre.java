@@ -43,9 +43,6 @@ public class Chambre {
     @JsonBackReference
     private Bloc bloc;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "chambre")
-    @JsonIgnore
-    private Set<Reservation> reservations = new HashSet<>();
 
     public long getIdChambre() {
         return idChambre;
@@ -67,9 +64,6 @@ public class Chambre {
         return bloc;
     }
 
-    public Set<Reservation> getReservations() {
-        return reservations;
-    }
 
     public void setIdChambre(long idChambre) {
         this.idChambre = idChambre;
@@ -90,27 +84,5 @@ public class Chambre {
     public void setBloc(Bloc bloc) {
         this.bloc = bloc;
     }
-
-    public void setReservations(Set<Reservation> reservations) {
-        this.reservations = reservations;
-    }
-
-
-    public boolean isOccupee() {
-        return !reservations.isEmpty();
-    }
-    public boolean isOccupeeALaDate(LocalDate date) {
-        if (dateDebut == null || dateFin == null) {
-            return false; // You may need to adapt this condition
-        }
-
-        for (Reservation reservation : reservations) {
-            if (reservation.couvreDate(date)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
 
 }

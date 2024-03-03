@@ -17,12 +17,9 @@ public interface IChambreService {
     Chambre editChambre(Long id, Chambre b);
     List<Chambre> findAll();
     Chambre findById(long id);
-    void deleteById(long id);
     void delete(Chambre b);
      Chambre findByNumeroChambre(long numeroChambre);
-    boolean isChambreOccupeeALaDate(long chambreId, LocalDate date);
 
-    boolean isChambreOccupee(long chambreId);
 
     Bloc getBlocByChambre(long idChambre);
     boolean isNumeroChambreUnique(long numeroChambre);
