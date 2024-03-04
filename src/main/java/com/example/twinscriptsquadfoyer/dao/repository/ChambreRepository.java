@@ -24,7 +24,7 @@ public interface ChambreRepository extends JpaRepository<Chambre, Long> {
     List<Chambre> findByTypeChambre(TypeChambre typeChambre);
     @Test
     @Order(2)
-    List<Chambre> findByBloc_NomBloc(String nomBloc);
+    List<Chambre> findByBlocNomBloc(String nomBloc);
 
     // 3- Recherche des chambres par bloc
     List<Chambre> findByBloc(Bloc bloc);

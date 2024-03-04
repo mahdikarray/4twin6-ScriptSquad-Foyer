@@ -25,7 +25,7 @@ public class ChambreService implements IChambreService {
     }
 
     public List<Chambre> searchChambresByBlocName(String nomBloc) {
-        return chambreRepository.findByBloc_NomBloc(nomBloc);
+        return chambreRepository.findByBlocNomBloc(nomBloc);
     }
     @Override
     public Chambre addChambre(Chambre c) {

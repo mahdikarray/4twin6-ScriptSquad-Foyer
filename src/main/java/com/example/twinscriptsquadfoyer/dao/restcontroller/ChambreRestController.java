@@ -34,7 +34,7 @@ public class ChambreRestController {
     }
     @GetMapping("/searchByBloc")
     public List<Chambre> searchChambresByBlocName(@RequestParam String nomBloc) {
-        return chambreRepository.findByBloc_NomBloc(nomBloc);
+        return chambreRepository.findByBlocNomBloc(nomBloc);
     }
 
 
