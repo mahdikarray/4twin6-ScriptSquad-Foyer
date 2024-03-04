@@ -34,7 +34,7 @@ public class ChambreRestController {
     }
     @GetMapping("/searchByBloc")
     public List<Chambre> searchChambresByBlocName(@RequestParam String nomBloc) {
-        return chambreRepository.findByBlocNomBloc(nomBloc);
+        return chambreRepository.findByBloc_NomBloc(nomBloc);
     }
 
 
@@ -68,14 +68,14 @@ public class ChambreRestController {
 
             @GetMapping("/{id}")
           //  @PreAuthorize("hasRole('ADMIN')")
-            public Chambre findById(@PathVariable("id") Long id){
+            Chambre findById(@PathVariable("id") Long id){
                 return iChambreService.findById(id);
             }
 
             @GetMapping("selectByNumSQL")
           //  @PreAuthorize("hasRole('ADMIN')")
 
-            public List<Chambre> selectByNumSQL(long num){
+            List<Chambre> selectByNumSQL(long num){
                 return chambreRepository.selectByNumSQL(num);
             }
 
