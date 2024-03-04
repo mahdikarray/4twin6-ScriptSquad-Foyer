@@ -1,7 +1,7 @@
-package com.example.twinscriptsquadfoyer.dao.RestController;
+package com.example.twinscriptsquadfoyer.dao.restcontroller;
 
 import com.example.twinscriptsquadfoyer.dao.entity.Universite;
-import com.example.twinscriptsquadfoyer.dao.Service.IuniversiteService;
+import com.example.twinscriptsquadfoyer.dao.service.IuniversiteService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

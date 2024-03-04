@@ -1,4 +1,4 @@
-package com.example.twinscriptsquadfoyer.dao.Service;
+package com.example.twinscriptsquadfoyer.dao.service;
 
 
 import com.example.twinscriptsquadfoyer.dao.entity.Bloc;

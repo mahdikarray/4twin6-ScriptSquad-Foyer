@@ -1,4 +1,4 @@
-package com.example.twinscriptsquadfoyer.dao.Service.Foyer;
+package com.example.twinscriptsquadfoyer.dao.service.Foyer;
 
 
 

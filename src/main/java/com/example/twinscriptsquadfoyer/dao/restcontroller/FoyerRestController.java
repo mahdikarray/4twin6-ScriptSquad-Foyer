@@ -1,8 +1,8 @@
-package com.example.twinscriptsquadfoyer.dao.RestController;
+package com.example.twinscriptsquadfoyer.dao.restcontroller;
 
 import com.example.twinscriptsquadfoyer.dao.entity.Foyer;
-import com.example.twinscriptsquadfoyer.dao.Service.Foyer.FoyerService;
-import com.example.twinscriptsquadfoyer.dao.Service.Foyer.IFoyerService;
+import com.example.twinscriptsquadfoyer.dao.service.Foyer.FoyerService;
+import com.example.twinscriptsquadfoyer.dao.service.Foyer.IFoyerService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
