@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class ChambreService implements IChambreService {
     @Autowired
     private ChambreRepository chambreRepository;
-    private BlocRepository blocRepository;
+     BlocRepository blocRepository;
     @Autowired
     public ChambreService(BlocRepository blocRepository) {
         this.blocRepository = blocRepository;
