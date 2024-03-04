@@ -1,8 +1,8 @@
-package com.example.twin6scriptsquadfoyer.DAO.Service;
+package com.example.twinscriptsquadfoyer.DAO.Service;
 
 
 
-import com.example.twin6scriptsquadfoyer.DAO.Entity.Bloc;
+import com.example.twinscriptsquadfoyer.DAO.Entity.Bloc;
 
 import java.util.List;
 
@@ -31,7 +31,6 @@ public interface IBlocService {
     List<Bloc> findAllByOrderByNomBlocAsc();
     List<Bloc> findByNomBlocOrCapaciteBloc(String nomBloc, int capaciteBloc);
     Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc);
-    /*  void listeChambresParBloc();*/
 
 
 }

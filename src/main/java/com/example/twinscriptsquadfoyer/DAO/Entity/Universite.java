@@ -1,4 +1,4 @@
-package com.example.twin6scriptsquadfoyer.DAO.Entity;
+package com.example.twinscriptsquadfoyer.DAO.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

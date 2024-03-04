@@ -1,9 +1,9 @@
-package com.example.twin6scriptsquadfoyer.DAO.RestController;
+package com.example.twinscriptsquadfoyer.DAO.RestController;
 
-import com.example.twin6scriptsquadfoyer.DAO.Entity.Bloc;
-import com.example.twin6scriptsquadfoyer.DAO.Entity.Chambre;
-import com.example.twin6scriptsquadfoyer.DAO.Repository.ChambreRepository;
-import com.example.twin6scriptsquadfoyer.DAO.Service.IChambreService;
+import com.example.twinscriptsquadfoyer.DAO.Entity.Bloc;
+import com.example.twinscriptsquadfoyer.DAO.Entity.Chambre;
+import com.example.twinscriptsquadfoyer.DAO.Repository.ChambreRepository;
+import com.example.twinscriptsquadfoyer.DAO.Service.IChambreService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,17 +35,6 @@ public class ChambreRestController {
     @GetMapping("/searchByBloc")
     public List<Chambre> searchChambresByBlocName(@RequestParam String nomBloc) {
         return chambreRepository.findByBloc_NomBloc(nomBloc);
-    }
-    @PostMapping("/add")
-    public ResponseEntity addChambre(@RequestBody Chambre chambre) {
-        long numeroChambre = chambre.getNumeroChambre();
-
-        // Check for uniqueness, excluding the current chambre being updated
-        if (!iChambreService.isNumeroChambreUnique(numeroChambre)) {
-            return new ResponseEntity<>("Le numéro de chambre doit être unique", HttpStatus.CONFLICT);
-        }
-        Chambre nouvelleChambre = iChambreService.addChambre(chambre);
-        return new ResponseEntity<>(nouvelleChambre, HttpStatus.CREATED);
     }
 
 
@@ -109,13 +98,7 @@ public class ChambreRestController {
                 Bloc bloc = iChambreService.getBlocByChambre(idChambre);
                 return new ResponseEntity<>(bloc, HttpStatus.OK);
             }
-            @GetMapping("/checkNumeroChambreUnique/{numeroChambre}")
-           // @PreAuthorize("hasRole('ADMIN')")
 
-            public ResponseEntity<Boolean> checkNumeroChambreUnique(@PathVariable long numeroChambre) {
-                boolean isUnique = iChambreService.isNumeroChambreUnique(numeroChambre);
-                return new ResponseEntity<>(isUnique, HttpStatus.OK);
-            }
 
 
 

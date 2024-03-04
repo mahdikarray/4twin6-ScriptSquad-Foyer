@@ -1,8 +1,6 @@
-package com.example.twin6scriptsquadfoyer.DAO.Entity;
+package com.example.twinscriptsquadfoyer.DAO.Entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;

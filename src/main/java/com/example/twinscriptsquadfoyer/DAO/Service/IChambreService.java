@@ -1,13 +1,12 @@
-package com.example.twin6scriptsquadfoyer.DAO.Service;
+package com.example.twinscriptsquadfoyer.DAO.Service;
 
 
 
 
 
-import com.example.twin6scriptsquadfoyer.DAO.Entity.Bloc;
-import com.example.twin6scriptsquadfoyer.DAO.Entity.Chambre;
+import com.example.twinscriptsquadfoyer.DAO.Entity.Bloc;
+import com.example.twinscriptsquadfoyer.DAO.Entity.Chambre;
 
-import java.time.LocalDate;
 import java.util.List;
 
 
@@ -22,7 +21,6 @@ public interface IChambreService {
 
 
     Bloc getBlocByChambre(long idChambre);
-    boolean isNumeroChambreUnique(long numeroChambre);
 
 
     boolean isNumeroChambreUniqueForUpdate(Long id, Long numeroChambre);

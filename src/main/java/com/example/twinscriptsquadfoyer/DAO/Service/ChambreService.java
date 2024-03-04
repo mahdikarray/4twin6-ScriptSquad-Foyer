@@ -1,15 +1,14 @@
-package com.example.twin6scriptsquadfoyer.DAO.Service;
+package com.example.twinscriptsquadfoyer.DAO.Service;
 
 
-import com.example.twin6scriptsquadfoyer.DAO.Entity.Bloc;
-import com.example.twin6scriptsquadfoyer.DAO.Entity.Chambre;
-import com.example.twin6scriptsquadfoyer.DAO.Repository.BlocRepository;
-import com.example.twin6scriptsquadfoyer.DAO.Repository.ChambreRepository;
+import com.example.twinscriptsquadfoyer.DAO.Entity.Bloc;
+import com.example.twinscriptsquadfoyer.DAO.Entity.Chambre;
+import com.example.twinscriptsquadfoyer.DAO.Repository.BlocRepository;
+import com.example.twinscriptsquadfoyer.DAO.Repository.ChambreRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -33,12 +32,8 @@ public class ChambreService implements IChambreService {
         // Ensure that the associated Bloc is saved
         Bloc bloc = c.getBloc();
         if (bloc != null && bloc.getIdBloc() == 0) {
-            // Bloc is transient, save it first
-        //    bloc = blocRepository.save(bloc);
             c.setBloc(bloc);
         }
-
-        // Save the Chambre
         return chambreRepository.save(c);
     }
 
@@ -91,10 +86,7 @@ public class ChambreService implements IChambreService {
         return chambre.getBloc();
     }
 
-    @Override
-    public boolean isNumeroChambreUnique(long numeroChambre) {
-        return !chambreRepository.existsByNumeroChambre(numeroChambre);
-    }
+
     @Override
     public boolean isNumeroChambreUniqueForUpdate(Long idChambre, Long numeroChambre) {
         // Implement logic to check if the chambre number is unique, excluding the chambre with the given ID

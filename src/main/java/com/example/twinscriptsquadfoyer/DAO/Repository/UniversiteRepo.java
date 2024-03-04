@@ -1,6 +1,6 @@
-package com.example.twin6scriptsquadfoyer.DAO.Repository;
+package com.example.twinscriptsquadfoyer.DAO.Repository;
 
-import com.example.twin6scriptsquadfoyer.DAO.Entity.Universite;
+import com.example.twinscriptsquadfoyer.DAO.Entity.Universite;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,21 +1,29 @@
-package com.example.twin6scriptsquadfoyer.DAO.Repository;
+package com.example.twinscriptsquadfoyer.DAO.Repository;
 
-import com.example.twin6scriptsquadfoyer.DAO.Entity.Bloc;
-import com.example.twin6scriptsquadfoyer.DAO.Entity.Chambre;
-import com.example.twin6scriptsquadfoyer.DAO.Entity.TypeChambre;
+import com.example.twinscriptsquadfoyer.DAO.Entity.Bloc;
+import com.example.twinscriptsquadfoyer.DAO.Entity.Chambre;
+import com.example.twinscriptsquadfoyer.DAO.Entity.TypeChambre;
+import org.springframework.core.annotation.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.testng.annotations.Test;
 
 
 import java.util.List;
 
 public interface ChambreRepository extends JpaRepository<Chambre, Long> {
     // 1- Recherche par numéro de chambre
+    @Test
+    @Order(0)
     Chambre findByNumeroChambre(long numeroChambre);
 
     // 2- Recherche par type de chambre
+    @Test
+    @Order(1)
     List<Chambre> findByTypeChambre(TypeChambre typeChambre);
+    @Test
+    @Order(2)
     List<Chambre> findByBloc_NomBloc(String nomBloc);
 
     // 3- Recherche des chambres par bloc
@@ -40,8 +48,7 @@ public interface ChambreRepository extends JpaRepository<Chambre, Long> {
     List<Chambre> selectByNumSQL(long num);
 
     List<Chambre> findByStatut(String statut);
-     @Query("SELECT CASE WHEN COUNT(r) > 0 THEN true ELSE false END FROM Chambre c JOIN c.reservations r WHERE c.idChambre = :chambreId")
-     boolean existsByNumeroChambre(@Param("chambreId") Long numeroChambre);
+
 
     boolean existsByIdChambreNotAndNumeroChambre(Long idChambre, Long numeroChambre);
 

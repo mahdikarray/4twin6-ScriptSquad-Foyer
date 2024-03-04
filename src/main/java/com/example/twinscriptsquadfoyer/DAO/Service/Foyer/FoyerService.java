@@ -1,7 +1,7 @@
-package com.example.twin6scriptsquadfoyer.DAO.Service.Foyer;
+package com.example.twinscriptsquadfoyer.DAO.Service.Foyer;
 
-import com.example.twin6scriptsquadfoyer.DAO.Entity.Foyer;
-import com.example.twin6scriptsquadfoyer.DAO.Repository.FoyerRepository;
+import com.example.twinscriptsquadfoyer.DAO.Entity.Foyer;
+import com.example.twinscriptsquadfoyer.DAO.Repository.FoyerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
