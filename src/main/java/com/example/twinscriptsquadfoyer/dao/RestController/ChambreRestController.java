@@ -1,9 +1,9 @@
-package com.example.twinscriptsquadfoyer.DAO.RestController;
+package com.example.twinscriptsquadfoyer.dao.RestController;
 
-import com.example.twinscriptsquadfoyer.DAO.Entity.Bloc;
-import com.example.twinscriptsquadfoyer.DAO.Entity.Chambre;
-import com.example.twinscriptsquadfoyer.DAO.Repository.ChambreRepository;
-import com.example.twinscriptsquadfoyer.DAO.Service.IChambreService;
+import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
+import com.example.twinscriptsquadfoyer.dao.entity.Chambre;
+import com.example.twinscriptsquadfoyer.dao.repository.ChambreRepository;
+import com.example.twinscriptsquadfoyer.dao.Service.IChambreService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

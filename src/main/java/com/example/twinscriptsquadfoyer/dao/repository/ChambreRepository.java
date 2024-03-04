@@ -1,8 +1,8 @@
-package com.example.twinscriptsquadfoyer.DAO.Repository;
+package com.example.twinscriptsquadfoyer.dao.repository;
 
-import com.example.twinscriptsquadfoyer.DAO.Entity.Bloc;
-import com.example.twinscriptsquadfoyer.DAO.Entity.Chambre;
-import com.example.twinscriptsquadfoyer.DAO.Entity.TypeChambre;
+import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
+import com.example.twinscriptsquadfoyer.dao.entity.Chambre;
+import com.example.twinscriptsquadfoyer.dao.entity.TypeChambre;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

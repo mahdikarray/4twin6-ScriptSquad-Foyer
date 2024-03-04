@@ -1,7 +1,7 @@
-package com.example.twinscriptsquadfoyer.DAO.Service;
+package com.example.twinscriptsquadfoyer.dao.Service;
 
-import com.example.twinscriptsquadfoyer.DAO.Entity.Universite;
-import com.example.twinscriptsquadfoyer.DAO.Repository.UniversiteRepo;
+import com.example.twinscriptsquadfoyer.dao.entity.Universite;
+import com.example.twinscriptsquadfoyer.dao.repository.UniversiteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

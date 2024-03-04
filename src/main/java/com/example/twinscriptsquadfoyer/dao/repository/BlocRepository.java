@@ -1,7 +1,7 @@
-package com.example.twinscriptsquadfoyer.DAO.Repository;
+package com.example.twinscriptsquadfoyer.dao.repository;
 
 
-import com.example.twinscriptsquadfoyer.DAO.Entity.Bloc;
+import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

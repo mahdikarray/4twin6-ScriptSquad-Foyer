@@ -1,6 +1,6 @@
 package com.example.twinscriptsquadfoyer;
 
-import com.example.twinscriptsquadfoyer.DAO.Repository.ChambreRepository;
+import com.example.twinscriptsquadfoyer.dao.repository.ChambreRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;

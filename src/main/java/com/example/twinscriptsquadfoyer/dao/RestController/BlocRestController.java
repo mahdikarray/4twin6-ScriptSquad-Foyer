@@ -1,8 +1,8 @@
-package com.example.twinscriptsquadfoyer.DAO.RestController;
+package com.example.twinscriptsquadfoyer.dao.RestController;
 
 
-import com.example.twinscriptsquadfoyer.DAO.Entity.Bloc;
-import com.example.twinscriptsquadfoyer.DAO.Service.IBlocService;
+import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
+import com.example.twinscriptsquadfoyer.dao.Service.IBlocService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

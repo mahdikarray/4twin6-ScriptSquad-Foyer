@@ -1,11 +1,11 @@
-package com.example.twinscriptsquadfoyer.DAO.Service;
+package com.example.twinscriptsquadfoyer.dao.Service;
 
 
 
 
 
-import com.example.twinscriptsquadfoyer.DAO.Entity.Bloc;
-import com.example.twinscriptsquadfoyer.DAO.Entity.Chambre;
+import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
+import com.example.twinscriptsquadfoyer.dao.entity.Chambre;
 
 import java.util.List;
 

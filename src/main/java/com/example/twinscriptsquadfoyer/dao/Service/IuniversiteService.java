@@ -1,6 +1,6 @@
-package com.example.twinscriptsquadfoyer.DAO.Service;
+package com.example.twinscriptsquadfoyer.dao.Service;
 
-import com.example.twinscriptsquadfoyer.DAO.Entity.Universite;
+import com.example.twinscriptsquadfoyer.dao.entity.Universite;
 
 import java.util.List;
 

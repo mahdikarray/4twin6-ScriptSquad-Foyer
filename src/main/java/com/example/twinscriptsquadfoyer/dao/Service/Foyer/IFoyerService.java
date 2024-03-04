@@ -1,8 +1,8 @@
-package com.example.twinscriptsquadfoyer.DAO.Service.Foyer;
+package com.example.twinscriptsquadfoyer.dao.Service.Foyer;
 
 
 
-import com.example.twinscriptsquadfoyer.DAO.Entity.Foyer;
+import com.example.twinscriptsquadfoyer.dao.entity.Foyer;
 
 import java.util.List;
 
