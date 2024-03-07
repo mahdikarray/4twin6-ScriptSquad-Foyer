@@ -37,7 +37,11 @@ public class ChambreRestController {
         return chambreRepository.findByBlocNomBloc(nomBloc);
     }
 
-
+@PostMapping("/add")
+public Chambre addChambre(Chambre c)
+{
+    return iChambreService.addChambre(c);
+}
 
 
         @PutMapping("/update/{id}")

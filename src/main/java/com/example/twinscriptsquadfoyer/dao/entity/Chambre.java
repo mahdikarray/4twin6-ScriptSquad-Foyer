@@ -2,6 +2,7 @@ package com.example.twinscriptsquadfoyer.dao.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @Table(name = "chambre")
+@Builder
 public class Chambre {
 
     @Id
@@ -39,6 +41,10 @@ public class Chambre {
     @JoinColumn(name = "bloc_id_bloc", referencedColumnName = "idBloc")
     @JsonBackReference
     private Bloc bloc;
+
+    public Chambre() {
+
+    }
 
 
     public long getIdChambre() {
