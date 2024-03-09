@@ -51,8 +51,9 @@ public class ChambreService implements IChambreService {
 
     @Override
     public Chambre editChambre(Long id, Chambre c) {
-        if(chambreRepository.findById(id).isPresent()){
-            var toUpdateChambre = chambreRepository.findById(id).get();
+        Optional<Chambre> optionalChambre = chambreRepository.findById(id);
+        if(optionalChambre.isPresent()){
+            var toUpdateChambre = optionalChambre.get();
             toUpdateChambre.setNumeroChambre(c.getNumeroChambre());
             toUpdateChambre.setTypeChambre(c.getTypeChambre());
             toUpdateChambre.setBloc(c.getBloc());
@@ -68,9 +69,9 @@ public class ChambreService implements IChambreService {
 
     @Override
     public Chambre findById(long id) {
-        return chambreRepository.findById(id).get();
+        Optional<Chambre> optionalChambre = chambreRepository.findById(id);
+        return optionalChambre.orElse(null);
     }
-
 
 
     public void delete(Chambre c) {
