@@ -1,6 +1,6 @@
 package com.example.twinscriptsquadfoyer;
 
-import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
+/*import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
 import com.example.twinscriptsquadfoyer.dao.service.BlocService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.testng.Assert.assertEquals;
-@SpringBootTest
+/*@SpringBootTest
  class BlocServiceTest {
     @Autowired
     private BlocService blocService;
@@ -76,8 +76,8 @@ import static org.testng.Assert.assertEquals;
         Assertions.assertNull(deletedBloc);
     }
 }
-
-/*import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
+*/
+import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
 import com.example.twinscriptsquadfoyer.dao.repository.BlocRepository;
 import com.example.twinscriptsquadfoyer.dao.service.BlocService;
 import org.junit.jupiter.api.Test;
@@ -86,12 +86,13 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 
 @SpringBootTest
  class BlocServiceTest {
-
     @Mock
     private BlocRepository blocRepository; // Mock the repository
 
@@ -120,6 +121,52 @@ import static org.mockito.ArgumentMatchers.any;
         // Clean up (optional):
         // blocService.supprimerBloc(savedBloc.getIdBloc());
     }
-}*/
+    @Test
+     void testFindBlocById() {
+        long blocIdToFind = 1L;
+
+        // Mock the behavior of the repository findById method
+        Mockito.when(blocRepository.findById(blocIdToFind))
+                .thenReturn(Optional.of(Bloc.builder()
+                        .idBloc(blocIdToFind)
+                        .nomBloc("Found Bloc")
+                        .capaciteBloc(25)
+                        .build()));
+
+        // Find the Bloc
+        Bloc foundBloc = blocService.findById(blocIdToFind);
+
+        // Verify that the found Bloc matches our expectations
+        assertEquals("Found Bloc", foundBloc.getNomBloc());
+        assertEquals(25, foundBloc.getCapaciteBloc());
+    }
+    @Test
+     void testDeleteBloc() {
+        long blocIdToDelete = 1L;
+
+        blocService.deleteById(blocIdToDelete);
+
+        Mockito.verify(blocRepository).deleteById(blocIdToDelete);
+    }
+    @Test
+     void testEditBloc() {
+        Bloc existingBloc = Bloc.builder()
+                .idBloc(1L)
+                .nomBloc("Existing Bloc")
+                .capaciteBloc(20)
+                .build();
+
+        Mockito.when(blocRepository.findById(1L))
+                .thenReturn(Optional.of(existingBloc));
+        Mockito.when(blocRepository.save(any(Bloc.class)))
+                .thenReturn(existingBloc);
+
+        Bloc updatedBloc = blocService.editBloc(existingBloc);
+
+        assertEquals("Updated Bloc", updatedBloc.getNomBloc());
+        assertEquals(30, updatedBloc.getCapaciteBloc());
+    }
+
+}
 
 
