@@ -29,7 +29,7 @@ public class ChambreRestController {
 
     @GetMapping("/findAll")
 
-    List<Chambre> findAll(){
+    public List<Chambre> findAll(){
         return  iChambreService.findAll();
     }
     @GetMapping("/searchByBloc")
@@ -47,21 +47,21 @@ public Chambre addChambre(Chambre c)
         @PutMapping("/update/{id}")
        // @PreAuthorize("hasRole('ADMIN')")
 
-        public ResponseEntity updateChambre(@PathVariable("id") Long idChambre, @RequestBody Chambre updatedChambre) {
-            Chambre existingChambre = iChambreService.getChambreById(idChambre);
+        public ResponseEntity<Chambre> updateChambre(@PathVariable("id") Long idChambre, @RequestBody Chambre updatedChambre) {
+            var existingChambre = iChambreService.getChambreById(idChambre);
 
             if (existingChambre == null) {
-                return new ResponseEntity<>("Chambre not found", HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
 
             long numeroChambre = updatedChambre.getNumeroChambre();
 
             // Check for uniqueness, excluding the current chambre being updated
             if (!iChambreService.isNumeroChambreUniqueForUpdate(idChambre, numeroChambre)) {
-                return new ResponseEntity<>("Le numéro de chambre doit être unique", HttpStatus.CONFLICT);
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
             }
 
-            Chambre modifiedChambre = iChambreService.editChambre(idChambre, updatedChambre);
+            var modifiedChambre = iChambreService.editChambre(idChambre, updatedChambre);
             return new ResponseEntity<>(modifiedChambre, HttpStatus.OK);
         }
 
@@ -70,16 +70,17 @@ public Chambre addChambre(Chambre c)
 
 
 
-            @GetMapping("/{id}")
+
+    @GetMapping("/{id}")
           //  @PreAuthorize("hasRole('ADMIN')")
-            Chambre findById(@PathVariable("id") Long id){
+            public Chambre findById(@PathVariable("id") Long id){
                 return iChambreService.findById(id);
             }
 
             @GetMapping("selectByNumSQL")
           //  @PreAuthorize("hasRole('ADMIN')")
 
-            List<Chambre> selectByNumSQL(long num){
+            public List<Chambre> selectByNumSQL(long num){
                 return chambreRepository.selectByNumSQL(num);
             }
 
@@ -87,7 +88,7 @@ public Chambre addChambre(Chambre c)
           //  @PreAuthorize("hasRole('ADMIN')")
 
             public ResponseEntity<Chambre> findByNumeroChambre(@PathVariable long numeroChambre) {
-                Chambre chambre = iChambreService.findByNumeroChambre(numeroChambre);
+                var chambre = iChambreService.findByNumeroChambre(numeroChambre);
                 if (chambre == null) {
                     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
                 }
@@ -99,7 +100,7 @@ public Chambre addChambre(Chambre c)
            // @PreAuthorize("hasRole('ADMIN')")
 
             public ResponseEntity<Bloc> getBlocByChambre(@PathVariable long idChambre) {
-                Bloc bloc = iChambreService.getBlocByChambre(idChambre);
+                var bloc = iChambreService.getBlocByChambre(idChambre);
                 return new ResponseEntity<>(bloc, HttpStatus.OK);
             }
 
