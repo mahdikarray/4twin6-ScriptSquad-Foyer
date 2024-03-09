@@ -129,6 +129,7 @@ class ChambreServiceTest {
                 .statut("AVAILABLE")
                 .dateDebut(LocalDate.now())
                 .dateFin(LocalDate.now().plusDays(7))
+                .bloc(Bloc.builder().build())
                 .build();
 
         Mockito.when(chambreService.addChambre(sampleChambre)).thenReturn(sampleChambre);
@@ -147,6 +148,7 @@ class ChambreServiceTest {
                 .statut("AVAILABLE")
                 .dateDebut(LocalDate.now())
                 .dateFin(LocalDate.now().plusDays(7))
+                .bloc(Bloc.builder().build())
                 .build();
 
         Mockito.when(chambreService.findById(existingChambreId)).thenReturn(existingChambre);
