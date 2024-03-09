@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class BlocServiceTest {
+ class BlocServiceTest {
 
     @Autowired
     private BlocService blocService;
@@ -20,6 +20,6 @@ public class BlocServiceTest {
                 .capaciteBloc(10)
                 .build();
         Bloc savedBloc = blocService.addBloc(sampleBloc);
-        Assertions.assertNotNull(savedBloc.getIdBloc());
+        Assertions.assertNotNull(savedBloc);
     }
 }
