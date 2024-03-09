@@ -24,7 +24,7 @@ public class UniversiteService implements IuniversiteService{
     @Override
     public Universite editUniversite(Long id, Universite u) {
         if(universiteRepo.findById(id).isPresent()){
-            Universite toUpdateUniversite = universiteRepo.findById(id).get();
+            var toUpdateUniversite = universiteRepo.findById(id).get();
             toUpdateUniversite.setNomUniversite(u.getNomUniversite());
             toUpdateUniversite.setAdresse(u.getAdresse());
 

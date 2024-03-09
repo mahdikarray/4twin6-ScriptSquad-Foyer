@@ -1,4 +1,4 @@
-package com.example.twinscriptsquadfoyer.dao.service.Foyer;
+package com.example.twinscriptsquadfoyer.dao.service.foyer;
 
 import com.example.twinscriptsquadfoyer.dao.entity.Foyer;
 import com.example.twinscriptsquadfoyer.dao.repository.FoyerRepository;
@@ -26,7 +26,7 @@ public class FoyerService implements IFoyerService{
     @Override
     public Foyer editFoyer(Long id, Foyer f) {
         if(foyerRepository.findById(id).isPresent()){
-            Foyer toUpdateFoyer = foyerRepository.findById(id).get();
+            var toUpdateFoyer = foyerRepository.findById(id).get();
             toUpdateFoyer.setNomFoyer(f.getNomFoyer());
             toUpdateFoyer.setCapaciteFoyer(f.getCapaciteFoyer());
             toUpdateFoyer.setBlocs(f.getBlocs());
