@@ -1,6 +1,4 @@
 package com.example.twinscriptsquadfoyer.dao.service.foyer;
-
-import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
 import com.example.twinscriptsquadfoyer.dao.entity.Foyer;
 import com.example.twinscriptsquadfoyer.dao.repository.FoyerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,19 +23,6 @@ public class FoyerService implements IFoyerService{
         return foyerRepository.saveAll(foyers);
     }
 
-  /*  @Override
-    public Foyer editFoyer(Long id, Foyer f) {
-        Optional<Foyer> optionalFoyer = foyerRepository.findById(id);
-        if(optionalFoyer.isPresent()){
-            var toUpdateFoyer = optionalFoyer.get();
-            toUpdateFoyer.setNomFoyer(f.getNomFoyer());
-            toUpdateFoyer.setCapaciteFoyer(f.getCapaciteFoyer());
-            toUpdateFoyer.setBlocs(f.getBlocs());
-            toUpdateFoyer.setUniversite(f.getUniversite());
-            return foyerRepository.save(toUpdateFoyer);
-        }
-        return null;
-    }*/
     @Override
     public Foyer editFoyer(Foyer f) {
         return foyerRepository.save(f); //pour faire la modification

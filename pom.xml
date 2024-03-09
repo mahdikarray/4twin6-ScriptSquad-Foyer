@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>twin6-scriptSquad-foyer</artifactId>
+    <artifactId>twin6scriptsquadfoyer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>twin6-scriptSquad-foyer</name>
     <description>twin6-scriptSquad-foyer</description>
