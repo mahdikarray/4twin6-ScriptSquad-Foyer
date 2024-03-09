@@ -30,7 +30,7 @@ public class ChambreService implements IChambreService {
     @Override
     public Chambre addChambre(Chambre c) {
         // Ensure that the associated Bloc is saved
-        Bloc bloc = c.getBloc();
+        var bloc = c.getBloc();
         if (bloc != null && bloc.getIdBloc() == 0) {
             c.setBloc(bloc);
         }
@@ -52,7 +52,7 @@ public class ChambreService implements IChambreService {
     @Override
     public Chambre editChambre(Long id, Chambre c) {
         if(chambreRepository.findById(id).isPresent()){
-            Chambre toUpdateChambre = chambreRepository.findById(id).get();
+            var toUpdateChambre = chambreRepository.findById(id).get();
             toUpdateChambre.setNumeroChambre(c.getNumeroChambre());
             toUpdateChambre.setTypeChambre(c.getTypeChambre());
             toUpdateChambre.setBloc(c.getBloc());
@@ -80,7 +80,7 @@ public class ChambreService implements IChambreService {
     // ChambreRestController.java
 
     public Bloc getBlocByChambre(long idChambre) {
-        Chambre chambre = chambreRepository.findById(idChambre)
+        var chambre = chambreRepository.findById(idChambre)
                 .orElseThrow(() -> new EntityNotFoundException("Chambre not found"));
 
         return chambre.getBloc();

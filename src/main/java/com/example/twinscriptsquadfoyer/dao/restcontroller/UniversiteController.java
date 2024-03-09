@@ -17,31 +17,31 @@ public class UniversiteController {
     IuniversiteService iUniversiteService;
 
     @GetMapping("/findAll")
-    List<Universite> findAll(){
+    public List<Universite> findAll(){
         return  iUniversiteService.findAll();
     }
 
     @PostMapping("/addUniv")
-    Universite addUniversite(@RequestBody Universite u) {
+    public Universite addUniversite(@RequestBody Universite u) {
         return iUniversiteService.addUniversite(u);
     }
 
     @PutMapping("updateUniv/{id}")
-    Universite updateUniversite(@PathVariable("id") Long id, @RequestBody Universite u){
+    public Universite updateUniversite(@PathVariable("id") Long id, @RequestBody Universite u){
         return iUniversiteService.editUniversite(id, u);
     }
 
     @DeleteMapping("/deleteUniv/{id}")
-    void deleteUniversiteById(@PathVariable("id") Long id){
+    public void deleteUniversiteById(@PathVariable("id") Long id){
         iUniversiteService.deleteById(id);
     }
     @DeleteMapping("/delete")
-    void deleteUniversite(@RequestBody Universite u){
+    public void deleteUniversite(@RequestBody Universite u){
         iUniversiteService.delete(u);
     }
 
     @GetMapping("findById/{id}")
-    Universite findById(@PathVariable("id") Long id){
+    public Universite findById(@PathVariable("id") Long id){
         return iUniversiteService.findById(id);
     }
 

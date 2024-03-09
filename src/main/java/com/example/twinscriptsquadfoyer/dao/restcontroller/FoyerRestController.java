@@ -24,31 +24,31 @@ public class FoyerRestController {
     IFoyerService iFoyerService;
     FoyerService foyerService;
     @GetMapping("/findAll")
-    List<Foyer> findAll(){
+    public List<Foyer> findAll(){
         return  iFoyerService.findAll();
     }
 
     @PostMapping("/add")
     //@PreAuthorize("hasRole('ADMIN')")
-    Foyer addFoyer(@RequestBody Foyer f) {
+    public Foyer addFoyer(@RequestBody Foyer f) {
         return iFoyerService.addFoyer(f);
     }
 
     @PutMapping("update/{id}")
    // @PreAuthorize("hasRole('ADMIN')")
-    Foyer updateFoyer(@PathVariable("id") Long id, @RequestBody Foyer f){
+    public Foyer updateFoyer(@PathVariable("id") Long id, @RequestBody Foyer f){
         return iFoyerService.editFoyer(id, f);
     }
 
     @DeleteMapping("/delete/{id}")
     //@PreAuthorize("hasRole('ADMIN')")
-    void deleteFoyer(@PathVariable("id") Long id){
+    public void deleteFoyer(@PathVariable("id") Long id){
         iFoyerService.deleteById(id);
     }
 
     @GetMapping("/{id}")
     //@PreAuthorize("hasRole('ADMIN')")
-    Foyer findById(@PathVariable("id") Long id){
+    public Foyer findById(@PathVariable("id") Long id){
         return iFoyerService.findById(id);
     }
 
