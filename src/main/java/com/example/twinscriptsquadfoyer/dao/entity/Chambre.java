@@ -46,7 +46,7 @@ public class Chambre implements Serializable {
     public Chambre() {
         // Default constructor
     }
-
+    @SuppressWarnings("squid:S00107")
     public Chambre(long idChambre, long numeroChambre, TypeChambre typeChambre, String statut, LocalDate dateDebut, LocalDate dateFin, Bloc bloc, Long blocId) {
         this.idChambre = idChambre;
         this.numeroChambre = numeroChambre;
