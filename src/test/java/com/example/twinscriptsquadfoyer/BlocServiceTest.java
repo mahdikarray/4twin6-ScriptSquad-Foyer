@@ -37,7 +37,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 
 @SpringBootTest
-public class BlocServiceTest {
+ class BlocServiceTest {
 
     @Mock
     private BlocRepository blocRepository; // Mock the repository
@@ -46,7 +46,7 @@ public class BlocServiceTest {
     private BlocService blocService; // Inject the mocked service
 
     @Test
-    public void testAjouterBloc() {
+     void testAjouterBloc() {
         // Create a sample Bloc
         Bloc sampleBloc = Bloc.builder()
                 .nomBloc("Sample Bloc")
