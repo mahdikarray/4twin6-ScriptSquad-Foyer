@@ -64,7 +64,7 @@ import static org.testng.Assert.assertEquals;
     @Test
     void testDeleteExistingBloc() {
         // Assuming there is an existing bloc with ID 1 in the database
-        Long existingBlocId = 2L;
+        Long existingBlocId = 1L;
 
         // Delete the existing bloc from the database
         blocService.deleteById(existingBlocId);
@@ -73,7 +73,7 @@ import static org.testng.Assert.assertEquals;
         Bloc deletedBloc = blocService.findById(existingBlocId);
 
         // Assertion
-       // Assertions.assertNull(deletedBloc);
+        Assertions.assertNull(deletedBloc);
     }
 }
 
