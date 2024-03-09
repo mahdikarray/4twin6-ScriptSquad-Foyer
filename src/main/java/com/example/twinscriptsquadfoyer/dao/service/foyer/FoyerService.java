@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FoyerService implements IFoyerService{
@@ -25,13 +26,13 @@ public class FoyerService implements IFoyerService{
 
     @Override
     public Foyer editFoyer(Long id, Foyer f) {
-        if(foyerRepository.findById(id).isPresent()){
-            var toUpdateFoyer = foyerRepository.findById(id).get();
+        Optional<Foyer> optionalFoyer = foyerRepository.findById(id);
+        if(optionalFoyer.isPresent()){
+            var toUpdateFoyer = optionalFoyer.get();
             toUpdateFoyer.setNomFoyer(f.getNomFoyer());
             toUpdateFoyer.setCapaciteFoyer(f.getCapaciteFoyer());
             toUpdateFoyer.setBlocs(f.getBlocs());
             toUpdateFoyer.setUniversite(f.getUniversite());
-
             return foyerRepository.save(toUpdateFoyer);
         }
         return null;
@@ -44,9 +45,9 @@ public class FoyerService implements IFoyerService{
 
     @Override
     public Foyer findById(long id) {
-        return foyerRepository.findById(id).get();
+        Optional<Foyer> optionalFoyer = foyerRepository.findById(id);
+        return optionalFoyer.orElse(null);
     }
-
     @Override
     public void deleteById(long id) {
         foyerRepository.deleteById(id);

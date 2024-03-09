@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UniversiteService implements IuniversiteService{
@@ -23,11 +24,11 @@ public class UniversiteService implements IuniversiteService{
 
     @Override
     public Universite editUniversite(Long id, Universite u) {
-        if(universiteRepo.findById(id).isPresent()){
-            var toUpdateUniversite = universiteRepo.findById(id).get();
+        Optional<Universite> optionalUniversite = universiteRepo.findById(id);
+        if(optionalUniversite.isPresent()){
+            var toUpdateUniversite = optionalUniversite.get();
             toUpdateUniversite.setNomUniversite(u.getNomUniversite());
             toUpdateUniversite.setAdresse(u.getAdresse());
-
             return universiteRepo.save(toUpdateUniversite);
         }
         return null;
@@ -40,9 +41,9 @@ public class UniversiteService implements IuniversiteService{
 
     @Override
     public Universite findById(long id) {
-        return universiteRepo.findById(id).get();
+        Optional<Universite> optionalUniversite = universiteRepo.findById(id);
+        return optionalUniversite.orElse(null);
     }
-
     @Override
     public void deleteById(long id) {
         universiteRepo.deleteById(id);
