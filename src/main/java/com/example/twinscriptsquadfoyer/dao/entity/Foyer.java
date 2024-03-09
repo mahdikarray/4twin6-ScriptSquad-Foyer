@@ -42,7 +42,4 @@ public class Foyer implements Serializable {
     @JsonIgnore
     private List<Bloc> blocss;
 
-    public Foyer() {
-
-    }
 }
