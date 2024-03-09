@@ -19,14 +19,22 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
-        stage("MVN SONARQUBE"){
-                    steps{
-                        withSonarQubeEnv(installationName: 'sonar') {
-                        sh "mvn sonar:sonar"
-                        }
-                    }
-                }
 
+        stage('Unit Tests') {
+            steps {
+                // Run unit tests and generate JaCoCo coverage report
+                sh 'mvn clean test jacoco:report'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonar') {
+                    // Run SonarQube analysis
+                    sh 'mvn sonar:sonar'
+                }
+            }
+        }
     }
 
     post {
