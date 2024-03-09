@@ -10,7 +10,7 @@ public interface IFoyerService {
     Foyer addFoyer(Foyer f);
 
     List<Foyer> addFoyers(List<Foyer> foyers);
-    Foyer editFoyer(Long id, Foyer f);
+    public Foyer editFoyer(Foyer f)   ;
     List<Foyer> findAll();
     Foyer findById(long id);
     void deleteById(long id);

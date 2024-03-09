@@ -36,8 +36,8 @@ public class FoyerRestController {
 
     @PutMapping("update/{id}")
    // @PreAuthorize("hasRole('ADMIN')")
-    public Foyer updateFoyer(@PathVariable("id") Long id, @RequestBody Foyer f){
-        return iFoyerService.editFoyer(id, f);
+    public Foyer updateFoyer(@RequestBody Foyer f){
+        return iFoyerService.editFoyer(f);
     }
 
     @DeleteMapping("/delete/{id}")
