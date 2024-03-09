@@ -17,6 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
 public class Bloc implements Serializable {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
