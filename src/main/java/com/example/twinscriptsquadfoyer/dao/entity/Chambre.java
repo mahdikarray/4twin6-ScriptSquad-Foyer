@@ -42,9 +42,7 @@ public class Chambre {
     @JsonBackReference
     private Bloc bloc;
 
-    public Chambre() {
 
-    }
 
 
     public long getIdChambre() {
