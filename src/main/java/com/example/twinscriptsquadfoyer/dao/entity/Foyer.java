@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,7 +15,7 @@ import java.util.Set;
 @Setter
 @Getter
 @Table(name = "Foyer")
-public class Foyer {
+public class Foyer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,4 +42,7 @@ public class Foyer {
     @JsonIgnore
     private List<Bloc> blocss;
 
+    public Foyer() {
+
+    }
 }

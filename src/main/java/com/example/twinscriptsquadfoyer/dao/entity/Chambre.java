@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 @Getter
 @Table(name = "chambre")
 @Builder
-public class Chambre {
+public class Chambre implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +42,18 @@ public class Chambre {
     @JoinColumn(name = "bloc_id_bloc", referencedColumnName = "idBloc")
     @JsonBackReference
     private Bloc bloc;
-
+    public Chambre() {
+        // Default constructor
+    }
+    public Chambre(long idChambre, long numeroChambre, TypeChambre typeChambre, String statut, LocalDate dateDebut, LocalDate dateFin, Bloc bloc) {
+        this.idChambre = idChambre;
+        this.numeroChambre = numeroChambre;
+        this.typeChambre = typeChambre;
+        this.statut = statut;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.bloc = bloc;
+    }
 
 
 
