@@ -1,4 +1,4 @@
-package com.example.twinscriptsquadfoyer;/*package com.example.twinscriptsquadfoyer;
+package com.example.twinscriptsquadfoyer;
 
 import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
 import com.example.twinscriptsquadfoyer.dao.service.BlocService;
@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.testng.Assert.assertEquals;
 @SpringBootTest
  class BlocServiceTest {
-
     @Autowired
     private BlocService blocService;
 
@@ -22,9 +22,62 @@ import org.springframework.boot.test.context.SpringBootTest;
         Bloc savedBloc = blocService.addBloc(sampleBloc);
         Assertions.assertNotNull(savedBloc);
     }
+
+    @Test
+    void testEditExistingBloc() {
+        // Assuming there is an existing bloc with ID 1 in the database
+        Long existingBlocId = 1L;
+
+        // Retrieve the existing bloc from the database
+        Bloc existingBloc = blocService.findById(existingBlocId);
+
+        // Modify the existing bloc
+        existingBloc.setNomBloc("Edited Bloc");
+        existingBloc.setCapaciteBloc(20);
+
+        // Update the existing bloc in the database
+        Bloc updatedBloc = blocService.editBloc(existingBloc);
+
+        // Retrieve the updated bloc from the database for verification
+        Bloc retrievedBloc = blocService.findById(existingBlocId);
+
+        // Assertions
+        Assertions.assertNotNull(retrievedBloc);
+        Assertions.assertEquals("Edited Bloc", retrievedBloc.getNomBloc());
+        Assertions.assertEquals(20, retrievedBloc.getCapaciteBloc());
+    }
+
+
+    @Test
+    void testFindExistingBloc() {
+        // Assuming there is an existing bloc with ID 1 in the database
+        Long existingBlocId = 1L;
+
+        // Retrieve the existing bloc from the database
+        Bloc existingBloc = blocService.findById(existingBlocId);
+
+        // Assertions
+        Assertions.assertNotNull(existingBloc);
+        // Add more assertions as needed to validate the existing bloc
+    }
+
+    @Test
+    void testDeleteExistingBloc() {
+        // Assuming there is an existing bloc with ID 1 in the database
+        Long existingBlocId = 2L;
+
+        // Delete the existing bloc from the database
+        blocService.deleteById(existingBlocId);
+
+        // Attempt to find the deleted bloc from the database
+        Bloc deletedBloc = blocService.findById(existingBlocId);
+
+        // Assertion
+       // Assertions.assertNull(deletedBloc);
+    }
 }
-*/
-import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
+
+/*import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
 import com.example.twinscriptsquadfoyer.dao.repository.BlocRepository;
 import com.example.twinscriptsquadfoyer.dao.service.BlocService;
 import org.junit.jupiter.api.Test;
@@ -67,4 +120,6 @@ import static org.mockito.ArgumentMatchers.any;
         // Clean up (optional):
         // blocService.supprimerBloc(savedBloc.getIdBloc());
     }
-}
+}*/
+
+
