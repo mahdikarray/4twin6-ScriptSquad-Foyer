@@ -78,7 +78,10 @@ public class ChambreService implements IChambreService {
         chambreRepository.delete(c);
     }
 
-    // ChambreRestController.java
+    public void deleteById(long id) {
+        chambreRepository.deleteById(id);
+
+    }
 
     public Bloc getBlocByChambre(long idChambre) {
         var chambre = chambreRepository.findById(idChambre)

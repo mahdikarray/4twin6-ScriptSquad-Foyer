@@ -20,20 +20,17 @@ public class Chambre implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idChambre;
 
-
-    @Column(name = "numeroChambre",unique = true)
+    @Column(name = "numeroChambre", unique = true)
     private long numeroChambre;
 
     @Column(name = "typeChambre")
     private TypeChambre typeChambre;
-
 
     @Column(name = "statut")
     private String statut;
 
     @Column(name = "dateDebut")
     private LocalDate dateDebut;
-
 
     @Column(name = "dateFin")
     private LocalDate dateFin;
@@ -42,10 +39,15 @@ public class Chambre implements Serializable {
     @JoinColumn(name = "bloc_id_bloc", referencedColumnName = "idBloc")
     @JsonBackReference
     private Bloc bloc;
+
+    @Transient
+    private Long blocId; // Store the ID of the Bloc instead of the whole object
+
     public Chambre() {
         // Default constructor
     }
-    public Chambre(long idChambre, long numeroChambre, TypeChambre typeChambre, String statut, LocalDate dateDebut, LocalDate dateFin, Bloc bloc) {
+
+    public Chambre(long idChambre, long numeroChambre, TypeChambre typeChambre, String statut, LocalDate dateDebut, LocalDate dateFin, Bloc bloc, Long blocId) {
         this.idChambre = idChambre;
         this.numeroChambre = numeroChambre;
         this.typeChambre = typeChambre;
@@ -53,8 +55,8 @@ public class Chambre implements Serializable {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.bloc = bloc;
+        this.blocId = blocId;
     }
-
 
 
     public long getIdChambre() {
