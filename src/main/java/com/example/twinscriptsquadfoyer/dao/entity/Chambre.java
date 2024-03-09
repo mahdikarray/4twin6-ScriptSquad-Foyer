@@ -47,7 +47,7 @@ public class Chambre implements Serializable {
         // Default constructor
     }
 
-    public Chambre(long idChambre, long numeroChambre, TypeChambre typeChambre, String statut, LocalDate dateDebut, LocalDate dateFin, Bloc bloc) {
+    public Chambre(long idChambre, long numeroChambre, TypeChambre typeChambre, String statut, LocalDate dateDebut, LocalDate dateFin, Bloc bloc, Long blocId) {
         this.idChambre = idChambre;
         this.numeroChambre = numeroChambre;
         this.typeChambre = typeChambre;
@@ -55,7 +55,7 @@ public class Chambre implements Serializable {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.bloc = bloc;
-
+        this.blocId = blocId;
     }
 
 
