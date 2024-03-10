@@ -2,6 +2,7 @@ package com.example.twinscriptsquadfoyer;
 
 import com.example.twinscriptsquadfoyer.dao.entity.Foyer;
 import com.example.twinscriptsquadfoyer.dao.service.foyer.FoyerService;
+import com.example.twinscriptsquadfoyer.dao.service.foyer.IFoyerService;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -105,7 +106,7 @@ import static org.mockito.ArgumentMatchers.any;
 @SpringBootTest
 class FoyerServiceTest {
     @Autowired
-    private FoyerService foyerService;
+    private IFoyerService foyerService;
 
     @Test
     void testAjouterFoyer() {

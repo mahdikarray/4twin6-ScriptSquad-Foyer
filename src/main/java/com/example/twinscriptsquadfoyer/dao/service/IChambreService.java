@@ -21,7 +21,7 @@ public interface IChambreService {
 
 
     Bloc getBlocByChambre(long idChambre);
-
+    void deleteById(long id);
 
     boolean isNumeroChambreUniqueForUpdate(Long id, Long numeroChambre);
 

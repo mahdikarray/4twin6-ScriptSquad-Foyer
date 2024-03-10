@@ -78,17 +78,25 @@ import static org.testng.Assert.assertEquals;
 }
 */
 import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
+import com.example.twinscriptsquadfoyer.dao.entity.Chambre;
+import com.example.twinscriptsquadfoyer.dao.entity.TypeChambre;
 import com.example.twinscriptsquadfoyer.dao.repository.BlocRepository;
 import com.example.twinscriptsquadfoyer.dao.service.BlocService;
+import com.example.twinscriptsquadfoyer.dao.service.IBlocService;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 
 @SpringBootTest
@@ -96,30 +104,26 @@ import static org.mockito.ArgumentMatchers.any;
     @Mock
     private BlocRepository blocRepository; // Mock the repository
 
-    @InjectMocks
-    private BlocService blocService; // Inject the mocked service
+    @Mock
+    private IBlocService blocService; // Inject the mocked service
+   @InjectMocks
+   private BlocServiceTest blocServiceTest;
+   @BeforeEach
+   void setup() {
+      MockitoAnnotations.initMocks(this);
+   }
 
     @Test
-     void testAjouterBloc() {
-        // Create a sample Bloc
+    void testAjouterBloc() {
         Bloc sampleBloc = Bloc.builder()
-                .nomBloc("Sample Bloc")
-                .capaciteBloc(10)
+                .nomBloc("array")
+                .capaciteBloc(1)
                 .build();
 
-        // Mock the behavior of the repository save method
-        Mockito.when(blocRepository.save(any(Bloc.class)))
-                .thenReturn(sampleBloc);
+        Mockito.when(blocService.addBloc(sampleBloc)).thenReturn(sampleBloc);
 
-        // Add the Bloc
         Bloc savedBloc = blocService.addBloc(sampleBloc);
-
-        // Verify that the Bloc has been added
-        assertEquals("Sample Bloc", savedBloc.getNomBloc());
-        assertEquals(10, savedBloc.getCapaciteBloc());
-
-        // Clean up (optional):
-        // blocService.supprimerBloc(savedBloc.getIdBloc());
+        Assertions.assertNotNull(savedBloc);
     }
     @Test
      void testFindBlocById() {

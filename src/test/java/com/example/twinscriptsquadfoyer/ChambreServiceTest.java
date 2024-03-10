@@ -93,6 +93,8 @@ import com.example.twinscriptsquadfoyer.dao.entity.Chambre;
 import com.example.twinscriptsquadfoyer.dao.entity.TypeChambre;
 import com.example.twinscriptsquadfoyer.dao.service.BlocService;
 import com.example.twinscriptsquadfoyer.dao.service.ChambreService;
+import com.example.twinscriptsquadfoyer.dao.service.IBlocService;
+import com.example.twinscriptsquadfoyer.dao.service.IChambreService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -108,10 +110,10 @@ import java.time.LocalDate;
 class ChambreServiceTest {
 
     @Mock
-    private ChambreService chambreService;
+    private IChambreService chambreService;
 
     @Mock
-    private BlocService blocService;
+    private IBlocService blocService;
 
     @InjectMocks
     private ChambreServiceTest chambreServiceTest;

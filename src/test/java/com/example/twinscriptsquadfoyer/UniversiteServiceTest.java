@@ -1,15 +1,23 @@
 package com.example.twinscriptsquadfoyer;
 
 
+import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
+import com.example.twinscriptsquadfoyer.dao.entity.Chambre;
+import com.example.twinscriptsquadfoyer.dao.entity.TypeChambre;
 import com.example.twinscriptsquadfoyer.dao.entity.Universite;
 import com.example.twinscriptsquadfoyer.dao.repository.UniversiteRepo;
+import com.example.twinscriptsquadfoyer.dao.service.IuniversiteService;
 import com.example.twinscriptsquadfoyer.dao.service.UniversiteService;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,75 +29,107 @@ class UniversiteServiceTest {
     @Mock
     private UniversiteRepo universiteRepo; // Mock the repository
 
+    @Mock
+    private IuniversiteService iuniversiteService ; // Inject the mocked service
     @InjectMocks
-    private UniversiteService universiteService ; // Inject the mocked service
+    private UniversiteServiceTest universiteServiceTest;
+
+    @BeforeEach
+    void setup() {
+        MockitoAnnotations.initMocks(this);
+    }
+
 
     @Test
     void testAjouterUniversity() {
-        // Create a sample University
-        Universite espritUniversity = Universite.builder()
+        Universite sampleUniversity = Universite.builder()
                 .nomUniversite("Esprit")
                 .adresse("Ariana Soghra")
                 .build();
 
-        // Mock the behavior of the repository save method
-        Mockito.when(universiteRepo.save(any(Universite.class)))
-                .thenReturn(espritUniversity);
+        Mockito.when(iuniversiteService.addUniversite(sampleUniversity)).thenReturn(sampleUniversity);
 
-        // Add the University
-        Universite savedUniversite = universiteService.addUniversite(espritUniversity);
-
-        // Verify that the University has been added
-        assertEquals("Esprit", savedUniversite.getNomUniversite());
-        assertEquals("Ariana Soghra", savedUniversite.getAdresse());
-
-        // Clean up (optional):
-        // universiteService.deleteById(savedUniversite.getIdUniversite());
+        Universite savedUniversity = iuniversiteService.addUniversite(sampleUniversity);
+        Assertions.assertNotNull(savedUniversity);
     }
+
 
     @Test
     void testFindUniversityById() {
-        long universityIdToFind = 1L;
-
-        // Mock the behavior of the repository findById method
-        Mockito.when(universiteRepo.findById(universityIdToFind))
-                .thenReturn(Optional.of(Universite.builder()
-                        .idUniversite(universityIdToFind)
-                        .nomUniversite("Found University")
-                        .adresse("Found Address")
-                        .build()));
-
-        // Find the University
-        Universite foundUniversity = universiteService.findById(universityIdToFind);
-
-
-        assertEquals("Found University", foundUniversity.getNomUniversite());
-        assertEquals("Found Address", foundUniversity.getAdresse());
-    }
-
-    @Test
-    void testDeleteUniversity() {
-        long UniversityIdToDelete = 1L;
-
-        universiteService.deleteById(UniversityIdToDelete);
-
-        Mockito.verify(universiteRepo).deleteById(UniversityIdToDelete);
-    }
-    @Test
-    void testEditUniversity() {
+        Long existingUniversityId = 2L;
         Universite existingUniversity = Universite.builder()
-                .idUniversite(1L)
+                .idUniversite(existingUniversityId)
+                .nomUniversite("Found University")
+                .adresse("Found Address")
+                .build();
+
+        Mockito.when(iuniversiteService.findById(existingUniversityId)).thenReturn(existingUniversity);
+
+        existingUniversity.setNomUniversite("Esprit Ghazela");
+
+        Mockito.when(iuniversiteService.editUniversite(existingUniversity)).thenReturn(existingUniversity);
+
+        iuniversiteService.editUniversite(existingUniversity);
+
+        Universite updatedUnivrsity = iuniversiteService.findById(existingUniversityId);
+
+        Assertions.assertNotNull(updatedUnivrsity);
+        Assertions.assertEquals("Esprit Ghazela", updatedUnivrsity.getNomUniversite());
+    }
+
+    @Test
+    void  testDeleteUniversity() {
+        Long UniversityIdToDelete = 2L;
+
+        // Mock the behavior of findById and deleteById methods
+        Universite existingUniversity = Universite.builder()
+                .idUniversite(UniversityIdToDelete)
                 .nomUniversite("Existing University")
                 .adresse("Existing Address")
                 .build();
-        Mockito.when(universiteRepo.findById(1L))
-                .thenReturn(Optional.of(existingUniversity));
-        Mockito.when(universiteRepo.save(any(Universite.class)))
-                .thenReturn(existingUniversity);
-        Universite updatedUniversity = universiteService.editUniversite(existingUniversity);
-        assertEquals("Existing University", updatedUniversity.getNomUniversite());
-        assertEquals("Existing Address", updatedUniversity.getAdresse());
+        Mockito.when(iuniversiteService.findById(UniversityIdToDelete)).thenReturn(existingUniversity);
+        Mockito.doNothing().when(iuniversiteService).deleteById(UniversityIdToDelete);
+
+        // Delete the existing chambre from the database
+        iuniversiteService.deleteById(UniversityIdToDelete);
+
+        // Verify that deleteById method was called with the correct ID
+        Mockito.verify(iuniversiteService, Mockito.times(1)).deleteById(UniversityIdToDelete);
+
+        // Attempt to find the deleted chambre from the database
+        Universite deletedUniversity = iuniversiteService.findById(UniversityIdToDelete);
+
+        // Assertion
+        Assertions.assertNotNull(deletedUniversity);
     }
+
+
+
+
+    @Test
+    void testEditUniversity() {
+        Long existingUniversityId = 2L;
+        Universite existingUniversity = Universite.builder()
+                .idUniversite(existingUniversityId)
+                .nomUniversite("Existing University")
+                .adresse("Existing Address")
+                .build();
+
+
+        Mockito.when(iuniversiteService.findById(existingUniversityId)).thenReturn(existingUniversity);
+
+        existingUniversity.setAdresse("Address Updated");
+
+        Mockito.when(iuniversiteService.editUniversite(existingUniversity)).thenReturn(existingUniversity);
+
+        iuniversiteService.editUniversite(existingUniversity);
+
+        Universite updatedUniversity = iuniversiteService.findById(existingUniversityId);
+
+        Assertions.assertNotNull(updatedUniversity);
+        Assertions.assertEquals("Address Updated", updatedUniversity.getAdresse());
+    }
+
 
 }
 

@@ -32,4 +32,5 @@ public class Bloc implements Serializable {
     @JoinColumn(name = "foyer_id")
     @JsonIgnore
     private Foyer foyer;
+
 }
