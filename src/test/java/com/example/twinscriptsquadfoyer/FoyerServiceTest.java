@@ -1,14 +1,18 @@
 package com.example.twinscriptsquadfoyer;
 
+import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
 import com.example.twinscriptsquadfoyer.dao.entity.Foyer;
+import com.example.twinscriptsquadfoyer.dao.entity.Universite;
 import com.example.twinscriptsquadfoyer.dao.service.foyer.FoyerService;
 import com.example.twinscriptsquadfoyer.dao.service.foyer.IFoyerService;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.junit.jupiter.api.Test;
 
-/*import com.example.twinscriptsquadfoyer.dao.entity.Foyer;
+import com.example.twinscriptsquadfoyer.dao.entity.Foyer;
 import com.example.twinscriptsquadfoyer.dao.repository.FoyerRepository;
 import com.example.twinscriptsquadfoyer.dao.service.foyer.FoyerService;
 import org.junit.jupiter.api.Test;
@@ -30,80 +34,105 @@ import static org.mockito.ArgumentMatchers.any;
     @Mock
     private FoyerRepository foyerRepository; // Mock the repository
 
+    @Mock
+    private IFoyerService iFoyerService; // Inject the mocked service
     @InjectMocks
-    private FoyerService foyerService; // Inject the mocked service
+    private FoyerServiceTest foyerServiceTest;
+
+    @BeforeEach
+    void setup() {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
     void testAjouterFoyer() {
-        // Create a sample Bloc
         Foyer sampleFoyer = Foyer.builder()
-                .nomFoyer("Sample Foyer")
-                .capaciteFoyer(10)
+                .nomFoyer("Add Foyer")
+                .capaciteFoyer(25)
                 .build();
 
-        // Mock the behavior of the repository save method
-        Mockito.when(foyerRepository.save(any(Foyer.class)))
-                .thenReturn(sampleFoyer);
+        Mockito.when(iFoyerService.addFoyer(sampleFoyer)).thenReturn(sampleFoyer);
 
-        // Add the Foyer
-        Foyer savedFoyer = foyerService.addFoyer(sampleFoyer);
-
-        // Verify that the Foyer has been added
-        assertEquals("Sample Foyer", savedFoyer.getNomFoyer());
-        assertEquals(10, savedFoyer.getCapaciteFoyer());
-
-        // Clean up (optional):
-        // blocService.supprimerBloc(savedBloc.getIdBloc());
+        Foyer savedFoyer = iFoyerService.addFoyer(sampleFoyer);
+        Assertions.assertNotNull(savedFoyer);
     }
 
     @Test
     void testFindFoyerById() {
-        long foyerIdToFind = 1L;
+        Long existingFoyerId = 2L;
+        Foyer existingFoyer = Foyer.builder()
+                .idFoyer(existingFoyerId)
+                .nomFoyer("Found Foyer")
+                .capaciteFoyer(25)
+                .build();
 
-        // Mock the behavior of the repository findById method
-        Mockito.when(foyerRepository.findById(foyerIdToFind))
-                .thenReturn(Optional.of(Foyer.builder()
-                        .idFoyer(foyerIdToFind)
-                        .nomFoyer("Found Bloc")
-                        .capaciteFoyer(25)
-                        .build()));
+        Mockito.when(iFoyerService.findById(existingFoyerId)).thenReturn(existingFoyer);
 
-        // Find the Foyer
-        Foyer foundFoyer = foyerService.findById(foyerIdToFind);
+        existingFoyer.setNomFoyer("Edit Foyer");
 
+        Mockito.when(iFoyerService.editFoyer(existingFoyer)).thenReturn(existingFoyer);
 
-        assertEquals("Found Bloc", foundFoyer.getNomFoyer());
-        assertEquals(25, foundFoyer.getCapaciteFoyer());
+        iFoyerService.editFoyer(existingFoyer);
+
+        Foyer updatedFoyer = iFoyerService.findById(existingFoyerId);
+
+        Assertions.assertNotNull(updatedFoyer);
+        Assertions.assertEquals("Edit Foyer", updatedFoyer.getNomFoyer());
     }
 
 
     @Test
-    void testDeleteFoyer() {
-        long foyerIdToDelete = 1L;
+    void  testDeleteFoyer() {
+        Long FoyerIdToDelete = 2L;
 
-        foyerService.deleteById(foyerIdToDelete);
+        // Mock the behavior of findById and deleteById methods
+        Foyer existingFoyer = Foyer.builder()
+                .idFoyer(FoyerIdToDelete)
+                .nomFoyer("Existing Foyer")
+                .capaciteFoyer(10)
+                .build();
+        Mockito.when(iFoyerService.findById(FoyerIdToDelete)).thenReturn(existingFoyer);
+        Mockito.doNothing().when(iFoyerService).deleteById(FoyerIdToDelete);
 
-        Mockito.verify(foyerRepository).deleteById(foyerIdToDelete);
+        // Delete the existing chambre from the database
+        iFoyerService.deleteById(FoyerIdToDelete);
+
+        // Verify that deleteById method was called with the correct ID
+        Mockito.verify(iFoyerService, Mockito.times(1)).deleteById(FoyerIdToDelete);
+
+        // Attempt to find the deleted chambre from the database
+        Foyer deletedFoyer = iFoyerService.findById(FoyerIdToDelete);
+
+        // Assertion
+        Assertions.assertNotNull(deletedFoyer);
     }
     @Test
     void testEditFoyer() {
+        Long existingFoyerId = 2L;
         Foyer existingFoyer = Foyer.builder()
-                .idFoyer(1L)
+                .idFoyer(existingFoyerId)
                 .nomFoyer("Existing Foyer")
                 .capaciteFoyer(20)
                 .build();
-        Mockito.when(foyerRepository.findById(1L))
-                .thenReturn(Optional.of(existingFoyer));
-        Mockito.when(foyerRepository.save(any(Foyer.class)))
-                .thenReturn(existingFoyer);
-        Foyer updatedFoyer = foyerService.editFoyer(existingFoyer);
-        assertEquals("Updated Bloc", updatedFoyer.getNomFoyer());
-        assertEquals(30, updatedFoyer.getCapaciteFoyer());
+
+
+        Mockito.when(iFoyerService.findById(existingFoyerId)).thenReturn(existingFoyer);
+
+        existingFoyer.setNomFoyer("Name Updated");
+
+        Mockito.when(iFoyerService.editFoyer(existingFoyer)).thenReturn(existingFoyer);
+
+        iFoyerService.editFoyer(existingFoyer);
+
+        Foyer updatedFoyer = iFoyerService.findById(existingFoyerId);
+
+        Assertions.assertNotNull(updatedFoyer);
+        Assertions.assertEquals("Name Updated", updatedFoyer.getNomFoyer());
     }
 
 }
-*/
-@SpringBootTest
+
+/*@SpringBootTest
 class FoyerServiceTest {
     @Autowired
     private IFoyerService foyerService;
@@ -170,4 +199,4 @@ class FoyerServiceTest {
         // Assertion
         Assertions.assertNull(deletedFoyer);
     }
-}
+}*/

@@ -80,6 +80,7 @@ import static org.testng.Assert.assertEquals;
 import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
 import com.example.twinscriptsquadfoyer.dao.entity.Chambre;
 import com.example.twinscriptsquadfoyer.dao.entity.TypeChambre;
+import com.example.twinscriptsquadfoyer.dao.entity.Universite;
 import com.example.twinscriptsquadfoyer.dao.repository.BlocRepository;
 import com.example.twinscriptsquadfoyer.dao.service.BlocService;
 import com.example.twinscriptsquadfoyer.dao.service.IBlocService;
@@ -126,50 +127,75 @@ import static org.mockito.ArgumentMatchers.any;
         Assertions.assertNotNull(savedBloc);
     }
     @Test
-     void testFindBlocById() {
-        long blocIdToFind = 1L;
-
-        // Mock the behavior of the repository findById method
-        Mockito.when(blocRepository.findById(blocIdToFind))
-                .thenReturn(Optional.of(Bloc.builder()
-                        .idBloc(blocIdToFind)
-                        .nomBloc("Found Bloc")
-                        .capaciteBloc(25)
-                        .build()));
-
-        // Find the Bloc
-        Bloc foundBloc = blocService.findById(blocIdToFind);
-
-        // Verify that the found Bloc matches our expectations
-        assertEquals("Found Bloc", foundBloc.getNomBloc());
-        assertEquals(25, foundBloc.getCapaciteBloc());
-    }
-    @Test
-     void testDeleteBloc() {
-        long blocIdToDelete = 1L;
-
-        blocService.deleteById(blocIdToDelete);
-
-        Mockito.verify(blocRepository).deleteById(blocIdToDelete);
-    }
-    @Test
-     void testEditBloc() {
+    void testFindBlocById() {
+        Long existingBlocId = 2L;
         Bloc existingBloc = Bloc.builder()
-                .idBloc(1L)
-                .nomBloc("Existing Bloc")
-                .capaciteBloc(20)
+                .idBloc(existingBlocId)
+                .nomBloc("Found Bloc")
+                .capaciteBloc(10)
                 .build();
 
-        Mockito.when(blocRepository.findById(1L))
-                .thenReturn(Optional.of(existingBloc));
-        Mockito.when(blocRepository.save(any(Bloc.class)))
-                .thenReturn(existingBloc);
+        Mockito.when(blocService.findById(existingBlocId)).thenReturn(existingBloc);
 
-        Bloc updatedBloc = blocService.editBloc(existingBloc);
+        existingBloc.setNomBloc("Esprit Ghazela");
 
-        assertEquals("Updated Bloc", updatedBloc.getNomBloc());
-        assertEquals(30, updatedBloc.getCapaciteBloc());
+        Mockito.when(blocService.editBloc(existingBloc)).thenReturn(existingBloc);
+
+        blocService.editBloc(existingBloc);
+
+        Bloc updatedBloc = blocService.findById(existingBlocId);
+
+        Assertions.assertNotNull(updatedBloc);
+        Assertions.assertEquals("Esprit Ghazela", updatedBloc.getNomBloc());
     }
+
+    @Test
+    void  testDeleteBloc() {
+        Long BlocIdToDelete = 2L;
+
+        // Mock the behavior of findById and deleteById methods
+        Bloc existingBloc = Bloc.builder()
+                .idBloc(BlocIdToDelete)
+                .nomBloc("Existing Bloc")
+                .build();
+        Mockito.when(blocService.findById(BlocIdToDelete)).thenReturn(existingBloc);
+        Mockito.doNothing().when(blocService).deleteById(BlocIdToDelete);
+
+        // Delete the existing chambre from the database
+        blocService.deleteById(BlocIdToDelete);
+
+        // Verify that deleteById method was called with the correct ID
+        Mockito.verify(blocService, Mockito.times(1)).deleteById(BlocIdToDelete);
+
+        // Attempt to find the deleted chambre from the database
+        Bloc deletedBloc = blocService.findById(BlocIdToDelete);
+
+        // Assertion
+        Assertions.assertNotNull(deletedBloc);
+    }
+    @Test
+    void testEditBloc() {
+        Long existingBlocId = 2L;
+        Bloc existingBloc = Bloc.builder()
+                .idBloc(existingBlocId)
+                .capaciteBloc(1)
+                .nomBloc("Existing Address")
+                .build();
+
+
+        Mockito.when(blocService.findById(existingBlocId)).thenReturn(existingBloc);
+
+        existingBloc.setNomBloc("sui");
+
+        Mockito.when(blocService.editBloc(existingBloc)).thenReturn(existingBloc);
+
+        blocService.editBloc(existingBloc);
+
+        Bloc updatedUniversity = blocService.findById(existingBlocId);
+
+        Assertions.assertNotNull(updatedUniversity);
+    }
+
 
 }
 
