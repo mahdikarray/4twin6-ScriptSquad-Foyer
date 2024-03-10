@@ -13,6 +13,11 @@ pipeline {
                 sh 'rm -rf target/*'
             }
         }
+        stage('Test') {
+                    steps {
+                        sh 'mvn test'
+                    }
+                }
 
         stage('Build') {
             steps {
