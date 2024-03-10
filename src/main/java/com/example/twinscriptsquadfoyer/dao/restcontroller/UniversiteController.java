@@ -26,9 +26,9 @@ public class UniversiteController {
         return iUniversiteService.addUniversite(u);
     }
 
-    @PutMapping("updateUniv/{id}")
-    public Universite updateUniversite(@PathVariable("id") Long id, @RequestBody Universite u){
-        return iUniversiteService.editUniversite(id, u);
+    @PutMapping("/updateUniv/{id}")
+    public Universite updateUniversite(@PathVariable("id") Long id , @RequestBody Universite u){
+        return iUniversiteService.editUniversite(u);
     }
 
     @DeleteMapping("/deleteUniv/{id}")
