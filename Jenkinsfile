@@ -19,12 +19,12 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
-         stage('Test') {
-                    steps {
+        stage('Test') {
+            steps {
                         // Run Maven tests
-                        sh 'mvn test'
-                    }
-                }
+                sh 'mvn test'
+                   }
+            }
         stage("MVN SONARQUBE"){
                     steps{
                         withSonarQubeEnv(installationName: 'sonar') {
