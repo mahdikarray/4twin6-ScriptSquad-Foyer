@@ -56,6 +56,7 @@ class UniversiteServiceTest {
 
         Universite savedUniversity = iuniversiteService.addUniversite(sampleUniversity);
         Assertions.assertNotNull(savedUniversity);
+
     }
 
 
