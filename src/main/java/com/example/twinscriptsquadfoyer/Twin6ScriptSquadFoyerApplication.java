@@ -1,4 +1,4 @@
-package com.example.twin6scriptsquadfoyer;
+package com.example.twinscriptsquadfoyer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

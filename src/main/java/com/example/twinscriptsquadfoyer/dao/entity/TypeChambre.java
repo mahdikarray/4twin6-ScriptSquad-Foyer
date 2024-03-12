@@ -1,4 +1,4 @@
-package com.example.twin6scriptsquadfoyer.DAO.Entity;
+package com.example.twinscriptsquadfoyer.dao.entity;
 
 public enum TypeChambre {
     SIMPLE,DOUBLE,TRIPLE

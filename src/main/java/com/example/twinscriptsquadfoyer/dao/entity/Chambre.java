@@ -1,39 +1,36 @@
-package com.example.twin6scriptsquadfoyer.DAO.Entity;
+package com.example.twinscriptsquadfoyer.dao.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Setter
 @Getter
 @Table(name = "chambre")
-public class Chambre {
+@Builder
+public class Chambre implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idChambre;
 
-
-    @Column(name = "numeroChambre",unique = true)
+    @Column(name = "numeroChambre", unique = true)
     private long numeroChambre;
 
     @Column(name = "typeChambre")
     private TypeChambre typeChambre;
-
 
     @Column(name = "statut")
     private String statut;
 
     @Column(name = "dateDebut")
     private LocalDate dateDebut;
-
 
     @Column(name = "dateFin")
     private LocalDate dateFin;
@@ -43,9 +40,24 @@ public class Chambre {
     @JsonBackReference
     private Bloc bloc;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "chambre")
-    @JsonIgnore
-    private Set<Reservation> reservations = new HashSet<>();
+    @Transient
+    private Long blocId; // Store the ID of the Bloc instead of the whole object
+
+    public Chambre() {
+        // Default constructor
+    }
+    @SuppressWarnings("squid:S00107")
+    public Chambre(long idChambre, long numeroChambre, TypeChambre typeChambre, String statut, LocalDate dateDebut, LocalDate dateFin, Bloc bloc, Long blocId) {
+        this.idChambre = idChambre;
+        this.numeroChambre = numeroChambre;
+        this.typeChambre = typeChambre;
+        this.statut = statut;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.bloc = bloc;
+        this.blocId = blocId;
+    }
+
 
     public long getIdChambre() {
         return idChambre;
@@ -67,9 +79,6 @@ public class Chambre {
         return bloc;
     }
 
-    public Set<Reservation> getReservations() {
-        return reservations;
-    }
 
     public void setIdChambre(long idChambre) {
         this.idChambre = idChambre;
@@ -90,27 +99,5 @@ public class Chambre {
     public void setBloc(Bloc bloc) {
         this.bloc = bloc;
     }
-
-    public void setReservations(Set<Reservation> reservations) {
-        this.reservations = reservations;
-    }
-
-
-    public boolean isOccupee() {
-        return !reservations.isEmpty();
-    }
-    public boolean isOccupeeALaDate(LocalDate date) {
-        if (dateDebut == null || dateFin == null) {
-            return false; // You may need to adapt this condition
-        }
-
-        for (Reservation reservation : reservations) {
-            if (reservation.couvreDate(date)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
 
 }

@@ -1,10 +1,12 @@
-package com.example.twin6scriptsquadfoyer.DAO.Service;
+package com.example.twinscriptsquadfoyer.dao.service;
 
 
 
-import com.example.twin6scriptsquadfoyer.DAO.Entities.Chambre;
 
-import java.time.LocalDate;
+
+import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
+import com.example.twinscriptsquadfoyer.dao.entity.Chambre;
+
 import java.util.List;
 
 
@@ -14,16 +16,12 @@ public interface IChambreService {
     Chambre editChambre(Long id, Chambre b);
     List<Chambre> findAll();
     Chambre findById(long id);
-    void deleteById(long id);
     void delete(Chambre b);
      Chambre findByNumeroChambre(long numeroChambre);
-    boolean isChambreOccupeeALaDate(long chambreId, LocalDate date);
 
-    boolean isChambreOccupee(long chambreId);
 
     Bloc getBlocByChambre(long idChambre);
-    boolean isNumeroChambreUnique(long numeroChambre);
-
+    void deleteById(long id);
 
     boolean isNumeroChambreUniqueForUpdate(Long id, Long numeroChambre);
 

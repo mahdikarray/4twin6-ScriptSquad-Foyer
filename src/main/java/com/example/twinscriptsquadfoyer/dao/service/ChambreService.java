@@ -1,11 +1,14 @@
-package com.example.twin6scriptsquadfoyer.DAO.Service;
+package com.example.twinscriptsquadfoyer.dao.service;
 
-import com.example.twin6scriptsquadfoyer.DAO.Entities.Chambre;
+
+import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
+import com.example.twinscriptsquadfoyer.dao.entity.Chambre;
+import com.example.twinscriptsquadfoyer.dao.repository.BlocRepository;
+import com.example.twinscriptsquadfoyer.dao.repository.ChambreRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -15,27 +18,22 @@ import java.util.stream.Collectors;
 public class ChambreService implements IChambreService {
     @Autowired
     private ChambreRepository chambreRepository;
-    private BlocRepository blocRepository;
-    private ReservationRepository reservationRepository;
+     BlocRepository blocRepository;
     @Autowired
     public ChambreService(BlocRepository blocRepository) {
         this.blocRepository = blocRepository;
     }
 
     public List<Chambre> searchChambresByBlocName(String nomBloc) {
-        return chambreRepository.findByBloc_NomBloc(nomBloc);
+        return chambreRepository.findByBlocNomBloc(nomBloc);
     }
     @Override
     public Chambre addChambre(Chambre c) {
         // Ensure that the associated Bloc is saved
-        Bloc bloc = c.getBloc();
+        var bloc = c.getBloc();
         if (bloc != null && bloc.getIdBloc() == 0) {
-            // Bloc is transient, save it first
-        //    bloc = blocRepository.save(bloc);
             c.setBloc(bloc);
         }
-
-        // Save the Chambre
         return chambreRepository.save(c);
     }
 
@@ -53,12 +51,12 @@ public class ChambreService implements IChambreService {
 
     @Override
     public Chambre editChambre(Long id, Chambre c) {
-        if(chambreRepository.findById(id).isPresent()){
-            Chambre toUpdateChambre = chambreRepository.findById(id).get();
+        Optional<Chambre> optionalChambre = chambreRepository.findById(id);
+        if(optionalChambre.isPresent()){
+            var toUpdateChambre = optionalChambre.get();
             toUpdateChambre.setNumeroChambre(c.getNumeroChambre());
             toUpdateChambre.setTypeChambre(c.getTypeChambre());
             toUpdateChambre.setBloc(c.getBloc());
-            toUpdateChambre.setReservations(c.getReservations());
             return chambreRepository.save(toUpdateChambre);
         }
         return null;
@@ -71,24 +69,8 @@ public class ChambreService implements IChambreService {
 
     @Override
     public Chambre findById(long id) {
-        return chambreRepository.findById(id).get();
-    }
-
-    @Override
-    public void deleteById(long id) {
-        Chambre chambre = chambreRepository.findById(id).orElse(null);
-
-        if (chambre != null) {
-            // Remove the association with reservations
-            for (Reservation reservation : chambre.getReservations()) {
-                reservation.setChambre(null);
-            }
-            // Clear the reservations collection in Chambre
-            chambre.getReservations().clear();
-
-            // Now you can safely delete the Chambre
-            chambreRepository.deleteById(id);
-        }
+        Optional<Chambre> optionalChambre = chambreRepository.findById(id);
+        return optionalChambre.orElse(null);
     }
 
 
@@ -96,41 +78,19 @@ public class ChambreService implements IChambreService {
         chambreRepository.delete(c);
     }
 
-    // ChambreRestController.java
+    public void deleteById(long id) {
+        chambreRepository.deleteById(id);
 
-    @Override
-    public boolean isChambreOccupeeALaDate(long chambreId, LocalDate date) {
-        Optional<Chambre> optionalChambre = chambreRepository.findById(chambreId);
-
-        if (optionalChambre.isPresent()) {
-            Chambre chambre = optionalChambre.get();
-            return chambre.isOccupeeALaDate(date);
-        }
-
-        return false;
     }
-    @Override
-    public boolean isChambreOccupee(long chambreId) {
-        Optional<Chambre> optionalChambre = chambreRepository.findById(chambreId);
 
-        if (optionalChambre.isPresent()) {
-            Chambre chambre = optionalChambre.get();
-            return chambre.isOccupee();
-        }
-
-        return false;
-    }
     public Bloc getBlocByChambre(long idChambre) {
-        Chambre chambre = chambreRepository.findById(idChambre)
+        var chambre = chambreRepository.findById(idChambre)
                 .orElseThrow(() -> new EntityNotFoundException("Chambre not found"));
 
         return chambre.getBloc();
     }
 
-    @Override
-    public boolean isNumeroChambreUnique(long numeroChambre) {
-        return !chambreRepository.existsByNumeroChambre(numeroChambre);
-    }
+
     @Override
     public boolean isNumeroChambreUniqueForUpdate(Long idChambre, Long numeroChambre) {
         // Implement logic to check if the chambre number is unique, excluding the chambre with the given ID
