@@ -91,8 +91,6 @@ class ChambreServiceTest {
 import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
 import com.example.twinscriptsquadfoyer.dao.entity.Chambre;
 import com.example.twinscriptsquadfoyer.dao.entity.TypeChambre;
-import com.example.twinscriptsquadfoyer.dao.service.BlocService;
-import com.example.twinscriptsquadfoyer.dao.service.ChambreService;
 import com.example.twinscriptsquadfoyer.dao.service.IBlocService;
 import com.example.twinscriptsquadfoyer.dao.service.IChambreService;
 import org.junit.jupiter.api.Assertions;
