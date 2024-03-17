@@ -25,13 +25,6 @@ pipeline {
                 sh 'mvn test'
                    }
             }
-        stage("MVN SONARQUBE"){
-                    steps{
-                        withSonarQubeEnv(installationName: 'sonar') {
-                        sh "mvn sonar:sonar"
-                        }
-                    }
-                }
 
     }
 
