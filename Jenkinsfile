@@ -10,7 +10,7 @@ environment {
         NEXUS_REPOSITORY = "twin6-scriptSquad-foyer"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "201JMt4720"
-        ARTIFACT_PATH = "com/example/dfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1.jar"
+        ARTIFACT_PATH = "com/example/4twin6-ScriptSquad-Foyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1.jar"
 
  }
     stages {
@@ -60,7 +60,7 @@ stage('Package') {
                              repository: 'twin6-scriptSquad-foyer',
                              credentialsId: 'nexus',
                              artifacts: [
-                             [artifactId: 'dfoyer',
+                             [artifactId: '4twin6-ScriptSquad-Foyer',
                              classifier: '',
                              file: 'target/twin6scriptsquadfoyer-0.0.1-SNAPSHOT.jar',
                              type: 'jar']
