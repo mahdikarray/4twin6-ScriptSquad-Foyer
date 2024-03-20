@@ -37,26 +37,11 @@ stage('Package') {
                 sh 'mvn package'
             }
         }
-        stage("UploadArtifact"){
-                    steps{
-                        nexusArtifactUploader(
-                              nexusVersion: 'nexus3',
-                              protocol: 'http',
-                              nexusUrl: '192.168.33.10:8081',
-                              groupId: 'QA',
-                              version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
-                              repository: 'twin6-scriptSquad-foyer',
-                              credentialsId: 'nexus',
-                              artifacts: [
-                                [artifactId: 'my-project',
-                                 classifier: '',
-                                 file: 'target/vprofile-v2.war',
-                                 type: 'war']
-                            ]
-                        )
+        stage('Deploy') {
+                    steps {
+                        sh 'mvn deploy'
                     }
                 }
-
 
     }
 
