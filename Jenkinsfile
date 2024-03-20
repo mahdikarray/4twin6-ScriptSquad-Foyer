@@ -56,7 +56,7 @@ stage('Package') {
                    protocol: 'http',
                    nexusUrl: '192.168.33.10:8081',
                    groupId: 'com.example',
-                   version: "0.0.1-SNAPSHOT",
+                   version: "0.0.1",
                    repository: 'twin6-scriptSquad-foyer',
                    credentialsId: 'nexus',
                    artifacts: [
