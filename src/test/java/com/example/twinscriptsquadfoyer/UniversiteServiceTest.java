@@ -37,7 +37,7 @@ class UniversiteServiceTest {
         existingUniversity.setAdresse("Edited University Address");
 
         // Update the existing University in the database
-        Universite updatedUniversity = iuniversiteService.editUniversite(existingUniversity);
+        Universite updatedUniversity = iuniversiteService.editUniversite(existingUniversityId,existingUniversity);
 
         // Retrieve the updated University from the database for verification
         Universite retrievedUniversity= iuniversiteService.findById(existingUniversityId);

@@ -1,5 +1,6 @@
 package com.example.twinscriptsquadfoyer.dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,6 +26,8 @@ public class Universite implements Serializable {
     private String adresse;
 
 
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Foyer foyer;
 
 }
