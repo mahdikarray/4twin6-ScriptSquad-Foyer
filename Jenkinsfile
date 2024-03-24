@@ -37,6 +37,11 @@ environment {
                 sh 'mvn test'
                    }
             }
+            stage('Generate JaCoCo Report') {
+                        steps {
+                            sh 'mvn jacoco:report'
+                        }
+                    }
        stage("MVN SONARQUBE") {
            steps {
                withSonarQubeEnv(installationName: 'sonar') {
