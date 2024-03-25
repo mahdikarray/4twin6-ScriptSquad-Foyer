@@ -93,7 +93,7 @@ stage('Package') {
                             steps {
                                 script {
                                     docker.withRegistry('https://index.docker.io/v1/', 'DockerHubCredentials') {
-                                        docker.image("${DOCKER_IMAGE_NAME}").push()
+                                        docker.image("${DOCKER_IMAGE_NAME}").push("karraymahdi/spring:latest")
                                     }
                                 }
                             }
