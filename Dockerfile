@@ -8,7 +8,7 @@ WORKDIR /app
 RUN apk --no-cache add curl
 
 # Download the Spring Boot application JAR file from Nexus
-RUN curl -u admin:nexus "http://192.168.1.23:8081/repository/twin6-scriptSquad-foyer/com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240321.000808-1.jar"  --output /app/twin6scriptsquadfoyer-0.0.1-20240321.000808-1.jar
+RUN curl -u admin:nexus "http://192.168.1.23:8081/twin6-scriptSquad-foyer/com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240321.000808-1.jar"  --output /app/twin6scriptsquadfoyer-0.0.1-20240321.000808-1.jar
 
 
 	
