@@ -89,15 +89,16 @@ stage('Package') {
                        }
                    }
                }
-                 stage('Push Docker Image') {
-                            steps {
-                                script {
-                                    docker.withRegistry('https://index.docker.io/v1/', 'DockerHubCredentials') {
-                                        docker.image("${DOCKER_IMAGE_NAME}").push("karraymahdi/spring:latest")
-                                    }
-                                }
+                stage('Push Docker Image') {
+                    steps {
+                        script {
+                            docker.withRegistry('https://index.docker.io/v1/', 'DockerHubCredentials') {
+                                docker.image("${DOCKER_IMAGE_NAME}").push("karraymahdi/spring:latest")
                             }
-             }
+                        }
+                    }
+                }
+
 
     }
 
