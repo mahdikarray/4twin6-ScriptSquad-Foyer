@@ -11,7 +11,7 @@ environment {
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "201JMt4720"
         ARTIFACT_PATH = "com/example/4twin6-ScriptSquad-Foyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1.jar"
-
+DOCKER_IMAGE_NAME = "spring"
  }
     stages {
         stage('Checkout') {
@@ -87,8 +87,6 @@ stage('Package') {
                        }
                    }
                }
-
-
     }
 
     post {
