@@ -12,6 +12,8 @@ environment {
         NEXUS_PASSWORD = "201JMt4720"
         ARTIFACT_PATH = "com/example/4twin6-ScriptSquad-Foyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1.jar"
 DOCKER_IMAGE_NAME = "spring"
+        DOCKER_HUB_CREDENTIALS = 'DockerHubCredentials'
+        DOCKER_COMPOSE_VERSION = "1.29.2"
  }
     stages {
         stage('Checkout') {
@@ -87,6 +89,15 @@ stage('Package') {
                        }
                    }
                }
+                stage('Push Docker Image') {
+                                   steps {
+                                       script {
+                                           docker.withRegistry('https://registry.hub.docker.com/', DOCKER_HUB_CREDENTIALS) {
+                                               docker.image("${DOCKER_IMAGE_NAME}").push()
+                                           }
+                                       }
+                                   }
+                               }
     }
 
     post {
