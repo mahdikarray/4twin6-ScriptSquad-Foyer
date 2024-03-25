@@ -6,11 +6,11 @@ environment {
         NEXUS_IP = "192.168.33.10"
         NEXUS_PORT = "8081"
         NEXUS_LOGIN = "nexus"
-        NEXUS_URL = "http://192.168.1.21:8081/"
+        NEXUS_URL = "http://192.168.1.23:8081/"
         NEXUS_REPOSITORY = "twin6-scriptSquad-foyer"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
-        ARTIFACT_PATH = "com/example/4twin6-ScriptSquad-Foyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1.jar"
+        ARTIFACT_PATH = "com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240321.000808-1.jar"
 
  }
     stages {
@@ -49,12 +49,14 @@ stage('Package') {
                 sh 'mvn package'
             }
         }
+
+
        stage("UploadArtifact") {
            steps {
                nexusArtifactUploader(
                    nexusVersion: 'nexus3',
                    protocol: 'http',
-                   nexusUrl: '192.168.1.21:8081',
+                   nexusUrl: '192.168.1.23:8081',
                    groupId: 'com.example',
                    version: "0.0.1-SNAPSHOT",
                    repository: 'twin6-scriptSquad-foyer',
@@ -73,7 +75,19 @@ stage('Package') {
 
 
     }
-
+ stage('Build Docker Image') {
+                            steps {
+                                // Use sh step to execute shell commands
+                                script {
+                                    // Build the Docker image using the Dockerfile
+                                    docker.build("${DOCKER_IMAGE_NAME}", "--build-arg NEXUS_URL=${NEXUS_URL} \
+                                        --build-arg NEXUS_REPOSITORY=${NEXUS_REPOSITORY} \
+                                        --build-arg NEXUS_USERNAME=${NEXUS_USERNAME} \
+                                        --build-arg NEXUS_PASSWORD=${NEXUS_PASSWORD} \
+                                        --build-arg ARTIFACT_PATH=${ARTIFACT_PATH} .")
+                                }
+                            }
+                        }
     post {
         success {
             echo 'Build successful! Deploying...'
