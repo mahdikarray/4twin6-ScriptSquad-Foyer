@@ -75,6 +75,18 @@ stage('Package') {
                )
            }
        }
+       stage('Build Docker Image') {
+                   steps {
+                       script {
+                           // Build the Docker image using the Dockerfile
+                           docker.build("${DOCKER_IMAGE_NAME}", "--build-arg NEXUS_URL=${NEXUS_URL} \
+                               --build-arg NEXUS_REPOSITORY=${NEXUS_REPOSITORY} \
+                               --build-arg NEXUS_USERNAME=${NEXUS_USERNAME} \
+                               --build-arg NEXUS_PASSWORD=${NEXUS_PASSWORD} \
+                               --build-arg ARTIFACT_PATH=${ARTIFACT_PATH} .")
+                       }
+                   }
+               }
 
 
     }
