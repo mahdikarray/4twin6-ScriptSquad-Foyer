@@ -12,7 +12,7 @@ pipeline {
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
         ARTIFACT_PATH = "com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240321.000808-1.jar"
-        
+        DOCKER_IMAGE_NAME = "Spring"
     }
 
     stages {
