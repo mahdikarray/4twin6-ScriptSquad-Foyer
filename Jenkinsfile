@@ -7,7 +7,7 @@ pipeline {
         NEXUS_IP = "192.168.33.10"
         NEXUS_PORT = "8081"
         NEXUS_LOGIN = "nexus"
-        NEXUS_URL = "http://192.168.1.23:8081" // Correction de l'URL Nexus
+        NEXUS_URL = "192.168.1.23:8081" // Correction de l'URL Nexus
         NEXUS_REPOSITORY = "twin6-scriptSquad-foyer"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
