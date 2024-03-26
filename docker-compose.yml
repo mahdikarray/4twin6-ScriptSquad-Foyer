@@ -11,3 +11,20 @@ services:
       - NEXUS_USERNAME=admin
       - NEXUS_PASSWORD=201JMt4720
       - ARTIFACT_PATH=com/example/4twin6-ScriptSquad-Foyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1.jar
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"  # Specify ports as strings
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"  # Specify ports as strings
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=esprit
+    volumes:
+      - grafana_data:/var/lib/grafana
+volumes:
+  grafana_data:
+  db:

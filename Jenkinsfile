@@ -112,7 +112,19 @@ stage('Package') {
                                      }
                                  }
                              }
+stage('Prometheus Setup') {
+                            steps {
+                                sh 'docker compose up -d prometheus'
+                            }
+                        }
+                stage('Grafana Setup') {
+                            steps {
+                                sh 'docker compose up -d grafana'
+                            }
+                        }
 
+
+    }
     }
 
     post {
