@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  spring:
+    image: karraymahdi/spring
+    ports:
+      - "8080:8080"
+    environment:
+      - NEXUS_URL=http://192.168.33.10:8081/
+      - NEXUS_REPOSITORY=twin6-scriptSquad-foyer
+      - NEXUS_USERNAME=admin
+      - NEXUS_PASSWORD=201JMt4720
+      - ARTIFACT_PATH=com/example/4twin6-ScriptSquad-Foyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1.jar
