@@ -16,7 +16,7 @@ services:
     ports:
       - "9091:9090"  # Specify ports as strings
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - /home/vagrant/prometheus.yml:/etc/prometheus/prometheus.yml
   grafana:
     image: grafana/grafana
     ports:
