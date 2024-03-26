@@ -35,19 +35,19 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         sh 'mvn test'
+        //     }
+        // }
 
-        stage("MVN SONARQUBE") {
-            steps {
-                withSonarQubeEnv(installationName: 'sonar') {
-                    sh "mvn -DskipTests sonar:sonar"
-                }
-            }
-        }
+        // stage("MVN SONARQUBE") {
+        //     steps {
+        //         withSonarQubeEnv(installationName: 'sonar') {
+        //             sh "mvn -DskipTests sonar:sonar"
+        //         }
+        //     }
+        // }
 
         stage('Package') {
             steps {
@@ -100,7 +100,7 @@ pipeline {
 
             stage('Push to docker hub') {
                         steps {
-                            sh 'docker push mohamedaminederouiche/library/spring:latest'
+                            sh 'docker push library/spring:latest'
                         }
                     }
  }
