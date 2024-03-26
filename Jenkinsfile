@@ -102,6 +102,36 @@ pipeline {
                                   }
                               }
                }
+
+                stage('Launch with docker-compose(Spring & Mysql & Angular') {
+                            steps {
+                                script {
+                                    sh 'docker stop 4b5e08ad8d93'
+                                    sh 'docker stop ccfebda37dcf'
+                                    sh 'docker stop e99e5c9fceb7'
+                                    sh 'docker pull mounirbenromdhane256/devops-integration:latest'
+                                    sh 'docker pull mounirbenromdhane256/angular:latest'
+                                    sh 'docker-compose up -d'
+                                }
+                            }
+                        }
+
+
+                         stage('Run Docker Compose') {
+                                 steps {
+                                     script {
+                                         // Perform Docker login
+                                         sh 'docker login -u mohamedaminederouiche -p Monjialeao17'
+
+                                         // Pull the Docker image
+                                         sh 'docker pull mohamedaminederouiche/spring'
+
+                                         // Run Docker Compose
+                                         sh 'docker compose up -d'
+                                     }
+                                 }
+                             }
+
  }
     post {
         success {
