@@ -20,7 +20,7 @@ services:
   grafana:
     image: grafana/grafana
     ports:
-      - "3000:3000"  # Specify ports as strings
+      - "3001:3000"  # Specify ports as strings
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=esprit
     volumes:
