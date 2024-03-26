@@ -112,11 +112,6 @@ stage('Package') {
                                      }
                                  }
                              }
-                              stage('Prometheus Setup') {
-                                                         steps {
-                                                             sh 'docker compose up -d prometheus'
-                                                         }
-                                                     }
 
     }
 
