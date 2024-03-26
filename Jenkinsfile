@@ -123,8 +123,6 @@ stage('Prometheus Setup') {
                             }
                         }
 
-
-    }
     }
 
     post {
