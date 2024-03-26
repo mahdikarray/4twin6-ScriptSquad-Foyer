@@ -100,7 +100,7 @@ pipeline {
 
             stage('Push to docker hub') {
                         steps {
-                            sh 'docker push mohamedaminederouiche/devops-integration:latest'
+                            sh 'docker push mohamedaminederouiche/library/spring:latest'
                         }
                     }
  }
