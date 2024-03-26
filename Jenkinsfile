@@ -98,6 +98,20 @@ stage('Package') {
                                 }
                             }
              }
+             stage('Run Docker Compose') {
+                                 steps {
+                                     script {
+                                         // Perform Docker login
+                                         sh 'docker login -u karraymahdi -p 201JMt4720'
+
+                                         // Pull the Docker image
+                                         sh 'docker pull karraymahdi/spring'
+
+                                         // Run Docker Compose
+                                         sh 'docker compose up -d'
+                                     }
+                                 }
+                             }
 
     }
 
