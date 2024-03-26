@@ -103,18 +103,7 @@ pipeline {
                               }
                }
 
-                stage('Launch with docker-compose(Spring & Mysql & Angular') {
-                            steps {
-                                script {
-                                    sh 'docker stop 4b5e08ad8d93'
-                                    sh 'docker stop ccfebda37dcf'
-                                    sh 'docker stop e99e5c9fceb7'
-                                    sh 'docker pull mounirbenromdhane256/devops-integration:latest'
-                                    sh 'docker pull mounirbenromdhane256/angular:latest'
-                                    sh 'docker-compose up -d'
-                                }
-                            }
-                        }
+               
 
 
                          stage('Run Docker Compose') {
