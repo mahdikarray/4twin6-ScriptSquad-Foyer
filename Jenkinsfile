@@ -11,7 +11,7 @@ pipeline {
         NEXUS_REPOSITORY = "twin6-scriptSquad-foyer"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
-        ARTIFACT_PATH = "com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240321.000808-1.jar"
+        ARTIFACT_PATH = "com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240325.233457-5.jar"
         DOCKER_IMAGE_NAME = "spring"
         DOCKERHUB_CREDENTIALS = credentials('DockerHub')
     }
