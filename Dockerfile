@@ -1,16 +1,3 @@
-# Start with a new base image to create a minimal container
-#FROM openjdk:17
-
-#WORKDIR /app
-
-# Copy the jar file from the previous stage
-#COPY target/*.jar devops-integration.jar
-
-# Expose the port the app runs on
-#EXPOSE 8087
-
-#ADD target/MOUNIR-BEN-ROMDHANE-UNIVERSITY.jar devops-integration.jar
-#ENTRYPOINT ["java","-jar","devops-integration.jar"]
 
 FROM openjdk:17-alpine
 
