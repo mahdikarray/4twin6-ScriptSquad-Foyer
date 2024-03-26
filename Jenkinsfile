@@ -13,6 +13,7 @@ pipeline {
         NEXUS_PASSWORD = "nexus"
         ARTIFACT_PATH = "com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240321.000808-1.jar"
         DOCKER_IMAGE_NAME = "spring"
+        DOCKERHUB_CREDENTIALS = credentials('DockerHub')
     }
 
     stages {
@@ -88,8 +89,21 @@ pipeline {
                 }
             }
         }
-    }
 
+
+
+    stage('Login docker hub') {
+                steps {
+                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                }
+            }
+
+            stage('Push to docker hub') {
+                        steps {
+                            sh 'docker push mohamedaminederouiche/devops-integration:latest'
+                        }
+                    }
+ }
     post {
         success {
             echo 'Build successful! Deploying...'
