@@ -10,7 +10,7 @@ services:
       - NEXUS_REPOSITORY=twin6-scriptSquad-foyer
       - NEXUS_USERNAME=admin
       - NEXUS_PASSWORD=nexus
-      - ARTIFACT_PATH=com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240327.035836-18.jar
+      - ARTIFACT_PATH=com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240327.195512-38.jar
     depends_on:
       - dbmysql
 
