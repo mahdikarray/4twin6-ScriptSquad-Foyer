@@ -13,7 +13,7 @@ pipeline {
         NEXUS_PASSWORD = "nexus"
         ARTIFACT_PATH = "com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240325.233457-5.jar"
         DOCKER_IMAGE_NAME = "mohamedaminederouiche/spring"
-        DOCKER_HUB_CREDENTIALS = 'DockerHub'
+        DOCKER_HUB_CREDENTIALS = 'dockerHub'
         DOCKER_COMPOSE_VERSION = "1.29.2"
     }
 
@@ -96,7 +96,7 @@ pipeline {
              stage('Push Docker Image') {
                               steps {
                                   script {
-                                      docker.withRegistry('https://index.docker.io/v1/', 'DockerHub') {
+                                      docker.withRegistry('https://index.docker.io/v1/', 'dockerHub') {
                                           docker.image("${DOCKER_IMAGE_NAME}").push()
                                       }
                                   }
