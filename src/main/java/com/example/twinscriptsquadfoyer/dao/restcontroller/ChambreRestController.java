@@ -19,8 +19,6 @@ import java.util.List;
 @RequestMapping("chambre")
 @CrossOrigin(origins = "http://localhost:4200")
 public class ChambreRestController {
-
-    //test-fares
     @Autowired
     IChambreService iChambreService;
 
@@ -43,7 +41,10 @@ public Chambre addChambre(Chambre c)
     return iChambreService.addChambre(c);
 }
 
-
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable("id") Long id){
+        iChambreService.deleteById(id);
+    }
         @PutMapping("/update/{id}")
        // @PreAuthorize("hasRole('ADMIN')")
 

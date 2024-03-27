@@ -24,6 +24,13 @@ services:
         restart: unless-stopped
         volumes:
           - db:/var/lib/mysql
+  angular:
+    container_name: FoyerAngular
+    image: karraymahdi/angular:latest
+    ports:
+      - "4200:80"
+    restart: always
+
   prometheus:
     image: prom/prometheus
     ports:
@@ -41,3 +48,4 @@ services:
 volumes:
   grafana_data:
   db:
+
