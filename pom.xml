@@ -14,7 +14,7 @@
     <name>twin6-scriptSquad-foyer</name>
     <description>twin6-scriptSquad-foyer</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
     </properties>
 
     <dependencies>
