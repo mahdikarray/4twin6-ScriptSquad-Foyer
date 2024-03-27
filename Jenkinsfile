@@ -12,8 +12,8 @@ pipeline {
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
         ARTIFACT_PATH = "com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240327.035836-18.jar"
-        DOCKER_IMAGE_NAME = "mohamedaminederouiche/spring"
-        DOCKER_HUB_CREDENTIALS = 'DockerHub'
+        DOCKER_IMAGE_NAME = "mohamedaminederouiche05/spring"
+        DOCKER_HUB_CREDENTIALS = 'docker'
         DOCKER_COMPOSE_VERSION = "1.29.2"
     }
 
@@ -110,10 +110,10 @@ stage('Push Docker Image') {
                                  steps {
                                      script {
                                          // Perform Docker login
-                                         sh 'docker login -u mohamedaminederouiche -p Rafaleao17'
+                                         sh 'docker login -u mohamedaminederouiche05 -p Rafaleao17'
 
                                          // Pull the Docker image
-                                         sh 'docker pull mohamedaminederouiche/spring'
+                                         sh 'docker pull mohamedaminederouiche05/spring'
 
                                          // Run Docker Compose
                                          sh 'docker compose up -d'
