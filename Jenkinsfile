@@ -92,16 +92,16 @@ pipeline {
         }
 
 
+stage('Push Docker Image') {
+    steps {
+        script {
+            docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_HUB_CREDENTIALS}") {
+                docker.image("${DOCKER_IMAGE_NAME}").push()
+            }
+        }
+    }
+}
 
-             stage('Push Docker Image') {
-                              steps {
-                                  script {
-                                      docker.withRegistry('https://index.docker.io/v1/','DockerHub') {
-                                          docker.image("${DOCKER_IMAGE_NAME}").push()
-                                      }
-                                  }
-                              }
-               }
 
                
 
