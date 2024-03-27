@@ -1,3 +1,5 @@
+
+
 pipeline {
     agent any
 
@@ -7,7 +9,7 @@ pipeline {
         NEXUS_IP = "192.168.33.10"
         NEXUS_PORT = "8081"
         NEXUS_LOGIN = "nexus"
-        NEXUS_URL = "192.168.1.23:8081" // Correction de l'URL Nexus
+        NEXUS_URL = "http://192.168.1.23:8081" // Correction de l'URL Nexus
         NEXUS_REPOSITORY = "twin6-scriptSquad-foyer"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
@@ -91,48 +93,44 @@ pipeline {
             }
         }
 
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_HUB_CREDENTIALS}") {
+                        docker.image("${DOCKER_IMAGE_NAME}").push()
+                    }
+                }
+            }
+        }
 
-stage('Push Docker Image') {
-    steps {
-        script {
-            docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_HUB_CREDENTIALS}") {
-                docker.image("${DOCKER_IMAGE_NAME}").push()
+        stage('Run Docker Compose') {
+            steps {
+                script {
+                    // Perform Docker login
+                    sh 'docker login -u mohamedaminederouiche -p Rafaleao17'
+
+                    // Pull the Docker image
+                    sh 'docker pull ${DOCKER_IMAGE_NAME}'
+
+                    // Run Docker Compose
+                    sh 'docker-compose up -d'
+                }
+            }
+        }
+
+        stage('Prometheus Setup') {
+            steps {
+                sh 'docker-compose up -d prometheus'
+            }
+        }
+
+        stage('Grafana Setup') {
+            steps {
+                sh 'docker-compose up -d grafana'
             }
         }
     }
-}
 
-
-               
-
-
-                         stage('Run Docker Compose') {
-                                 steps {
-                                     script {
-                                         // Perform Docker login
-                                         sh 'docker login -u mohamedaminederouiche -p Rafaleao17'
-
-                                         // Pull the Docker image
-                                         sh 'docker pull mohamedaminederouiche/spring'
-
-                                         // Run Docker Compose
-                                         sh 'docker compose up -d'
-                                     }
-                                 }
-                             }
-
-                             stage('Prometheus Setup') {
-                                                         steps {
-                                                             sh 'docker compose up -d prometheus'
-                                                         }
-                                                     }
-                                             stage('Grafana Setup') {
-                                                         steps {
-                                                             sh 'docker compose up -d grafana'
-                                                         }
-                                                     }
-
- }
     post {
         success {
             echo 'Build successful! Deploying...'
