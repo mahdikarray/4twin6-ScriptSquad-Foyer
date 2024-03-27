@@ -11,6 +11,10 @@ services:
       - NEXUS_USERNAME=admin
       - NEXUS_PASSWORD=201JMt4720
       - ARTIFACT_PATH=com/example/4twin6-ScriptSquad-Foyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1.jar
+      - SPRING_DATASOURCE_URL=jdbc:mysql://dbmysql:3306/divops\?createDatabaseIfNotExist=true\&useUnicode=true\&useJDBCCompliantTimezoneShift=true\&useLegacyDatetimeCode=false&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+
     depends_on:
       - dbmysql
 
