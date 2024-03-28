@@ -16,9 +16,9 @@ services:
       - SPRING_DATASOURCE_PASSWORD=root
 
     depends_on:
-      - dbmysql
+      - my-dbmysql
 
-  dbmysql:
+  my-dbmysql:
         image: "mysql:5.6"
         container_name: my-dbmysql
         environment:
