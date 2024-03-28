@@ -33,7 +33,7 @@ DOCKER_IMAGE_NAME = "karraymahdi/spring"
                 sh 'mvn clean compile'
             }
         }
-       stage('Test') {
+     stage('Test') {
             steps {
                         // Run Maven tests
                 sh 'mvn test'
