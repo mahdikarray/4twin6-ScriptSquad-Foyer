@@ -50,19 +50,8 @@ class UniversiteServiceTest {
         Assertions.assertEquals("Edited University Address", retrievedUniversity.getAdresse());
     }
 
-//    @Test
-//    void testFindExistingUniversity() {
-//        // Assuming there is an existing University with ID 1 in the database
-//        long existingUniversityId = 1L;
 //
-//        // Retrieve the existing University from the database
-//        Universite existingUniversity = iuniversiteService.findById(existingUniversityId);
-//
-//        // Assertions
-//        Assertions.assertNotNull(existingUniversity, "Existing University should not be null");
-//        Assertions.assertNotNull(existingUniversity.getNomUniversite(), "University name should not be null");
-//        Assertions.assertNotNull(existingUniversity.getAdresse(), "University address should not be null");
-//    }
+
 
     @Test
     void testDeleteExistingUniversity() {

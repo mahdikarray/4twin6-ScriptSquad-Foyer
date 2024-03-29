@@ -6,7 +6,7 @@ environment {
         NEXUS_IP = "192.168.33.10"
         NEXUS_PORT = "8081"
         NEXUS_LOGIN = "nexus"
-        NEXUS_URL = "http://192.168.1.37:8081/"
+        NEXUS_URL = "http://192.168.1.36:8081/"
         NEXUS_REPOSITORY = "twin6-scriptSquad-foyer"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "adminfayrouz"
