@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("foyer")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 
 public class FoyerRestController {
 
