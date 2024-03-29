@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("chambre")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 public class ChambreRestController {
     @Autowired
     IChambreService iChambreService;
