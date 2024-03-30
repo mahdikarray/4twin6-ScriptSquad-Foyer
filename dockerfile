@@ -12,7 +12,7 @@ RUN curl -u admin:nexus "http://192.168.1.14:8081/repository/twin6-scriptSquad-f
 
 	
 # Expose the port that the Spring Boot application will run on
-EXPOSE 8050
+EXPOSE 8083
 # Specify the command to run the Spring Boot application when the container starts
 ENTRYPOINT ["java", "-jar", "twin6scriptsquadfoyer-0.0.1-20240327.195512-38.jar"]
 
