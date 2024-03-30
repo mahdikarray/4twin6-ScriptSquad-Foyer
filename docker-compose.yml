@@ -4,7 +4,7 @@ services:
   spring:
     image: mohamedaminederouiche05/spring
     ports:
-      - "8082:8080"
+      - "8050:8083"
     environment:
       - NEXUS_URL=http://192.168.1.14:8081/
       - NEXUS_REPOSITORY=twin6-scriptSquad-foyer
