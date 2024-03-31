@@ -4,7 +4,7 @@ pipeline {
     environment {
         SNAP_REPO = 'twin6scriptsquadfoyer-SNAPSHOT'
         RELEASE_REPO = 'twin6-scriptSquad-foyer'
-        NEXUS_IP = "192.168.33.10"
+        NEXUS_IP = "192.168.1.14"
         NEXUS_PORT = "8081"
         NEXUS_LOGIN = "nexus"
         NEXUS_URL = "192.168.1.14:8081" // Correction de l'URL Nexus
