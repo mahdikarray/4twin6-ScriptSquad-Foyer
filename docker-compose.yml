@@ -10,15 +10,15 @@ services:
       - NEXUS_REPOSITORY=twin6-scriptSquad-foyer
       - NEXUS_USERNAME=admin
       - NEXUS_PASSWORD=nexus
-      - ARTIFACT_PATH=com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240331.050950-57.jar
+      - ARTIFACT_PATH=com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240408.071534-58.jar
     depends_on:
       - dbmysql
 
   dbmysql:
     image: "mysql:5.6"
     container_name: my-dbmysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
+    # environment:
+    #   - MYSQL_ROOT_PASSWORD=root
     ports:
       - "3305:3306"
     restart: unless-stopped
