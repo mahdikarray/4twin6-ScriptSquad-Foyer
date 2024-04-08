@@ -56,27 +56,27 @@ pipeline {
             }
         }
 
-        // stage("UploadArtifact") {
-        //     steps {
-        //         nexusArtifactUploader(
-        //             nexusVersion: 'nexus3',
-        //             protocol: 'http',
-        //             nexusUrl: "${NEXUS_URL}", // Utilisation de la variable NEXUS_URL
-        //             groupId: 'com.example',
-        //             version: "0.0.1-SNAPSHOT",
-        //             repository: 'twin6-scriptSquad-foyer',
-        //             credentialsId: 'nexus',
-        //             artifacts: [
-        //                 [
-        //                     artifactId: 'twin6scriptsquadfoyer',
-        //                     classifier: '',
-        //                     file: 'target/twin6scriptsquadfoyer-0.0.1-SNAPSHOT.jar',
-        //                     type: 'jar'
-        //                 ]
-        //             ]
-        //         )
-        //     }
-        // }
+        stage("UploadArtifact") {
+            steps {
+                nexusArtifactUploader(
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    nexusUrl: "${NEXUS_URL}", // Utilisation de la variable NEXUS_URL
+                    groupId: 'com.example',
+                    version: "0.0.1-SNAPSHOT",
+                    repository: 'twin6-scriptSquad-foyer',
+                    credentialsId: 'nexus',
+                    artifacts: [
+                        [
+                            artifactId: 'twin6scriptsquadfoyer',
+                            classifier: '',
+                            file: 'target/twin6scriptsquadfoyer-0.0.1-SNAPSHOT.jar',
+                            type: 'jar'
+                        ]
+                    ]
+                )
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
