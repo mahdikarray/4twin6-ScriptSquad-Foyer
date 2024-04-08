@@ -6,11 +6,11 @@ services:
     ports:
       - "8083:8083"
     environment:
-      - NEXUS_URL=http://192.168.1.21:8081/
+      - NEXUS_URL=192.168.1.21:8081
       - NEXUS_REPOSITORY=twin6-scriptSquad-foyer
       - NEXUS_USERNAME=admin
       - NEXUS_PASSWORD=nexus
-      - ARTIFACT_PATH=com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240408.071534-58.jar
+      - ARTIFACT_PATH=com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240408.163149-60.jar
     depends_on:
       - dbmysql
 
