@@ -11,7 +11,7 @@ pipeline {
         NEXUS_REPOSITORY = "twin6-scriptSquad-foyer"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
-        ARTIFACT_PATH = "com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240408.163149-60.jar"
+        ARTIFACT_PATH = "com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240408.171214-61.jar"
         DOCKER_IMAGE_NAME = "mohamedaminederouiche05/spring"
         DOCKER_HUB_CREDENTIALS = 'docker'
         DOCKER_COMPOSE_VERSION = "1.29.2"
