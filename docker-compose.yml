@@ -13,6 +13,8 @@ services:
       - ARTIFACT_PATH=com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240408.163149-60.jar
     depends_on:
       - dbmysql
+    links:   # Ajout de cette ligne
+      - dbmysql   # Ajout de cette ligne
 
   dbmysql:
     image: "mysql:5.6"
@@ -20,7 +22,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
     ports:
-      - "3305:3306"
+      - "3306:3306"
     restart: unless-stopped
     volumes:
       - db:/var/lib/mysql
