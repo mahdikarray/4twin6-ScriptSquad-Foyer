@@ -11,7 +11,7 @@ pipeline {
         NEXUS_REPOSITORY = "twin6-scriptSquad-foyer"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
-        ARTIFACT_PATH = "com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240408.171214-61.jar"
+        ARTIFACT_PATH = "com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240408.211911-62.jar"
         DOCKER_IMAGE_NAME = "mohamedaminederouiche05/spring"
         DOCKER_HUB_CREDENTIALS = 'docker'
         DOCKER_COMPOSE_VERSION = "1.29.2"
@@ -56,27 +56,27 @@ pipeline {
             }
         }
 
-        stage("UploadArtifact") {
-            steps {
-                nexusArtifactUploader(
-                    nexusVersion: 'nexus3',
-                    protocol: 'http',
-                    nexusUrl: "${NEXUS_URL}", // Utilisation de la variable NEXUS_URL
-                    groupId: 'com.example',
-                    version: "0.0.1-SNAPSHOT",
-                    repository: 'twin6-scriptSquad-foyer',
-                    credentialsId: 'nexus',
-                    artifacts: [
-                        [
-                            artifactId: 'twin6scriptsquadfoyer',
-                            classifier: '',
-                            file: 'target/twin6scriptsquadfoyer-0.0.1-SNAPSHOT.jar',
-                            type: 'jar'
-                        ]
-                    ]
-                )
-            }
-        }
+        // stage("UploadArtifact") {
+        //     steps {
+        //         nexusArtifactUploader(
+        //             nexusVersion: 'nexus3',
+        //             protocol: 'http',
+        //             nexusUrl: "${NEXUS_URL}", // Utilisation de la variable NEXUS_URL
+        //             groupId: 'com.example',
+        //             version: "0.0.1-SNAPSHOT",
+        //             repository: 'twin6-scriptSquad-foyer',
+        //             credentialsId: 'nexus',
+        //             artifacts: [
+        //                 [
+        //                     artifactId: 'twin6scriptsquadfoyer',
+        //                     classifier: '',
+        //                     file: 'target/twin6scriptsquadfoyer-0.0.1-SNAPSHOT.jar',
+        //                     type: 'jar'
+        //                 ]
+        //             ]
+        //         )
+        //     }
+        // }
 
         stage('Build Docker Image') {
             steps {
