@@ -8,7 +8,7 @@ WORKDIR /app
 RUN apk --no-cache add curl
 
 # Download the Spring Boot application JAR file from Nexus
-RUN curl -u admin:nexus "http://192.168.1.14:8081/repository/twin6-scriptSquad-foyer/com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240331.050950-57.jar"  --output /app/twin6scriptsquadfoyer-0.0.1-20240331.050950-57.jar
+RUN curl -u admin:nexus "http://192.168.1.21:8081/repository/twin6-scriptSquad-foyer/com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240331.050950-57.jar"  --output /app/twin6scriptsquadfoyer-0.0.1-20240331.050950-57.jar
 	
 # Expose the port that the Spring Boot application will run on
 EXPOSE 8083

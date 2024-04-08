@@ -4,10 +4,10 @@ pipeline {
     environment {
         SNAP_REPO = 'twin6scriptsquadfoyer-SNAPSHOT'
         RELEASE_REPO = 'twin6-scriptSquad-foyer'
-        NEXUS_IP = "192.168.1.14"
+        NEXUS_IP = "192.168.1.21"
         NEXUS_PORT = "8081"
         NEXUS_LOGIN = "nexus"
-        NEXUS_URL = "192.168.1.14:8081" // Correction de l'URL Nexus
+        NEXUS_URL = "192.168.1.21:8081" // Correction de l'URL Nexus
         NEXUS_REPOSITORY = "twin6-scriptSquad-foyer"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
@@ -56,27 +56,27 @@ pipeline {
             }
         }
 
-        // stage("UploadArtifact") {
-        //     steps {
-        //         nexusArtifactUploader(
-        //             nexusVersion: 'nexus3',
-        //             protocol: 'http',
-        //             nexusUrl: "${NEXUS_URL}", // Utilisation de la variable NEXUS_URL
-        //             groupId: 'com.example',
-        //             version: "0.0.1-SNAPSHOT",
-        //             repository: 'twin6-scriptSquad-foyer',
-        //             credentialsId: 'nexus',
-        //             artifacts: [
-        //                 [
-        //                     artifactId: 'twin6scriptsquadfoyer',
-        //                     classifier: '',
-        //                     file: 'target/twin6scriptsquadfoyer-0.0.1-SNAPSHOT.jar',
-        //                     type: 'jar'
-        //                 ]
-        //             ]
-        //         )
-        //     }
-        // }
+        stage("UploadArtifact") {
+            steps {
+                nexusArtifactUploader(
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    nexusUrl: "${NEXUS_URL}", // Utilisation de la variable NEXUS_URL
+                    groupId: 'com.example',
+                    version: "0.0.1-SNAPSHOT",
+                    repository: 'twin6-scriptSquad-foyer',
+                    credentialsId: 'nexus',
+                    artifacts: [
+                        [
+                            artifactId: 'twin6scriptsquadfoyer',
+                            classifier: '',
+                            file: 'target/twin6scriptsquadfoyer-0.0.1-SNAPSHOT.jar',
+                            type: 'jar'
+                        ]
+                    ]
+                )
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
