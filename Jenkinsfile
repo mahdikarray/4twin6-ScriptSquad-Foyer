@@ -56,7 +56,7 @@ stage('Package') {
                 sh 'mvn package'
             }
         }
-       stage("UploadArtifact") {
+  /*     stage("UploadArtifact") {
            steps {
                nexusArtifactUploader(
                    nexusVersion: 'nexus3',
@@ -76,7 +76,7 @@ stage('Package') {
                    ]
                )
            }
-       }
+       }*/
        stage('Build Docker Image') {
                    steps {
                        script {
