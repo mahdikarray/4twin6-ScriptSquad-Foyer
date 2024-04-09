@@ -61,14 +61,14 @@ stage('Package') {
                nexusArtifactUploader(
                    nexusVersion: 'nexus3',
                    protocol: 'http',
-                   nexusUrl: '192.168.33.10:8081',
+                   nexusUrl: 'http://192.168.33.10:8081',
                    groupId: 'com.example',
                    version: "0.0.1-SNAPSHOT",
                    repository: 'twin6-scriptSquad-foyer',
                    credentialsId: 'nexus',
                    artifacts: [
                        [
-                           artifactId: 'twin6scriptsquadfoyer', // Correct artifactId
+                           artifactId: 'twin6scriptsquadfoyer',
                            classifier: '',
                            file: 'target/twin6scriptsquadfoyer-0.0.1-SNAPSHOT.jar',
                            type: 'jar'
