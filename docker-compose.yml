@@ -90,7 +90,7 @@ services:
     volumes:
       - grafana_data:/var/lib/grafana
   angular-app:
-    image: fedibenamor/angular:latest
+    image: mohamedaminederouiche05/angular:latest
     ports:
       - "4201:80"  # Specify ports as strings
     restart: always  # Restart should be under the service
