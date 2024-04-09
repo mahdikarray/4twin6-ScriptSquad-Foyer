@@ -1,40 +1,30 @@
 version: '3.8'
-
 services:
   spring:
     image: karraymahdi/spring
     ports:
-      - "8082:8080"
+      - "8087:8087"  # Specify ports as strings
     environment:
       - NEXUS_URL=http://192.168.33.10:8081/
-      - NEXUS_REPOSITORY=twin6-scriptSquad-foyer
-      - NEXUS_USERNAME=admin
-      - NEXUS_PASSWORD=201JMt4720
-      - ARTIFACT_PATH=com/example/4twin6-ScriptSquad-Foyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1.jar
-      - SPRING_DATASOURCE_URL=jdbc:mysql://dbmysql:3306/divops\?createDatabaseIfNotExist=true\&useUnicode=true\&useJDBCCompliantTimezoneShift=true\&useLegacyDatetimeCode=false&serverTimezone=UTC
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root
-
+        - NEXUS_REPOSITORY=twin6-scriptSquad-foyer
+        - NEXUS_USERNAME=admin
+        - NEXUS_PASSWORD=201JMt4720
+        - ARTIFACT_PATH=com/example/4twin6-ScriptSquad-Foyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1.jar
+        - SPRING_DATASOURCE_URL=jdbc:mysql://dbmysql:3306/divops\?createDatabaseIfNotExist=true\&useUnicode=true\&useJDBCCompliantTimezoneShift=true\&useLegacyDatetimeCode=false&serverTimezone=UTC
+        - SPRING_DATASOURCE_USERNAME=root
+        - SPRING_DATASOURCE_PASSWORD=root
     depends_on:
       - dbmysql
-
   dbmysql:
-        image: "mysql:5.6"
-        container_name: my-dbmysql
-        environment:
-          - MYSQL_ROOT_PASSWORD=root
-        ports:
-          - "3305:3306"
-        restart: unless-stopped
-        volumes:
-          - db:/var/lib/mysql
-  angular:
-    container_name: FoyerAngular
-    image: karraymahdi/angular:latest
+    image: "mysql:5.6"
+    container_name: dbmysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
     ports:
-      - "4200:80"
-    restart: always
-
+      - "3305:3306"  # Specify ports as strings
+    restart: unless-stopped
+    volumes:
+      - db:/var/lib/mysql
   prometheus:
     image: prom/prometheus
     ports:
@@ -49,7 +39,11 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=esprit
     volumes:
       - grafana_data:/var/lib/grafana
+  # angular-app:
+  #   image: mohamedaminederouiche05/angular:latest
+  #   ports:
+  #     - "4201:80"  # Specify ports as strings
+  #   restart: always  # Restart should be under the service
 volumes:
   grafana_data:
   db:
-
