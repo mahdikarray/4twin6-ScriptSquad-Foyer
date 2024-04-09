@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 
 import java.util.List;
@@ -105,14 +104,8 @@ public Chambre addChambre(Chambre c)
                 var bloc = iChambreService.getBlocByChambre(idChambre);
                 return new ResponseEntity<>(bloc, HttpStatus.OK);
             }
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("http://192.168.33.10:4201")
-                .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowedHeaders("*")
-                .allowCredentials(true)
-                .maxAge(3600);
-    }
+
+
 
 
         }
