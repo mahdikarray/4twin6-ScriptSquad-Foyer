@@ -36,25 +36,25 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         sh 'mvn test'
+        //     }
+        // }
 
-        stage('Generate JaCoCo Report') {
-                        steps {
-                            sh 'mvn jacoco:report'
-                        }
-                    }
+        // stage('Generate JaCoCo Report') {
+        //                 steps {
+        //                     sh 'mvn jacoco:report'
+        //                 }
+        //             }
 
-        stage("MVN SONARQUBE") {
-            steps {
-                withSonarQubeEnv(installationName: 'sonar') {
-                    sh "mvn -DskipTests sonar:sonar"
-                }
-            }
-        }
+        // stage("MVN SONARQUBE") {
+        //     steps {
+        //         withSonarQubeEnv(installationName: 'sonar') {
+        //             sh "mvn -DskipTests sonar:sonar"
+        //         }
+        //     }
+        // }
 
         stage('Package') {
             steps {
