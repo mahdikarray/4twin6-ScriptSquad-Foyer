@@ -5,7 +5,7 @@ services:
     ports:
       - "8087:8087"  # Specify ports as strings
     environment:
-      - NEXUS_URL=http://192.168.33.10:8081/
+        - NEXUS_URL=http://192.168.33.10:8081/
         - NEXUS_REPOSITORY=twin6-scriptSquad-foyer
         - NEXUS_USERNAME=admin
         - NEXUS_PASSWORD=201JMt4720
