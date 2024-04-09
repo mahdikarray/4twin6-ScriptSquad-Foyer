@@ -7,7 +7,7 @@ pipeline {
         NEXUS_IP = "192.168.1.21"
         NEXUS_PORT = "8081"
         NEXUS_LOGIN = "nexus"
-        NEXUS_URL = "192.168.1.21:8081" // Correction de l'URL Nexus
+        NEXUS_URL = "192.168.1.21:8081" 
         NEXUS_REPOSITORY = "twin6-scriptSquad-foyer"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
@@ -36,19 +36,25 @@ pipeline {
             }
         }
 
-        // stage('Test') {
-        //     steps {
-        //         sh 'mvn test'
-        //     }
-        // }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
 
-        // stage("MVN SONARQUBE") {
-        //     steps {
-        //         withSonarQubeEnv(installationName: 'sonar') {
-        //             sh "mvn -DskipTests sonar:sonar"
-        //         }
-        //     }
-        // }
+        stage('Generate JaCoCo Report') {
+                        steps {
+                            sh 'mvn jacoco:report'
+                        }
+                    }
+
+        stage("MVN SONARQUBE") {
+            steps {
+                withSonarQubeEnv(installationName: 'sonar') {
+                    sh "mvn -DskipTests sonar:sonar"
+                }
+            }
+        }
 
         stage('Package') {
             steps {
