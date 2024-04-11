@@ -48,5 +48,7 @@ public class FoyerService implements IFoyerService{
         foyerRepository.delete(e);
     }
 
-   
+    public List<Foyer> searchFoyersByNomFoyer(String nomFoyer) {
+        return foyerRepository.findByNomFoyerContainingIgnoreCase(nomFoyer);
+    }
 }

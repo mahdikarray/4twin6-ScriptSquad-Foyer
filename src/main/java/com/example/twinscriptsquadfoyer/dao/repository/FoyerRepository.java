@@ -9,7 +9,7 @@ import java.util.List;
 public interface FoyerRepository extends JpaRepository<Foyer, Long> {
 
 
-   
+    List<Foyer> findByNomFoyerContainingIgnoreCase(String nomFoyer);
 
     Foyer findByNomFoyer(String nomFoyer);
 

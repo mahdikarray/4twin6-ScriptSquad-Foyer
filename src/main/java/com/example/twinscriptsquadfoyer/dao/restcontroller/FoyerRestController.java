@@ -50,7 +50,11 @@ public class FoyerRestController {
 
 
 
-    
+    @GetMapping("/search/{nomFoyer}")
+    public ResponseEntity<List<Foyer>> searchFoyersByNomFoyer(@PathVariable String nomFoyer) {
+        List<Foyer> foyers = foyerService.searchFoyersByNomFoyer(nomFoyer);
+        return ResponseEntity.ok(foyers);
+    }
 }
 
 
