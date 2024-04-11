@@ -1,13 +1,10 @@
 package com.example.twinscriptsquadfoyer.dao.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
