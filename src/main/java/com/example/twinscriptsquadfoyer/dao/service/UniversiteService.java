@@ -1,9 +1,7 @@
 package com.example.twinscriptsquadfoyer.dao.service;
 
-import com.example.twinscriptsquadfoyer.dao.entity.Chambre;
 import com.example.twinscriptsquadfoyer.dao.entity.Foyer;
 import com.example.twinscriptsquadfoyer.dao.entity.Universite;
-import com.example.twinscriptsquadfoyer.dao.repository.BlocRepository;
 import com.example.twinscriptsquadfoyer.dao.repository.FoyerRepository;
 import com.example.twinscriptsquadfoyer.dao.repository.UniversiteRepo;
 import jakarta.persistence.EntityNotFoundException;

@@ -1,6 +1,5 @@
 package com.example.twinscriptsquadfoyer.dao.service;
 
-import com.example.twinscriptsquadfoyer.dao.entity.Bloc;
 import com.example.twinscriptsquadfoyer.dao.entity.Foyer;
 import com.example.twinscriptsquadfoyer.dao.entity.Universite;
 
