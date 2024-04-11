@@ -56,11 +56,11 @@ pipeline {
             }
         }
 
-        // stage('Package') {
-        //     steps {
-        //         sh 'mvn package'
-        //     }
-        // }
+        stage('Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
 
         // stage("UploadArtifact") {
         //     steps {
@@ -84,59 +84,59 @@ pipeline {
         //     }
         // }
 
-        // stage('Build Docker Image') {
-        //     steps {
-        //         script {
-        //             // Build the Docker image using the Dockerfile
-        //             docker.build("${DOCKER_IMAGE_NAME}", "--build-arg NEXUS_URL=${NEXUS_URL} \
-        //                 --build-arg NEXUS_REPOSITORY=${NEXUS_REPOSITORY} \
-        //                 --build-arg NEXUS_USERNAME=${NEXUS_USERNAME} \
-        //                 --build-arg NEXUS_PASSWORD=${NEXUS_PASSWORD} \
-        //                 --build-arg ARTIFACT_PATH=${ARTIFACT_PATH} .")
-        //         }
-        //     }
-        // }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image using the Dockerfile
+                    docker.build("${DOCKER_IMAGE_NAME}", "--build-arg NEXUS_URL=${NEXUS_URL} \
+                        --build-arg NEXUS_REPOSITORY=${NEXUS_REPOSITORY} \
+                        --build-arg NEXUS_USERNAME=${NEXUS_USERNAME} \
+                        --build-arg NEXUS_PASSWORD=${NEXUS_PASSWORD} \
+                        --build-arg ARTIFACT_PATH=${ARTIFACT_PATH} .")
+                }
+            }
+        }
 
 
-// stage('Push Docker Image') {
-//     steps {
-//         script {
-//             docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_HUB_CREDENTIALS}") {
-//                 docker.image("${DOCKER_IMAGE_NAME}").push()
-//             }
-//         }
-//     }
-// }
+stage('Push Docker Image') {
+    steps {
+        script {
+            docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_HUB_CREDENTIALS}") {
+                docker.image("${DOCKER_IMAGE_NAME}").push()
+            }
+        }
+    }
+}
 
 
                
 
 
-                        //  stage('Run Docker Compose') {
-                        //          steps {
-                        //              script {
-                        //                  // Perform Docker login
-                        //                  sh 'docker login -u mohamedaminederouiche05 -p Rafaleao17'
+                         stage('Run Docker Compose') {
+                                 steps {
+                                     script {
+                                         // Perform Docker login
+                                         sh 'docker login -u mohamedaminederouiche05 -p Rafaleao17'
 
-                        //                  // Pull the Docker image
-                        //                  sh 'docker pull mohamedaminederouiche05/spring'
+                                         // Pull the Docker image
+                                         sh 'docker pull mohamedaminederouiche05/spring'
 
-                        //                  // Run Docker Compose
-                        //                  sh 'docker compose up -d'
-                        //              }
-                        //          }
-                        //      }
+                                         // Run Docker Compose
+                                         sh 'docker compose up -d'
+                                     }
+                                 }
+                             }
 
-                            //  stage('Prometheus Setup') {
-                            //                              steps {
-                            //                                  sh 'docker compose up -d prometheus'
-                            //                              }
-                            //                          }
-                            //                  stage('Grafana Setup') {
-                            //                              steps {
-                            //                                  sh 'docker compose up -d grafana'
-                            //                              }
-                            //                          }
+                             stage('Prometheus Setup') {
+                                                         steps {
+                                                             sh 'docker compose up -d prometheus'
+                                                         }
+                                                     }
+                                             stage('Grafana Setup') {
+                                                         steps {
+                                                             sh 'docker compose up -d grafana'
+                                                         }
+                                                     }
 
  }
     post {
