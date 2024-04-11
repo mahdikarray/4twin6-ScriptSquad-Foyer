@@ -27,19 +27,6 @@ public class Foyer implements Serializable {
     @Column(name = "capaciteFoyer")
     private long capaciteFoyer;
 
-//gzdhdhdhzhdhzdhdhzd
 
-  //  @OneToOne(mappedBy = "foyer")
-    // @JsonManagedReference
-   // @JsonIgnore
-    //private Universite universite ;
-
-
- //   @OneToMany(mappedBy = "foyer")
-  //  @JsonIgnore
-  //  private Set<Bloc> blocs = new HashSet<>();
-  //  @OneToMany( mappedBy = "foyer")
-   // @JsonIgnore
-   // private List<Bloc> blocss;
 
 }
