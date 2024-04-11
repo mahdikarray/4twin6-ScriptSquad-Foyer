@@ -22,10 +22,10 @@ public class FoyerRestController {
     IFoyerService iFoyerService;
     FoyerService foyerService;
 
-   private  String protocol = "http://";
-   private  String ipAddress = "192.168.1.21";
-   private  String port = "4201";
-   private  String allowedOrigin = protocol + ipAddress + ":" + port;
+   private final String protocol = "http://";
+   private final String ipAddress = "192.168.1.21";
+   private final String port = "4201";
+   private final String allowedOrigin = protocol + ipAddress + ":" + port;
 
 
     @CrossOrigin(origins = {allowedOrigin})
