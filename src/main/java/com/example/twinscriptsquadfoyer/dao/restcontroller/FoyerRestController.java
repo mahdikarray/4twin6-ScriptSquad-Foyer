@@ -29,25 +29,21 @@ public class FoyerRestController {
     }
 
     @PostMapping("/add")
-    //@PreAuthorize("hasRole('ADMIN')")
     public Foyer addFoyer(@RequestBody Foyer f) {
         return iFoyerService.addFoyer(f);
     }
 
     @PutMapping("update/{id}")
-   // @PreAuthorize("hasRole('ADMIN')")
     public Foyer updateFoyer(@RequestBody Foyer f){
         return iFoyerService.editFoyer(f);
     }
 
     @DeleteMapping("/delete/{id}")
-    //@PreAuthorize("hasRole('ADMIN')")
     public void deleteFoyer(@PathVariable("id") Long id){
         iFoyerService.deleteById(id);
     }
 
     @GetMapping("/{id}")
-    //@PreAuthorize("hasRole('ADMIN')")
     public Foyer findById(@PathVariable("id") Long id){
         return iFoyerService.findById(id);
     }
