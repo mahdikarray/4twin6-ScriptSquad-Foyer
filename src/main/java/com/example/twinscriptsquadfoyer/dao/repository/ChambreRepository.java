@@ -39,7 +39,4 @@ public interface ChambreRepository extends JpaRepository<Chambre, Long> {
 
 
     boolean existsByIdChambreNotAndNumeroChambre(Long idChambre, Long numeroChambre);
-
-
 }
-

@@ -44,5 +44,4 @@ public class UniversiteController {
     public Universite findById(@PathVariable("id") Long id){
         return iUniversiteService.findById(id);
     }
-
 }

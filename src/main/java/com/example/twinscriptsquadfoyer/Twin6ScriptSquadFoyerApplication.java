@@ -9,5 +9,4 @@ public class Twin6ScriptSquadFoyerApplication {
     public static void main(String[] args) {
         SpringApplication.run(Twin6ScriptSquadFoyerApplication.class, args);
     }
-
 }

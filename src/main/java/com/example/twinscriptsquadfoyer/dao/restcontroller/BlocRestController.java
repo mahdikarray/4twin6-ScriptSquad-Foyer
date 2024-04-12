@@ -102,12 +102,4 @@ public class BlocRestController {
 
         return iBlocService.affecterChambresABloc(chambreIds, nomBloc);
     }
-
-
-
-
-
-
-
-
 }

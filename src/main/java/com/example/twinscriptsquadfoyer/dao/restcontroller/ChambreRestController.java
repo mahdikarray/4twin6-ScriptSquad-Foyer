@@ -103,8 +103,4 @@ public Chambre addChambre(Chambre c)
                 var bloc = iChambreService.getBlocByChambre(idChambre);
                 return new ResponseEntity<>(bloc, HttpStatus.OK);
             }
-
-
-
-
         }

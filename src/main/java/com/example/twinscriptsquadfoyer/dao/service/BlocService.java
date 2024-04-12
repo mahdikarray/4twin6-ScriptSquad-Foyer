@@ -108,5 +108,4 @@ public class BlocService implements IBlocService {
     public Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc) {
         return null;
     }
-
 }

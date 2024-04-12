@@ -29,5 +29,4 @@ public class Universite implements Serializable {
 @OneToOne(cascade = CascadeType.ALL)
 @JsonIgnore
  private Foyer foyer;
-
 }

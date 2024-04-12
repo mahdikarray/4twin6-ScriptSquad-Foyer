@@ -16,4 +16,3 @@ public interface IFoyerService {
     void deleteById(long id);
     void delete(Foyer f);
 }
-

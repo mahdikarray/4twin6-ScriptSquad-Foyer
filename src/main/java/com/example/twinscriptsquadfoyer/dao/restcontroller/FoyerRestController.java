@@ -56,6 +56,3 @@ public class FoyerRestController {
         return ResponseEntity.ok(foyers);
     }
 }
-
-
-

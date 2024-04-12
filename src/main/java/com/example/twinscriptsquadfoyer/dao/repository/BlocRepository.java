@@ -21,9 +21,4 @@ public interface BlocRepository extends JpaRepository<Bloc, Long> {
     List<Bloc> findByNomBlocOrCapaciteBloc(String nomBloc, int capaciteBloc);
 
     Bloc getBlocByNomBloc(String nombloc);
-
-
-
-
 }
-

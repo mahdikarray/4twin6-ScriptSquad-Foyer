@@ -99,5 +99,4 @@ public class Chambre implements Serializable {
     public void setBloc(Bloc bloc) {
         this.bloc = bloc;
     }
-
 }

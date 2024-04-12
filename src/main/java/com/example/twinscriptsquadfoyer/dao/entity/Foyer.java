@@ -23,7 +23,4 @@ public class Foyer implements Serializable {
 
     @Column(name = "capaciteFoyer")
     private long capaciteFoyer;
-
-
-
 }
