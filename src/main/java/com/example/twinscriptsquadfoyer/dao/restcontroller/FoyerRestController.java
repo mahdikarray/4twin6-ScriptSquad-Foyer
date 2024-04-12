@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("foyer")
-
+@CrossOrigin(origins = {"http://192.168.1.21:4201"})
 
 public class FoyerRestController {
 
