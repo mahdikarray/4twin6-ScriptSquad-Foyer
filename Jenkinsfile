@@ -10,8 +10,7 @@ environment {
         NEXUS_REPOSITORY = "twin6-scriptSquad-foyer"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "adminfayrouz"
-        ARTIFACT_PATH=com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240409.025632-63.jar
-        NEXUS_CREDENTIAL_ID = "nexus"
+        ARTIFACT_PATH = "com/example/4twin6-ScriptSquad-Foyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1.jar"        NEXUS_CREDENTIAL_ID = "nexus"
         DOCKER_IMAGE_NAME = "419hidouri/spring"
         DOCKER_HUB_CREDENTIALS = 'docker'
         DOCKER_COMPOSE_VERSION = "1.29.2"
