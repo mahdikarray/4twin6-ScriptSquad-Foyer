@@ -1,18 +1,18 @@
 pipeline {
     agent any
 environment {
-        SNAP_REPO = 'twin6scriptsquadfoyer-SNAPSHOT'
-        RELEASE_REPO = 'twin6-scriptSquad-foyer'
-        NEXUS_IP = "192.168.33.10"
-        NEXUS_PORT = "8081"
-        NEXUS_LOGIN = "nexus"
-        NEXUS_URL = "http://192.168.1.17:8081"
-        NEXUS_REPOSITORY = "twin6-scriptSquad-foyer"
-        NEXUS_USERNAME = "admin"
-        NEXUS_PASSWORD = "nexus"
-        ARTIFACT_PATH = "com/example/4twin6-ScriptSquad-Foyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1.jar"
+    SNAP_REPO = 'twin6scriptsquadfoyer-SNAPSHOT'
+    RELEASE_REPO = 'twin6-scriptSquad-foyer'
+    NEXUS_IP = "172.16.6.254" // Update Nexus IP address
+    NEXUS_PORT = "8081"
+    NEXUS_LOGIN = "nexus"
+    NEXUS_URL = "http://172.16.6.254:8081" // Update Nexus URL
+    NEXUS_REPOSITORY = "twin6-scriptSquad-foyer"
+    NEXUS_USERNAME = "admin"
+    NEXUS_PASSWORD = "nexus"
+    ARTIFACT_PATH = "com/example/4twin6-ScriptSquad-Foyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1.jar"
+}
 
- }
     stages {
         stage('Checkout') {
             steps {
