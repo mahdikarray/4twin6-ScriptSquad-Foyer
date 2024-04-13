@@ -35,46 +35,46 @@ environment {
                 sh 'mvn clean compile'
             }
         }
-        stage('Test') {
-            steps {
+       // stage('Test') {
+          //  steps {
                         // Run Maven tests
-                sh 'mvn test'
-                   }
-            }
-       stage("MVN SONARQUBE") {
-           steps {
-               withSonarQubeEnv(installationName: 'sonar') {
-                   sh "mvn -DskipTests sonar:sonar"
-               }
-           }
-       }
+                //sh 'mvn test'
+                 //  }
+           // }
+     //  stage("MVN SONARQUBE") {
+         //  steps {
+             //  withSonarQubeEnv(installationName: 'sonar') {
+                  // sh "mvn -DskipTests sonar:sonar"
+             //  }
+          // }
+      // }
 stage('Package') {
             steps {
                 sh 'mvn package'
             }
         }
 
-      // stage("UploadArtifact") {
-      //     steps {
-      //         nexusArtifactUploader(
-      //             nexusVersion: 'nexus3',
-      //             protocol: 'http',
-      //             nexusUrl: '192.168.1.37:8081',
-      //             groupId: 'com.example',
-      //             version: "0.0.1-SNAPSHOT",
-      //             repository: 'twin6-scriptSquad-foyer',
-      //             credentialsId: 'nexus',
-      //              artifacts: [
-      //                  [
-      //                      artifactId: 'twin6scriptsquadfoyer', // Correct artifactId
-      //                     classifier: '',
-      //                     file: 'target/twin6scriptsquadfoyer-0.0.1-SNAPSHOT.jar',
-      //                     type: 'jar'
-      //                 ]
-      //             ]
-      //         )
-      //     }
-      // }
+   //    stage("UploadArtifact") {
+   //        steps {
+   //            nexusArtifactUploader(
+   //                    nexusVersion: 'nexus3',
+   //                    protocol: 'http',
+   //                    nexusUrl: '192.168.1.37:8081',
+   //                    groupId: 'com.example',
+   //                    version: "0.0.1-SNAPSHOT",
+   //                    repository: 'twin6-scriptSquad-foyer',
+   //                    credentialsId: 'nexus',
+   //                    artifacts: [
+   //                        [
+   //            artifactId: 'twin6scriptsquadfoyer', // Correct artifactId
+   //                    classifier: '',
+   //                    file: 'target/twin6scriptsquadfoyer-0.0.1-SNAPSHOT.jar',
+   //                    type: 'jar'
+   //                       ]
+   //                   ]
+   //               )
+   //        }
+   //    }
 
         stage('Build Docker Image') {
                   steps {

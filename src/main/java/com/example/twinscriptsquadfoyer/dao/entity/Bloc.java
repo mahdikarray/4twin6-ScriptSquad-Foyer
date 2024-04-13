@@ -33,4 +33,7 @@ public class Bloc implements Serializable {
     @JsonIgnore
     private Foyer foyer;
 
+
+
+
 }
