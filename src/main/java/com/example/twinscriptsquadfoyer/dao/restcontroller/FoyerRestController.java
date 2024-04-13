@@ -6,6 +6,8 @@ import com.example.twinscriptsquadfoyer.dao.service.foyer.IFoyerService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import java.net.Socket;
+import org.springframework.beans.factory.annotation.Value;
 
 
 
@@ -16,13 +18,17 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("foyer")
-@CrossOrigin(origins = {"http://192.168.1.21:4201"})
+@CrossOrigin(origins = "${foyer.allowed.origins}")
 
 public class FoyerRestController {
 
     @Autowired
     IFoyerService iFoyerService;
     FoyerService foyerService;
+
+      @Value("${foyer.socket.ip}")
+    private String ip;
+
     @GetMapping("/findAll")
     public List<Foyer> findAll(){
         return  iFoyerService.findAll();
