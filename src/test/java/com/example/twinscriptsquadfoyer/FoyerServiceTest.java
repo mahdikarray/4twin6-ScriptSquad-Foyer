@@ -140,7 +140,7 @@ import static org.mockito.ArgumentMatchers.any;
 /*@SpringBootTest
 class FoyerServiceTest {
     @Autowired
-    private IFoyerService foyerService;
+    private IFoyerService foyerService;*/
 
     @Test
     void testAjouterFoyer() {
@@ -204,4 +204,5 @@ class FoyerServiceTest {
         // Assertion
         Assertions.assertNull(deletedFoyer);
     }
+    /*
 }*/
