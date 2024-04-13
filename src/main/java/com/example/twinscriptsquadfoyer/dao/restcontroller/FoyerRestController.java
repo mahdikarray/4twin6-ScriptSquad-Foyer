@@ -5,7 +5,7 @@ import com.example.twinscriptsquadfoyer.dao.service.foyer.FoyerService;
 import com.example.twinscriptsquadfoyer.dao.service.foyer.IFoyerService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.beans.factory.annotation.Value;
 
 
@@ -58,5 +58,5 @@ public class FoyerRestController {
 
 
 
-  
+
 }
