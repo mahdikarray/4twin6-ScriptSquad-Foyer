@@ -54,7 +54,7 @@ stage('Package') {
                nexusArtifactUploader(
                    nexusVersion: 'nexus3',
                    protocol: 'http',
-                   nexusUrl: '192.168.1.17:8081',
+                   nexusUrl: '172.16.6.254:8081',
                    groupId: 'com.example',
                    version: "0.0.1-SNAPSHOT",
                    repository: 'twin6-scriptSquad-foyer',
