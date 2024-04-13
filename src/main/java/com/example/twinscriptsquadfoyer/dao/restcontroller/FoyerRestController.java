@@ -26,8 +26,11 @@ public class FoyerRestController {
     IFoyerService iFoyerService;
     FoyerService foyerService;
 
-      @Value("${foyer.socket.ip}")
-    private String ip;
+    private  String ip;
+    public FoyerRestController(){}
+    public FoyerRestController(@Value("${foyer.socket.ip}") String ip) {
+        this.ip = ip;
+    }
 
     @GetMapping("/findAll")
     public List<Foyer> findAll(){
