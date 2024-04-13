@@ -6,7 +6,6 @@ import com.example.twinscriptsquadfoyer.dao.service.foyer.IFoyerService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import java.net.Socket;
 import org.springframework.beans.factory.annotation.Value;
 
 
