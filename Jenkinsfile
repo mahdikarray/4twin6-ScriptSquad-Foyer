@@ -37,13 +37,13 @@ environment {
                 sh 'mvn test'
                    }
             }
-       stage("MVN SONARQUBE") {
+      /*stage("MVN SONARQUBE") {
            steps {
                withSonarQubeEnv(installationName: 'sonar') {
                    sh "mvn -DskipTests sonar:sonar"
                }
            }
-       }
+       }*/
 stage('Package') {
             steps {
                 sh 'mvn package'
