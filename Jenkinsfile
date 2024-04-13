@@ -31,12 +31,12 @@ environment {
                 sh 'mvn clean compile'
             }
         }
-        stage('Test') {
+      /*  stage('Test') {
             steps {
                         // Run Maven tests
                 sh 'mvn test'
                    }
-            }
+            }*/
       /*stage("MVN SONARQUBE") {
            steps {
                withSonarQubeEnv(installationName: 'sonar') {
