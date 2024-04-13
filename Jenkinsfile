@@ -3,10 +3,10 @@ pipeline {
 environment {
         SNAP_REPO = 'twin6scriptsquadfoyer-SNAPSHOT'
         RELEASE_REPO = 'twin6-scriptSquad-foyer'
-        NEXUS_IP = "192.168.33.10"
+        NEXUS_IP = "http://172.16.6.254"
         NEXUS_PORT = "8081"
         NEXUS_LOGIN = "nexus"
-        NEXUS_URL = "http://192.168.1.17:8081"
+        NEXUS_URL = "http://http://172.16.6.254:8081"
         NEXUS_REPOSITORY = "twin6-scriptSquad-foyer"
         NEXUS_USERNAME = "admin"
         NEXUS_PASSWORD = "nexus"
@@ -54,7 +54,7 @@ stage('Package') {
                nexusArtifactUploader(
                    nexusVersion: 'nexus3',
                    protocol: 'http',
-                   nexusUrl: '192.168.1.17:8081',
+                   nexusUrl: 'http://172.16.6.254:8081',
                    groupId: 'com.example',
                    version: "0.0.1-SNAPSHOT",
                    repository: 'twin6-scriptSquad-foyer',
