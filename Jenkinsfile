@@ -132,7 +132,7 @@ stage('Prometheus Setup') {
         }
         failure {
             echo 'Build failed! Sending notification...'
-            // Add notification steps here
+            // Add notification steps here//
         }
     }
 }
