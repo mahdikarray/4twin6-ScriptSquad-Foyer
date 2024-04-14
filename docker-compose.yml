@@ -24,7 +24,10 @@ services:
       - "3305:3306"  # Specify ports as strings
     restart: unless-stopped
     volumes:
-      - db:/var/lib/mysql
+      - db:/var/lib/mysql   # Reference the named volume 'db'
+volumes:
+  db:  # Define the named volume 'db'
+
 #   prometheus:
 #     image: prom/prometheus
 #     ports:
@@ -39,6 +42,6 @@ services:
 #       - GF_SECURITY_ADMIN_PASSWORD=grafana
 #     volumes:
 #       - grafana_data:/var/lib/grafana
-# volumes:
+#volumes:
 #   grafana_data:
 #   db:
