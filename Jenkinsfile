@@ -11,7 +11,7 @@ environment {
     NEXUS_USERNAME = "admin"
     NEXUS_PASSWORD = "nexus"
     ARTIFACT_PATH = "com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240414.141345-1.jar"
-     DOCKER_IMAGE_NAME = "419hidouri/spring"
+     DOCKER_IMAGE_NAME = "ferjaniwael2000/spring"
         DOCKER_HUB_CREDENTIALS = 'dockerid'
         DOCKER_COMPOSE_VERSION = "2.24.7"
 }
@@ -87,15 +87,18 @@ stage('Package') {
         }
 
 
-stage('Push Docker Image') {
-    steps {
-        script {
-            docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_HUB_CREDENTIALS}") {
-                docker.image("${DOCKER_IMAGE_NAME}").push()
+ stage('Docker Hub') {
+            steps {
+                script {
+                    // Log in to Docker Hub
+                    withCredentials([usernamePassword(credentialsId: 'DOCKER', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+                        // Push the Docker image to Docker Hub
+                        sh 'docker push ferjaniwael2000/spring'
+                    }
+                }
             }
         }
-    }
-}
 
 
                
@@ -103,10 +106,10 @@ stage('Push Docker Image') {
       steps {
         script {
          // Perform Docker login
-        sh 'docker login -u 419hidouri -p adminfayrouz'
+        sh 'docker login -u ferjaniwael2000 -p passDocker178'
 
         // Pull the Docker image
-       sh 'docker pull 419hidouri/spring'
+       sh 'docker pull ferjaniwael2000/spring'
 
                                          // Run Docker Compose
          sh 'docker compose up -d'
