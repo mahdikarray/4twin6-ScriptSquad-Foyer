@@ -11,7 +11,7 @@ environment {
     NEXUS_USERNAME = "admin"
     NEXUS_PASSWORD = "nexus"
     ARTIFACT_PATH = "com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240414.141345-1.jar"
-     DOCKER_IMAGE_NAME = "ferjaniwael2000/spring"
+     DOCKER_IMAGE_NAME = "419hidouri/spring"
         DOCKER_HUB_CREDENTIALS = 'dockerid'
         DOCKER_COMPOSE_VERSION = "2.24.7"
 }
@@ -106,7 +106,7 @@ stage('Push Docker Image') {
         sh 'docker login -u 419hidouri -p adminfayrouz'
 
         // Pull the Docker image
-       sh 'docker pull adminfayrouz/spring'
+       sh 'docker pull 419hidouri/spring'
 
                                          // Run Docker Compose
          sh 'docker compose up -d'
