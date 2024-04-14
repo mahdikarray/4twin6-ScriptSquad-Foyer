@@ -43,3 +43,9 @@ public class Foyer implements Serializable {
     private List<Bloc> blocss;
 
 }
+
+
+
+
+
+
