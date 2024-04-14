@@ -90,12 +90,16 @@ stage('Package') {
 stage('Push Docker Image') {
     steps {
         script {
-            docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_HUB_CREDENTIALS}") {
+            def dockerUsername = 'ferjaniwael2000'
+            def dockerPassword = 'passDocker178'
+
+            docker.withRegistry('https://index.docker.io/v1/', dockerUsername, dockerPassword) {
                 docker.image("${DOCKER_IMAGE_NAME}").push()
             }
         }
     }
 }
+
 
 
                
