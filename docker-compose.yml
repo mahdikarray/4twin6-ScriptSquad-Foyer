@@ -22,7 +22,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
     ports:
-      - "3305:3306"  # Specify ports as strings
+      - "3306:3306"  # Specify ports as strings
     restart: unless-stopped
     volumes:
       - db:/var/lib/mysql
