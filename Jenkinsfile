@@ -49,15 +49,14 @@ pipeline {
                     }
 
 stage('JaCoCo coverage report') {
-            steps {
-                step([$class: 'JacocoPublisher',
-                      execPattern: '/target/jacoco.exec',
-                      classPattern: '/classes',
-                      sourcePattern: '/src',
-                      exclusionPattern: '*/target//,/Test,/*_javassist/**'
-                ])
-            }
-        }
+    steps {
+        // Use Ant GLOB pattern for file paths
+        jacoco(classPattern: '**/classes', 
+              execPattern: '**/target/*.exec',
+              sourcePattern: '**/src',
+              exclusionPattern: '/target/**/,**/*Test,**/*_javassist/**')
+    }
+}
         stage("MVN SONARQUBE") {
             steps {
                 withSonarQubeEnv(installationName: 'sonar') {
