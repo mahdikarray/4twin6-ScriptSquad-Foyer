@@ -83,33 +83,6 @@ public class ChambreService implements IChambreService {
 
     }
 
-    public Bloc getBlocByChambre(long idChambre) {
-        var chambre = chambreRepository.findById(idChambre)
-                .orElseThrow(() -> new EntityNotFoundException("Chambre not found"));
-
-        return chambre.getBloc();
-    }
-
-
-    @Override
-    public boolean isNumeroChambreUniqueForUpdate(Long idChambre, Long numeroChambre) {
-        // Implement logic to check if the chambre number is unique, excluding the chambre with the given ID
-        return !chambreRepository.existsByIdChambreNotAndNumeroChambre(idChambre, numeroChambre);
-    }
-
-    @Override
-    public Chambre getChambreById(Long idChambre) {
-        // Implement logic to retrieve a chambre by its ID
-        Optional<Chambre> optionalChambre = chambreRepository.findById(idChambre);
-        return optionalChambre.orElse(null);
-
-    }
-        @Override
-        public List<Long> findAllRoomNumbers() {
-            // Retrieve all Chambre entities and map them to their numeroChambre
-            return chambreRepository.findAll().stream()
-                    .map(Chambre::getNumeroChambre)
-                    .distinct() // only unique
-                    .collect(Collectors.toList());
-        }
+    
+   
     }

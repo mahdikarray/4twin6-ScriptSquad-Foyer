@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("chambre")
-@CrossOrigin(origins = "http://localhost:4200")
+
 public class ChambreRestController {
 
     //test-fares
@@ -77,30 +77,5 @@ public Chambre addChambre(Chambre c)
                 return iChambreService.findById(id);
             }
 
-            @GetMapping("selectByNumSQL")
-          //  @PreAuthorize("hasRole('ADMIN')")
-
-            public List<Chambre> selectByNumSQL(long num){
-                return chambreRepository.selectByNumSQL(num);
-            }
-
-            @GetMapping("/findByNumeroChambre/{numeroChambre}")
-          //  @PreAuthorize("hasRole('ADMIN')")
-
-            public ResponseEntity<Chambre> findByNumeroChambre(@PathVariable long numeroChambre) {
-                var chambre = iChambreService.findByNumeroChambre(numeroChambre);
-                if (chambre == null) {
-                    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-                }
-                return new ResponseEntity<>(chambre, HttpStatus.OK);
-            }
-
-
-            @GetMapping("/bloc/{idChambre}")
-           // @PreAuthorize("hasRole('ADMIN')")
-
-            public ResponseEntity<Bloc> getBlocByChambre(@PathVariable long idChambre) {
-                var bloc = iChambreService.getBlocByChambre(idChambre);
-                return new ResponseEntity<>(bloc, HttpStatus.OK);
-            }
+         
         }
