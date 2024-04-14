@@ -3,7 +3,7 @@ services:
   spring:
     image: ferjaniwael2000/spring
     ports:
-      - "8083:8083"  # Specify ports as strings
+      - "8083:8083"
     environment:
       - NEXUS_URL=http://172.16.6.254:8081/
       - NEXUS_REPOSITORY=twin6-scriptSquad-foyer
@@ -15,32 +15,34 @@ services:
       - SPRING_DATASOURCE_PASSWORD=root
     depends_on:
       - dbmysql
+
   dbmysql:
     image: "mysql:5.6"
     container_name: my-dbmysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
     ports:
-      - "3305:3306"  # Specify ports as strings
+      - "3305:3306"
     restart: unless-stopped
     volumes:
-      - db:/var/lib/mysql   # Reference the named volume 'db'
-
+      - db:/var/lib/mysql
 
   prometheus:
     image: prom/prometheus
     ports:
-      - "9091:9090"  # Specify ports as strings
+      - "9091:9090"
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
   grafana:
     image: grafana/grafana
     ports:
-      - "3001:3000"  # Specify ports as strings
+      - "3001:3000"
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=grafana
     volumes:
       - grafana_data:/var/lib/grafana
+
 volumes:
   grafana_data:
   db:
