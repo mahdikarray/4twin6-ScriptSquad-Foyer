@@ -103,10 +103,10 @@ stage('Push Docker Image') {
       steps {
         script {
          // Perform Docker login
-        sh 'docker login -u ferjaniwael2000 -p passDocker178'
+        sh 'docker login -u 419hidouri -p adminfayrouz'
 
         // Pull the Docker image
-       sh 'docker pull ferjaniwael2000/spring'
+       sh 'docker pull adminfayrouz/spring'
 
                                          // Run Docker Compose
          sh 'docker compose up -d'
