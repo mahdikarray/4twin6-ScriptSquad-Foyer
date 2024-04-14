@@ -48,6 +48,16 @@ pipeline {
                         }
                     }
 
+stage('JaCoCo coverage report') {
+            steps {
+                step([$class: 'JacocoPublisher',
+                      execPattern: '/target/jacoco.exec',
+                      classPattern: '/classes',
+                      sourcePattern: '/src',
+                      exclusionPattern: '*/target//,/Test,/*_javassist/**'
+                ])
+            }
+        }
         stage("MVN SONARQUBE") {
             steps {
                 withSonarQubeEnv(installationName: 'sonar') {
@@ -138,17 +148,13 @@ stage('Push Docker Image') {
                                                          }
                                                      }
 
+stage('SMTP Notification logs'){
+                    steps{
+                        emailext attachLog: true, body: 'check our logs after running the pipeline', compressLog: true, subject: 'this is Jekins output logs from Derouich pipeline', to: 'derouiche568@gmail.com'
+                        }
+                            }
  }
-    post {
-        success {
-            echo 'Build successful! Deploying...'
-            // Ajoutez les étapes de déploiement ici
-        }
-        failure {
-            echo 'Build failed! Sending notification...'
-            // Ajoutez les étapes de notification ici
-        }
-    }
+    
 }
 
 
