@@ -12,7 +12,7 @@ environment {
     NEXUS_PASSWORD = "nexus"
     ARTIFACT_PATH = "com/example/twin6scriptsquadfoyer/0.0.1-SNAPSHOT/twin6scriptsquadfoyer-0.0.1-20240414.141345-1.jar"
      DOCKER_IMAGE_NAME = "ferjaniwael2000/spring"
-        DOCKER_HUB_CREDENTIALS = 'docker'
+        DOCKER_HUB_CREDENTIALS = 'dockerid'
         DOCKER_COMPOSE_VERSION = "2.24.7"
 }
 
