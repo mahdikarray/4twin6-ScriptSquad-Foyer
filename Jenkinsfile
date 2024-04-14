@@ -35,19 +35,19 @@ environment {
                 sh 'mvn clean compile'
             }
         }
-       // stage('Test') {
-          //  steps {
+       stage('Test') {
+            steps {
                         // Run Maven tests
-                //sh 'mvn test'
-                 //  }
-           // }
-     //  stage("MVN SONARQUBE") {
-         //  steps {
-             //  withSonarQubeEnv(installationName: 'sonar') {
-                  // sh "mvn -DskipTests sonar:sonar"
-             //  }
-          // }
-      // }
+                sh 'mvn test'
+                   }
+            }
+       stage("MVN SONARQUBE") {
+           steps {
+               withSonarQubeEnv(installationName: 'sonar') {
+                   sh "mvn -DskipTests sonar:sonar"
+               }
+          }
+       }
 stage('Package') {
             steps {
                 sh 'mvn package'
