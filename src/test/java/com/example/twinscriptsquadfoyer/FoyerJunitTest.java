@@ -12,12 +12,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class FoyerJunitTest {
 
 
-
     @Autowired
     private IFoyerService foyerService;
 
     @Test
-    void testAjouterFoyer() {
+    public void testAjouterFoyer() {
         Foyer sampleFoyer = Foyer.builder()
                 .nomFoyer("Sample Foyer")
                 .capaciteFoyer(10)
@@ -27,7 +26,7 @@ public class FoyerJunitTest {
     }
 
     @Test
-    void testEditExistingFoyer() {
+    public void testEditExistingFoyer() {
         // Assuming there is an existing bloc with ID 1 in the database
         Long existingFoyerId = 1L;
 
@@ -52,7 +51,7 @@ public class FoyerJunitTest {
 
 
     @Test
-    void testFindExistingFoyer() {
+    public void testFindExistingFoyer() {
         // Assuming there is an existing bloc with ID 1 in the database
         Long existingFoyerId = 1L;
 
@@ -65,7 +64,7 @@ public class FoyerJunitTest {
     }
 
     @Test
-    void testDeleteExistingFoyer() {
+    public void testDeleteExistingFoyer() {
         // Assuming there is an existing bloc with ID 1 in the database
         Long existingFoyerId = 1L;
 
