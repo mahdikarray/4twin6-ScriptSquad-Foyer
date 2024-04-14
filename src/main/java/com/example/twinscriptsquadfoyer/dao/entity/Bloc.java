@@ -28,9 +28,6 @@ public class Bloc implements Serializable {
     private int capaciteBloc ;
     @OneToMany(mappedBy = "bloc" , cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
     private Set<Chambre> chambers = new HashSet<>();
-    @ManyToOne
-    @JoinColumn(name = "foyer_id")
-    @JsonIgnore
-    private Foyer foyer;
+
 
 }
