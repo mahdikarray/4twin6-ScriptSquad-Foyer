@@ -48,15 +48,15 @@ pipeline {
                         }
                     }
 
-stage('JaCoCo coverage report') {
-    steps {
-        // Use Ant GLOB pattern for file paths
-        jacoco(classPattern: '**/classes', 
-              execPattern: '**/target/*.exec',
-              sourcePattern: '**/src',
-              exclusionPattern: '/target/**/,**/*Test,**/*_javassist/**')
-    }
-}
+// stage('JaCoCo coverage report') {
+//     steps {
+//         // Use Ant GLOB pattern for file paths
+//         jacoco(classPattern: '**/classes', 
+//               execPattern: '**/target/*.exec',
+//               sourcePattern: '**/src',
+//               exclusionPattern: '/target/**/,**/*Test,**/*_javassist/**')
+//     }
+// }
         stage("MVN SONARQUBE") {
             steps {
                 withSonarQubeEnv(installationName: 'sonar') {
