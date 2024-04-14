@@ -100,19 +100,29 @@ stage('Push Docker Image') {
 
                
   stage('Run Docker Compose') {
-                                 steps {
-                                     script {
-                                         // Perform Docker login
-                                         sh 'docker login -u ferjaniwael2000 -p passDocker178'
+      steps {
+        script {
+         // Perform Docker login
+        sh 'docker login -u ferjaniwael2000 -p passDocker178'
 
-                                         // Pull the Docker image
-                                         sh 'docker pull ferjaniwael2000/spring'
+        // Pull the Docker image
+       sh 'docker pull ferjaniwael2000/spring'
 
                                          // Run Docker Compose
-                                         sh 'docker compose up -d'
-                                     }
-                                 }
-                             }
+         sh 'docker compose up -d'
+                                    }
+                         }
+                   }
+       stage('Prometheus Setup') {
+              steps {
+             sh 'docker compose up -d prometheus'
+                                         }
+                            }
+              stage('Grafana Setup') {
+                     steps {
+                  sh 'docker compose up -d grafana'
+                                                     }
+                   }
 
     }
 
