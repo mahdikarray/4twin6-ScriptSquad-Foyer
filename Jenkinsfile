@@ -77,6 +77,7 @@ stage('Package') {
                )
            }
        }
+       /*
        stage('Build Docker Image') {
                    steps {
                        script {
@@ -122,7 +123,7 @@ stage('Prometheus Setup') {
                                 sh 'docker compose up -d grafana'
                             }
                         }
-
+*/
     }
 
     post {
