@@ -85,17 +85,19 @@ stage('Package') {
                 }
             }
         }
+        stage('Login to Docker') {
+    steps {
+        script {
+            sh 'docker login -u ferjaniwael2000 -p passDocker178'
+        }
+    }
+}
 
 
 stage('Push Docker Image') {
     steps {
         script {
-            def dockerUsername = 'ferjaniwael2000'
-            def dockerPassword = 'passDocker178'
-
-            docker.withRegistry('https://index.docker.io/v1/', dockerUsername, dockerPassword) {
-                docker.image("${DOCKER_IMAGE_NAME}").push()
-            }
+            docker.image("${DOCKER_IMAGE_NAME}").push()
         }
     }
 }
