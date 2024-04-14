@@ -107,6 +107,9 @@ stage('Package') {
                                stage('Run Docker Compose') {
                                        steps {
                                            script {
+                                            // Arrêter et supprimer le conteneur existant
+                                                       sh 'docker stop dbmysql || true'
+                                                       sh 'docker rm dbmysql || true'
                                                // Perform Docker login
                                                sh 'docker login -u 419hidouri -p adminfayrouz'
 
