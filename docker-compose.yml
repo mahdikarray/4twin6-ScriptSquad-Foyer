@@ -29,13 +29,13 @@ services:
   prometheus:
     image: prom/prometheus
     ports:
-      - "9091:9090"  # Specify ports as strings
+      - "9092:9090"  # Specify ports as strings
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
   grafana:
     image: grafana/grafana
     ports:
-      - "3002:3000"  # Specify ports as strings
+      - "3003:3000"  # Specify ports as strings
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=grafana
     volumes:
