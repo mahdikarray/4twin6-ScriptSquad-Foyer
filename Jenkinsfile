@@ -85,23 +85,17 @@ stage('Package') {
                 }
             }
         }
-        stage('Login to Docker') {
-    steps {
-        script {
-            sh 'docker login -u ferjaniwael2000 -p passDocker178'
-        }
-    }
-}
 
 
 stage('Push Docker Image') {
     steps {
         script {
-            docker.image("${DOCKER_IMAGE_NAME}").push()
+            docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_HUB_CREDENTIALS}") {
+                docker.image("${DOCKER_IMAGE_NAME}").push()
+            }
         }
     }
 }
-
 
 
                
