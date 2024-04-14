@@ -6,8 +6,7 @@ import com.example.twinscriptsquadfoyer.dao.repository.ChambreRepository;
 import com.example.twinscriptsquadfoyer.dao.service.IChambreService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 
 import org.springframework.web.bind.annotation.*;
 
@@ -44,26 +43,6 @@ public Chambre addChambre(Chambre c)
 }
 
 
-        @PutMapping("/update/{id}")
-       // @PreAuthorize("hasRole('ADMIN')")
-
-        public ResponseEntity<Chambre> updateChambre(@PathVariable("id") Long idChambre, @RequestBody Chambre updatedChambre) {
-            var existingChambre = iChambreService.getChambreById(idChambre);
-
-            if (existingChambre == null) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-
-            long numeroChambre = updatedChambre.getNumeroChambre();
-
-            // Check for uniqueness, excluding the current chambre being updated
-            if (!iChambreService.isNumeroChambreUniqueForUpdate(idChambre, numeroChambre)) {
-                return new ResponseEntity<>(HttpStatus.CONFLICT);
-            }
-
-            var modifiedChambre = iChambreService.editChambre(idChambre, updatedChambre);
-            return new ResponseEntity<>(modifiedChambre, HttpStatus.OK);
-        }
 
 
 
@@ -77,5 +56,9 @@ public Chambre addChambre(Chambre c)
                 return iChambreService.findById(id);
             }
 
-         
+
+
+
+
+
         }

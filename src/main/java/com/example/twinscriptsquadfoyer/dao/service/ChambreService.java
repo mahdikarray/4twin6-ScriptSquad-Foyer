@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 
 @Service
@@ -39,11 +39,7 @@ public class ChambreService implements IChambreService {
 
 
 
-    @Override
 
-    public Chambre findByNumeroChambre(long numeroChambre) {
-        return chambreRepository.findByNumeroChambre(numeroChambre);
-    }
     @Override
     public List<Chambre> addChambres(List<Chambre> chambres) {
         return chambreRepository.saveAll(chambres);
@@ -83,6 +79,13 @@ public class ChambreService implements IChambreService {
 
     }
 
-    
-   
+    public Bloc getBlocByChambre(long idChambre) {
+        var chambre = chambreRepository.findById(idChambre)
+                .orElseThrow(() -> new EntityNotFoundException("Chambre not found"));
+
+        return chambre.getBloc();
+    }
+
+
+
     }

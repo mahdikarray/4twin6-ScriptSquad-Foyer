@@ -22,5 +22,5 @@ public interface IBlocService {
 
     void delete(Bloc b);
 
- 
+
 }
