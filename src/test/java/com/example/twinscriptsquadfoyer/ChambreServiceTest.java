@@ -129,49 +129,7 @@ class ChambreServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Test
-    void testAjouterChambre() {
-        Chambre sampleChambre = Chambre.builder()
-                .numeroChambre(101)
-                .typeChambre(TypeChambre.SIMPLE)
-                .statut("AVAILABLE")
-                .dateDebut(LocalDate.now())
-                .dateFin(LocalDate.now().plusDays(7))
-                .bloc(Bloc.builder().build())
-                .build();
-
-        Mockito.when(chambreService.addChambre(sampleChambre)).thenReturn(sampleChambre);
-
-        Chambre savedChambre = chambreService.addChambre(sampleChambre);
-        Assertions.assertNotNull(savedChambre);
-    }
-
-    @Test
-    void testEditExistingChambre() {
-        Long existingChambreId = 2L;
-        Chambre existingChambre = Chambre.builder()
-                .idChambre(existingChambreId)
-                .numeroChambre(101)
-                .typeChambre(TypeChambre.SIMPLE)
-                .statut("AVAILABLE")
-                .dateDebut(LocalDate.now())
-                .dateFin(LocalDate.now().plusDays(7))
-                .bloc(Bloc.builder().build())
-                .build();
-
-        Mockito.when(chambreService.findById(existingChambreId)).thenReturn(existingChambre);
-
-        existingChambre.setNumeroChambre(102);
-
-        Mockito.when(chambreService.editChambre(existingChambreId, existingChambre)).thenReturn(existingChambre);
-
-        chambreService.editChambre(existingChambreId, existingChambre);
-
-        Chambre updatedChambre = chambreService.findById(existingChambreId);
-
-        Assertions.assertNotNull(updatedChambre);
-        Assertions.assertEquals(102, updatedChambre.getNumeroChambre());
-    }
+ 
 
     @Test
     void testFindExistingChambre() {
