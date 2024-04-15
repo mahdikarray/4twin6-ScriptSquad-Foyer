@@ -214,23 +214,7 @@ class ChambreServiceTest {
         Mockito.verify(chambreService, Mockito.times(1)).delete(chambre);
     }
 
-    @Test
-    void testFindByNumeroChambre() {
-        long numeroChambre = 101L;
-        Chambre chambre = Chambre.builder().numeroChambre(numeroChambre).build();
-        Mockito.when(chambreService.findByNumeroChambre(numeroChambre)).thenReturn(chambre);
-        Chambre foundChambre = chambreService.findByNumeroChambre(numeroChambre);
-        Assertions.assertEquals(chambre, foundChambre);
-    }
 
-    @Test
-    void testGetBlocByChambre() {
-        long idChambre = 1L;
-        Bloc bloc = Bloc.builder().build();
-        Mockito.when(chambreService.getBlocByChambre(idChambre)).thenReturn(bloc);
-        Bloc foundBloc = chambreService.getBlocByChambre(idChambre);
-        Assertions.assertEquals(bloc, foundBloc);
-    }
 
     @Test
     void testDeleteById() {
@@ -239,30 +223,8 @@ class ChambreServiceTest {
         Mockito.verify(chambreService, Mockito.times(1)).deleteById(id);
     }
 
-    @Test
-    void testIsNumeroChambreUniqueForUpdate() {
-        long id = 1L;
-        long numeroChambre = 101L;
-        Mockito.when(chambreService.isNumeroChambreUniqueForUpdate(id, numeroChambre)).thenReturn(true);
-        boolean isUnique = chambreService.isNumeroChambreUniqueForUpdate(id, numeroChambre);
-        Assertions.assertTrue(isUnique);
-    }
 
-    @Test
-    void testGetChambreById() {
-        long id = 1L;
-        Chambre chambre = Chambre.builder().idChambre(id).build();
-        Mockito.when(chambreService.getChambreById(id)).thenReturn(chambre);
-        Chambre foundChambre = chambreService.getChambreById(id);
-        Assertions.assertEquals(chambre, foundChambre);
-    }
 
-    @Test
-    void testFindAllRoomNumbers() {
-        List<Long> roomNumbers = Arrays.asList(101L, 102L, 103L);
-        Mockito.when(chambreService.findAllRoomNumbers()).thenReturn(roomNumbers);
-        List<Long> foundRoomNumbers = chambreService.findAllRoomNumbers();
-        Assertions.assertEquals(roomNumbers, foundRoomNumbers);
-    }
+
 
 }

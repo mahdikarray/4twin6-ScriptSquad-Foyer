@@ -45,18 +45,7 @@ public class ChambreService implements IChambreService {
         return chambreRepository.saveAll(chambres);
     }
 
-    @Override
-    public Chambre editChambre(Long id, Chambre c) {
-        Optional<Chambre> optionalChambre = chambreRepository.findById(id);
-        if(optionalChambre.isPresent()){
-            var toUpdateChambre = optionalChambre.get();
-            toUpdateChambre.setNumeroChambre(c.getNumeroChambre());
-            toUpdateChambre.setTypeChambre(c.getTypeChambre());
-            toUpdateChambre.setBloc(c.getBloc());
-            return chambreRepository.save(toUpdateChambre);
-        }
-        return null;
-    }
+
 
     @Override
     public List<Chambre> findAll() {
@@ -74,6 +63,7 @@ public class ChambreService implements IChambreService {
         chambreRepository.delete(c);
     }
 
+    @Override
     public void deleteById(long id) {
         chambreRepository.deleteById(id);
 
