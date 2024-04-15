@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600,allowCredentials="true")
+@CrossOrigin(origins = "*", maxAge = 3600,allowCredentials="true")
 @RequestMapping("/api/blocs")
 public class BlocRestController {
     IBlocService iBlocService;
