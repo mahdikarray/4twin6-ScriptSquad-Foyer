@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+import java.util.stream.Collectors;
 
 
 @Service
@@ -39,13 +39,28 @@ public class ChambreService implements IChambreService {
 
 
 
+    @Override
 
+    public Chambre findByNumeroChambre(long numeroChambre) {
+        return chambreRepository.findByNumeroChambre(numeroChambre);
+    }
     @Override
     public List<Chambre> addChambres(List<Chambre> chambres) {
         return chambreRepository.saveAll(chambres);
     }
 
-
+    @Override
+    public Chambre editChambre(Long id, Chambre c) {
+        Optional<Chambre> optionalChambre = chambreRepository.findById(id);
+        if(optionalChambre.isPresent()){
+            var toUpdateChambre = optionalChambre.get();
+            toUpdateChambre.setNumeroChambre(c.getNumeroChambre());
+            toUpdateChambre.setTypeChambre(c.getTypeChambre());
+            toUpdateChambre.setBloc(c.getBloc());
+            return chambreRepository.save(toUpdateChambre);
+        }
+        return null;
+    }
 
     @Override
     public List<Chambre> findAll() {
@@ -63,7 +78,6 @@ public class ChambreService implements IChambreService {
         chambreRepository.delete(c);
     }
 
-    @Override
     public void deleteById(long id) {
         chambreRepository.deleteById(id);
 
@@ -77,5 +91,25 @@ public class ChambreService implements IChambreService {
     }
 
 
+    @Override
+    public boolean isNumeroChambreUniqueForUpdate(Long idChambre, Long numeroChambre) {
+        // Implement logic to check if the chambre number is unique, excluding the chambre with the given ID
+        return !chambreRepository.existsByIdChambreNotAndNumeroChambre(idChambre, numeroChambre);
+    }
 
+    @Override
+    public Chambre getChambreById(Long idChambre) {
+        // Implement logic to retrieve a chambre by its ID
+        Optional<Chambre> optionalChambre = chambreRepository.findById(idChambre);
+        return optionalChambre.orElse(null);
+
+    }
+        @Override
+        public List<Long> findAllRoomNumbers() {
+            // Retrieve all Chambre entities and map them to their numeroChambre
+            return chambreRepository.findAll().stream()
+                    .map(Chambre::getNumeroChambre)
+                    .distinct() // only unique
+                    .collect(Collectors.toList());
+        }
     }

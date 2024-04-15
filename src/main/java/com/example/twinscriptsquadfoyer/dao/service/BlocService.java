@@ -64,5 +64,48 @@ public class BlocService implements IBlocService {
 
     }
 
+    @Override
+    public List<Bloc> findByNomBloc(String nomBloc) {
+        return blocRepository.findByNomBloc(nomBloc);
+    }
 
+    @Override
+    public List<Bloc> findByCapaciteBloc(int capaciteBloc) {
+        return blocRepository.findByCapaciteBloc(capaciteBloc);
+    }
+
+    @Override
+    public List<Bloc> findByNomBlocAndCapaciteBloc(String nomBloc, int capaciteBloc) {
+        return blocRepository.findByNomBlocAndCapaciteBloc(nomBloc, capaciteBloc);
+    }
+
+    @Override
+    public List<Bloc> findByNomBlocIgnoreCase(String nomBloc) {
+        return blocRepository.findByNomBlocIgnoreCase(nomBloc);
+    }
+
+    @Override
+    public List<Bloc> findByCapaciteBlocGreaterThan(int capacite) {
+        return blocRepository.findByCapaciteBlocGreaterThan(capacite);
+    }
+
+    @Override
+    public List<Bloc> findByNomBlocContaining(String subString) {
+        return blocRepository.findByNomBlocContaining(subString);
+    }
+
+    @Override
+    public List<Bloc> findAllByOrderByNomBlocAsc() {
+        return blocRepository.findAllByOrderByNomBlocAsc();
+    }
+
+    @Override
+    public List<Bloc> findByNomBlocOrCapaciteBloc(String nomBloc, int capaciteBloc) {
+        return blocRepository.findByNomBlocOrCapaciteBloc(nomBloc, capaciteBloc);
+    }
+
+    @Override
+    public Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc) {
+        return null;
+    }
 }
